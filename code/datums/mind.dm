@@ -154,6 +154,13 @@
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	return
+	
+	if(current && isliving(current))
+		if(href_list["set_psi_faculty"] && href_list["set_psi_faculty_rank"])
+			current.set_psi_rank(href_list["set_psi_faculty"], text2num(href_list["set_psi_faculty_rank"]))
+			var/datum/admins/admin = GLOB.admins[usr.key]
+			if(istype(admin)) admin.show_player_panel(current)
+			return TRUE
 
 	if(href_list["add_antagonist"])
 		var/datum/antagonist/antag = all_antag_types()[href_list["add_antagonist"]]
