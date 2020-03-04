@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(psychic_ranks_to_strings, list("Latent", "Operant", "Masterclas
 
 PROCESSING_SUBSYSTEM_DEF(psi)
 	name = "Psychics"
-	priority = 15
+	priority = 45 //THIS WAS WRONG WTF
 	flags = SS_POST_FIRE_TIMING | SS_BACKGROUND
 
 	var/list/faculties_by_id =        list()
