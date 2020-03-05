@@ -40,14 +40,12 @@
 /datum/psi_complexus/proc/can_use_passive()
 	return (owner.stat == CONSCIOUS && !suppressed && !stun)
 
-/datum/psi_complexus/proc/can_use(var/incapacitation_flags)
-	return (owner.stat == CONSCIOUS && (!incapacitation_flags || !owner.incapacitated(incapacitation_flags)) && !suppressed && !stun && world.time >= next_power_use)
+/datum/psi_complexus/proc/can_use()
+	return (owner.stat == CONSCIOUS && !owner.incapacitated() && !suppressed && !stun && world.time >= next_power_use)
 
-/datum/psi_complexus/proc/spend_power(var/value = 0, var/check_incapacitated)
+/datum/psi_complexus/proc/spend_power(var/value = 0)
 	. = FALSE
-	if(isnull(check_incapacitated))
-		check_incapacitated = (INCAPACITATION_STUNNED|INCAPACITATION_KNOCKOUT)
-	if(can_use(check_incapacitated))
+	if(can_use())
 		value = max(1, ceil(value * cost_modifier))
 		if(value <= stamina)
 			stamina -= value
@@ -66,8 +64,8 @@
 
 /datum/psi_complexus/proc/show_auras()
 	if(owner.client)
-		for(var/image/I in SSpsi.all_aura_images)
-			owner.client.images |= I
+		for(var/thing in SSpsi.all_aura_images)
+			owner.client.images |= thing
 
 /datum/psi_complexus/proc/backblast(var/value)
 
@@ -96,7 +94,7 @@
 
 /datum/psi_complexus/proc/reset()
 	aura_color = initial(aura_color)
-	ranks = base_ranks ? base_ranks.Copy() : null
+	ranks = base_ranks.Copy()
 	max_stamina = initial(max_stamina)
 	stamina = min(stamina, max_stamina)
 	cancel()
