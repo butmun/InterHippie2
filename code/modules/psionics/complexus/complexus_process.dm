@@ -46,7 +46,7 @@
 				aura_color = "#7d3b4f"
 				aura_image.blend_mode = BLEND_SUBTRACT
 			else
-				aura_image.blend_mode = BLEND_ADD
+			  aura_image.blend_mode = BLEND_ADD
 				if(highest_faculty == PSI_COERCION)
 					aura_color = "#cc3333"
 				else if(highest_faculty == PSI_PSYCHOKINESIS)

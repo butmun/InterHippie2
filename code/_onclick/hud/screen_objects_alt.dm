@@ -545,14 +545,18 @@
 				usr.kick_icon.icon_state = "kick"
 		if("combat mode")
 			if(!ishuman(usr))	return
+			var/song = 'sound/music/combat_music.ogg'
 			usr << 'sound/effects/ui_toggle.ogg'
 			var/mob/living/carbon/human/C = usr
 			if(C.combat_mode)
 				C.combat_mode = 0
 				C.combat_icon.icon_state = "combat0"
+
+				sound_to(C, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))
 			else
 				C.combat_mode = 1
 				C.combat_icon.icon_state = "combat1"
+				sound_to(C, sound(song, repeat = 1, wait = 0, volume = 50, channel = 1))		
 
 		if("dodge intent")
 			if(ishuman(usr))

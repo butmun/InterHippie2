@@ -14,7 +14,7 @@
 
 	allowed_spawns = list("Arrivals Shuttle")
 
-	station_name  = "The Duchy of Algol, Frontier Outpost"
+	station_name  = "County of Algol, Frontier Outpost"
 	station_short = "Frontier"
 	dock_name     = "NTTM1-54 Relay"
 	boss_name     = "Kingdom Relay System"

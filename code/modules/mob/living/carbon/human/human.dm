@@ -779,19 +779,23 @@
 
 		else if (href_list["interaction"] == "vaglick")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && hasvagina_p)
-				H.fuck(H, P, "vaglick")
+				if (H.erpcooldown == 0)
+					H.fuck(H, P, "vaglick")
 
 		else if (href_list["interaction"] == "asslick")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && hasanus_p)
-				usr.visible_message("<font color=purple>[H] licks [P]'s asshole.</font>")
+				if (H.erpcooldown == 0)
+					usr.visible_message("<font color=purple>[H] licks [P]'s asshole.</font>")
 
 		else if (href_list["interaction"] == "fingering")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && hashands && hasvagina_p)
-				H.fuck(H, P, "fingering")
+				if (H.erpcooldown == 0)
+					H.fuck(H, P, "fingering")
 
 		else if (href_list["interaction"] == "blowjob")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && haspenis_p)
-				H.fuck(H, P, "blowjob")
+				if (H.erpcooldown == 0)
+					H.fuck(H, P, "blowjob")
 
 		else if (href_list["interaction"] == "anal")
 			if (H.loc == P.loc && isnude_p && isnude && haspenis && hasanus_p)
