@@ -68,7 +68,7 @@
 		playsound(get_turf(src), 'sound/machines/bomclick.ogg', 50, 1)
 
 
-/obj/item/device/boombox/proc/StopPlaying() //TODO �������� �������� �����
+/obj/item/device/boombox/proc/StopPlaying() //TODO RUSSIAN SYMBOLS REMOVED
 	playing = 0
 	QDEL_NULL(sound_token)
 
@@ -78,7 +78,7 @@
 		return
 	if(!casseta.sound_inside)
 		return
-	to_world("This is broken, cry to muncher")
+	//to_world("This is broken, cry to muncher")
 	//sound_token = sound_player.PlayLoopingSound(src, sound_id, casseta.sound_inside, volume = 50, range = 14, falloff = 3, prefer_mute = TRUE, ignore_vis = TRUE)
 	//playing = 1
 
