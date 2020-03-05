@@ -40,14 +40,12 @@
 	use_description = "Click on or otherwise activate an empty hand while on help intent to manifest a psychokinetic tool. Use it in-hand to switch between tool types."
 	admin_log = FALSE
 
-/*
 /decl/psionic_power/psychokinesis/tinker/invoke(var/mob/living/user, var/mob/living/target)
 	if((target && user != target) || user.a_intent != I_HELP)
 		return FALSE
 	. = ..()
 	if(.)
 		return new /obj/item/psychic_power/tinker(user)
-*/
 
 /decl/psionic_power/psychokinesis/telekinesis
 	name =            "Telekinesis"
