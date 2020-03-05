@@ -7,7 +7,7 @@
 	damage_type = BRUTE
 	nodamage = 0
 	check_armour = "bullet"
-	embed = 1
+	embed = 0 // by default bullets should NOT embed, and instead should have a special statement
 	sharp = 1
 	penetration_modifier = 1.0
 	var/mob_passthrough_check = 0
