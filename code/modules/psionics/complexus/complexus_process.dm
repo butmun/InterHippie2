@@ -1,7 +1,7 @@
 /datum/psi_complexus/proc/update(var/force)
 
 	set waitfor = FALSE
-
+	owner.psi.max_stamina = rating*13
 	var/last_rating = rating
 	var/highest_faculty
 	var/combined_rank = 0
@@ -41,9 +41,9 @@
 
 			if(rating >= PSI_RANK_PARAMOUNT) // spooky boosters
 				aura_color = "#aaffaa"
-			//	aura_image.blend_mode = BLEND_SUBTRACT
+				aura_image.blend_mode = BLEND_SUBTRACT
 			else
-			//	aura_image.blend_mode = BLEND_ADD
+				aura_image.blend_mode = BLEND_ADD
 				if(highest_faculty == PSI_COERCION)
 					aura_color = "#cc3333"
 				else if(highest_faculty == PSI_PSYCHOKINESIS)
@@ -115,7 +115,14 @@
 	var/mend_prob =     0
 
 	var/use_rank = get_rank(PSI_REDACTION)
-	if(use_rank >= PSI_RANK_PARAMOUNT)
+	if(use_rank >= PSI_RANK_ASCENDENT)
+		heal_general = TRUE
+		heal_poison = TRUE
+		heal_bleeding = TRUE
+		mend_prob = 100
+		heal_rate = 20
+
+	else if(use_rank >= PSI_RANK_PARAMOUNT)
 		heal_general = TRUE
 		heal_poison = TRUE
 		heal_bleeding = TRUE
