@@ -55,6 +55,7 @@
 	artery_name = "iliac artery"
 	cavity_name = "abdominal"
 
+/*
 /obj/item/organ/external/groin/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silen)
 	if(owner.has_penis())//Instead of bisecting them entirely just fucking drop their dick off.
 		owner.mutilate_genitals()
@@ -68,7 +69,7 @@
 			var/turf/T = P.loc
 			T.add_blood(owner)
 		*/
-
+*/ //disabled because of turret bad coder
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
 	name = "left arm"

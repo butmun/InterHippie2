@@ -2192,6 +2192,8 @@
 #include "code\modules\psionics\equipment\psipower_blade.dm"
 #include "code\modules\psionics\equipment\psipower_tinker.dm"
 #include "code\modules\psionics\equipment\psipower_tk.dm"
+#include "code\modules\psionics\events\_psi.dm"
+#include "code\modules\psionics\events\mini_spasm.dm"
 #include "code\modules\psionics\faculties\_faculty.dm"
 #include "code\modules\psionics\faculties\_power.dm"
 #include "code\modules\psionics\faculties\coercion.dm"

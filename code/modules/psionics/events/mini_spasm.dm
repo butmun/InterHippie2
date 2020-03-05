@@ -33,26 +33,26 @@
 /datum/event/minispasm/proc/do_spasm(var/mob/living/victim, var/obj/item/device/radio/source)
 	set waitfor = 0
 
-	if(iscarbon(victim) && !victim.isSynthetic())
-		var/list/disabilities = list(NEARSIGHTED, EPILEPSY, TOURETTES, NERVOUS)
-		for(var/disability in disabilities)
-			if(victim.disabilities & disability)
-				disabilities -= disability
-		if(disabilities.len)
-			victim.disabilities |= pick(disabilities)
+	var/list/disabilities = list(NEARSIGHTED, EPILEPSY, TOURETTES, NERVOUS)
+	for(var/disability in disabilities)
+		if(victim.disabilities & disability)
+			disabilities -= disability
+	if(disabilities.len)
+		victim.disabilities |= pick(disabilities)
 
 	if(victim.psi)
-		to_chat(victim, ("A hauntingly familiar sound hisses from \icon[source] \the [source], and your vision flickers!"))
+		to_chat(victim, SPAN_DANGER("A hauntingly familiar sound hisses from \icon[source] \the [source], and your vision flickers!"))
 		victim.psi.backblast(rand(5,15))
 		victim.Paralyse(5)
 		victim.make_jittery(100)
 	else
-		to_chat(victim, ("An indescribable, brain-tearing sound hisses from \icon[source] \the [source], and you collapse in a seizure!"))
-		victim.seizure()
-		var/new_latencies = rand(2,4)
+		to_chat(victim, SPAN_DANGER("An indescribable, brain-tearing sound hisses from \icon[source] \the [source], and you collapse in a seizure!"))
+		victim.Paralyse(30)
+		victim.make_jittery(500)
+		var/new_latencies = rand(1,3)
 		var/list/faculties = list(PSI_COERCION, PSI_REDACTION, PSI_ENERGISTICS, PSI_PSYCHOKINESIS)
 		for(var/i = 1 to new_latencies)
-			to_chat(victim, ("<font size = 3>[pick(psi_operancy_messages)]</font>"))
+			to_chat(victim, SPAN_WARNING("[pick(psi_operancy_messages)]"))
 			victim.adjustBrainLoss(rand(10,20))
 			victim.set_psi_rank(pick_n_take(faculties), 1)
 			sleep(30)
