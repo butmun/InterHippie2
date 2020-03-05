@@ -48,6 +48,8 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	winset(src, "github", "text-color = [COLOR_DARKMODE_TEXT];text-color = #000000")
 	winset(src, "BugReport", "background-color = #494949;background-color = none")
 	winset(src, "BugReport", "text-color = [COLOR_DARKMODE_TEXT];text-color = #000000")
+	winset(src, "Discord", "background-color = #494949;background-color = none")
+	winset(src, "Discord", "text-color = [COLOR_DARKMODE_TEXT];text-color = #000000")
 	winset(src, "hotkey_toggle", "background-color = #494949;background-color = none")
 	winset(src, "hotkey_toggle", "text-color = [COLOR_DARKMODE_TEXT];text-color = #000000")
 	//Status and verb tabs
@@ -107,6 +109,8 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	winset(src, "github", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "BugReport", "background-color = none;background-color = #494949")
 	winset(src, "BugReport", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")
+	winset(src, "Discord", "background-color = none;background-color = #494949")
+	winset(src, "Discord", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "hotkey_toggle", "background-color = none;background-color = #494949")
 	winset(src, "hotkey_toggle", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")
 	//Status and verb tabs

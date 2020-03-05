@@ -195,6 +195,9 @@ macro "borghotkeymode"
 		name = "F2"
 		command = "ooc"
 	elem 
+		name = "O"
+		command = "ooc"
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 	elem 
@@ -208,7 +211,7 @@ macro "borghotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "msay"
+		command = "asay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -616,6 +619,9 @@ macro "hotkeymode"
 		name = "F2"
 		command = "ooc"
 	elem 
+		name = "O"
+		command = "ooc"
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 	elem 
@@ -629,7 +635,7 @@ macro "hotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "msay"
+		command = "asay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -1119,6 +1125,15 @@ window "rpane"
 		saved-params = "is-checked"
 		text = "Bug Report"
 		command = "Bug-Report"
+	elem "Discord"
+		type = BUTTON
+		pos = 596,0
+		size = 60x15
+		anchor1 = none
+		anchor2 = none
+		saved-params = "is-checked"
+		text = "Discord"
+		command = "discord"
 	elem "rulesb"
 		type = BUTTON
 		pos = 120,0

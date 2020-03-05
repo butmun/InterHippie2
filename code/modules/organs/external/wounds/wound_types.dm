@@ -85,18 +85,18 @@
 		"ugly deep ripped cut" = 25,
 		"deep ripped cut" = 20,
 		"deep cut" = 15,
-		"clotted cut" = 8,
+		"cut" = 8,
 		"scab" = 2,
 		"fresh skin" = 0
 		)
 
 /datum/wound/cut/flesh
-	max_bleeding_stage = 4
+	max_bleeding_stage = 3
 	stages = list(
 		"ugly ripped flesh wound" = 35,
 		"ugly flesh wound" = 30,
 		"flesh wound" = 25,
-		"blood soaked clot" = 15,
+		"blood soaked wound" = 15,
 		"large scab" = 5,
 		"fresh skin" = 0
 		)
@@ -106,7 +106,7 @@
 	stages = list(
 		"gaping wound" = 50,
 		"large blood soaked clot" = 25,
-		"blood soaked clot" = 15,
+		"blood soaked wound" = 15,
 		"small angry scar" = 5,
 		"small straight scar" = 0
 		)
@@ -116,7 +116,7 @@
 	stages = list(
 		"big gaping wound" = 60,
 		"healing gaping wound" = 40,
-		"large blood soaked clot" = 25,
+		"large blood soaked wound" = 15,
 		"large angry scar" = 10,
 		"large straight scar" = 0
 		)
@@ -126,21 +126,22 @@ datum/wound/cut/massive
 	stages = list(
 		"massive wound" = 70,
 		"massive healing wound" = 50,
-		"massive blood soaked clot" = 25,
+		"massive blood soaked wound" = 15,
 		"massive angry scar" = 10,
 		"massive jagged scar" = 0
 		)
 
 /** PUNCTURES **/
 /datum/wound/puncture
-	bleed_threshold = 10
+	bleed_threshold = 5
+	autoheal_cutoff = 15
 	damage_type = PIERCE
 
 /datum/wound/puncture/can_worsen(damage_type, damage)
 	return 0 //puncture wounds cannot be enlargened
 
 /datum/wound/puncture/small
-	max_bleeding_stage = 2
+	max_bleeding_stage = 4
 	stages = list(
 		"puncture" = 5,
 		"healing puncture" = 2,
@@ -148,20 +149,20 @@ datum/wound/cut/massive
 		)
 
 /datum/wound/puncture/flesh
-	max_bleeding_stage = 2
+	max_bleeding_stage = 3
 	stages = list(
-		"puncture wound" = 15,
-		"blood soaked clot" = 5,
-		"large scab" = 2,
+		"puncture wound" = 20,
+		"small puncture wound" = 7,
+		"large scab" = 3,
 		"small round scar" = 0
 		)
 
 /datum/wound/puncture/gaping
 	max_bleeding_stage = 3
 	stages = list(
-		"gaping hole" = 30,
-		"large blood soaked clot" = 15,
-		"blood soaked clot" = 10,
+		"large gaping hole" = 30,
+		"large hole" = 20,
+		"small blood soaked hole" = 10,
 		"small angry scar" = 5,
 		"small round scar" = 0
 		)
@@ -169,20 +170,21 @@ datum/wound/cut/massive
 /datum/wound/puncture/gaping_big
 	max_bleeding_stage = 3
 	stages = list(
-		"big gaping hole" = 50,
-		"healing gaping hole" = 20,
-		"large blood soaked clot" = 15,
+		"big gaping wound" = 60,
+		"healing gaping wound" = 40,
+		"large blood soaked wound" = 15,
 		"large angry scar" = 10,
-		"large round scar" = 0
+		"large straight scar" = 0
 		)
 
 datum/wound/puncture/massive
 	max_bleeding_stage = 3
 	stages = list(
-		"massive wound" = 60,
-		"massive healing wound" = 30,
-		"massive blood soaked clot" = 25,
-		"massive angry scar" = 10,
+		"massive open wound" = 60,
+		"massive wound" = 30,
+		"massive healing wound" = 25,
+		"massive blood soaked wound" = 10,
+		"massive angry scar" = 5,
 		"massive jagged scar" = 0
 		)
 
@@ -197,8 +199,8 @@ datum/wound/puncture/massive
 		"tiny bruise" = 5
 		)
 
-	bleed_threshold = 20
-	max_bleeding_stage = 3 //only large bruise and above can bleed.
+	bleed_threshold = 50
+	max_bleeding_stage = 4 //only large bruise and above can bleed.
 	autoheal_cutoff = 30
 	damage_type = BRUISE
 
