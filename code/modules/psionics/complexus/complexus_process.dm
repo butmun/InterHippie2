@@ -88,7 +88,7 @@
 		else if(owner.stat == UNCONSCIOUS)
 			stamina = min(max_stamina, stamina + rand(3,5))
 
-	if(stamina && !suppressed && get_rank(PSI_REDACTION) >= PSI_RANK_OPERANT)
+	if(!suppressed && get_rank(PSI_REDACTION) >= PSI_RANK_OPERANT)
 		attempt_regeneration()
 
 	var/next_aura_size = max(0.1,((stamina/max_stamina)*min(3,rating))/5)
