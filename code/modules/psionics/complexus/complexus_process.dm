@@ -1,7 +1,10 @@
 /datum/psi_complexus/proc/update(var/force)
 
 	set waitfor = FALSE
-	owner.psi.max_stamina = rating*17
+	if(rating*17 >= 25)
+		owner.psi.max_stamina = rating*17
+	else
+		owner.psi.max_stamina = 25
 	var/last_rating = rating
 	var/highest_faculty
 	var/combined_rank = 0
