@@ -23,6 +23,8 @@
 	. = ..()
 	if(.)
 		switch(user.psi.get_rank(faculty))
+			if(PSI_RANK_ASCENDENT)
+				return new /obj/item/psychic_power/psiblade/master/grand/paramount(user, user)
 			if(PSI_RANK_PARAMOUNT)
 				return new /obj/item/psychic_power/psiblade/master/grand/paramount(user, user)
 			if(PSI_RANK_GRANDMASTER)

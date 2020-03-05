@@ -64,6 +64,10 @@
 		var/pew_sound
 
 		switch(user_rank)
+			if(PSI_RANK_ASCENDENT)
+				pew = new /obj/item/projectile/beam/heavylaser(get_turf(user))
+				pew.name = "gigawatt mental laser"
+				pew_sound = 'sound/weapons/lasercannonfire.ogg'
 			if(PSI_RANK_PARAMOUNT)
 				pew = new /obj/item/projectile/beam/heavylaser(get_turf(user))
 				pew.name = "gigawatt mental laser"

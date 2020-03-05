@@ -42,6 +42,9 @@
 			if(rating >= PSI_RANK_PARAMOUNT) // spooky boosters
 				aura_color = "#aaffaa"
 				aura_image.blend_mode = BLEND_SUBTRACT
+			else if (rating >= PSI_RANK_ASCENDENT)
+				aura_color = "#7d3b4f"
+				aura_image.blend_mode = BLEND_SUBTRACT
 			else
 				aura_image.blend_mode = BLEND_ADD
 				if(highest_faculty == PSI_COERCION)
