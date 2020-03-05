@@ -121,7 +121,6 @@
 		heal_bleeding = TRUE
 		mend_prob = 100
 		heal_rate = 20
-
 	else if(use_rank >= PSI_RANK_PARAMOUNT)
 		heal_general = TRUE
 		heal_poison = TRUE
