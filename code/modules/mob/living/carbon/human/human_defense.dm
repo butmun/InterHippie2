@@ -292,8 +292,13 @@ meteor_act
 	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
 	else if(I.sharp && I.edge)
 		if(prob(I.sharpness + stat_to_modifier(user.stats[STAT_ST])))
-			log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats[STAT_ST])])") //Debugging
-			affecting.droplimb(0, DROPLIMB_EDGE)
+			if(!hit_zone == BP_HEAD && prob(10)) //shouldnt instantly dismember limbs due to a stat check...
+				log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats[STAT_ST])])") //Debugging
+				affecting.droplimb(0, DROPLIMB_EDGE)
+			else if(hit_zone == BP_HEAD && prob(2)) // VERY LOW PROB TO DISMEMBER HEAD DUE TO EVENTUAL RESPAWN REMOVAL
+				log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats[STAT_ST])])") //Debugging
+				affecting.droplimb(0, DROPLIMB_EDGE)
+
 
 	var/obj/item/organ/external/head/O = locate(/obj/item/organ/external/head) in src.organs
 
