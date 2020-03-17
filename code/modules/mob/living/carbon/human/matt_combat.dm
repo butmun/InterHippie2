@@ -57,8 +57,8 @@
 
 /mob/proc/surrender()//Surrending. I need to put this in a different file.
 	if(!incapacitated())
-		Stun(5)
-		Weaken(5)
+		//Stun(5)  // THIS WAS NOT FUNNY AND I DID NOT LAUGH
+		//Weaken(5) // SAME WITH THIS
 		visible_message("<b>[src] surrenders!</b>")
 		playsound(src, 'sound/effects/surrender.ogg', 50, 1)
 		var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )

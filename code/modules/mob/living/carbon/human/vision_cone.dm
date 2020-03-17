@@ -10,7 +10,7 @@
 
 
 //Defines.
-#define OPPOSITE_DIR(D) turn(D, 180)
+#define OPPOSITE_DIR(D) turn(D, 200) // in theory should make the view cone a bit bigger
 
 client/
 	var/list/hidden_atoms = list()
