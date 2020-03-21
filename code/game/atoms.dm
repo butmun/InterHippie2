@@ -499,7 +499,6 @@ its easier to just keep the beam vertical.
 	climbers |= user
 
 	if(!do_after(user,(issmall(user) ? smalltime : bigtime) - stat_to_modifier(user.stats[STAT_DX])*10 / 1.75, src))
-
 		climbers -= user
 		return
 
