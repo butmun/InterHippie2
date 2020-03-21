@@ -321,7 +321,9 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user,(issmall(user) ? 20 : 34 ) - user.stats[STAT_DX]))
+
+	if(!do_after(user,(issmall(user) ? 24: 30) - stat_to_modifier(user.stats[STAT_DX])*10 / 1.75, src))
+
 		climbers -= user
 		return
 
@@ -342,3 +344,4 @@
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	if(!anchored)	take_damage(maxhealth) // Fatboy
 	climbers -= user
+

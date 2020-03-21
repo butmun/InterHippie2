@@ -107,7 +107,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	for (var/obj/item/grab/G in user.grabbed_by)
 		if(G.stop_move())
 			return
-	if (do_after(user, 25 + (5 * user.weakened), incapacitation_flags = ~INCAPACITATION_FORCELYING))
+	if (do_after(user, 25 + (5 * user.weakened) - (stat_to_modifier(user.stats[STAT_DX])*10 / 2.5) , incapacitation_flags = ~INCAPACITATION_FORCELYING))
 		step_towards(O, src)
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)

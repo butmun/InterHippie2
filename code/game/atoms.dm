@@ -498,7 +498,8 @@ its easier to just keep the beam vertical.
 	user.visible_message("<span class='warning'>\The [user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user,(issmall(user) ? 30 : 50 - user.stats[STAT_DX]), src))
+	if(!do_after(user,(issmall(user) ? smalltime : bigtime) - stat_to_modifier(user.stats[STAT_DX])*10 / 1.75, src))
+
 		climbers -= user
 		return
 
