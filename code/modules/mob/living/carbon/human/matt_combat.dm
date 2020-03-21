@@ -71,7 +71,7 @@
 	var/getupchance = (!stunned && !weakened) || (rand(1,50) < stats[STAT_DX]/1.5)
 	if(resting && getupchance)//The incapacitated proc includes resting for whatever fucking stupid reason I hate SS13 code so fucking much.
 		visible_message("<span class='notice'>[usr] is trying to get up.</span>")
-		if(do_after(src, 20 -  stat_to_modifier(user.stats[STAT_DX])*10 / 3))
+		if(do_after(src, 20 -  stat_to_modifier(stats[STAT_DX])*10 / 3))
 			resting = 0
 			rest.icon_state = "rest0"
 		return
