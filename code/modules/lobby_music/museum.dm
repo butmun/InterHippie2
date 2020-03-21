@@ -2,4 +2,4 @@
 	artist = "Kenji Kawai"
 	title = "Floating Museum"
 	song = 'sound/music/museum.ogg'
-	album = "Floating Museum"
+	album = "Ghost in the Shell OST"

@@ -233,10 +233,15 @@ proc/generate_random_prayer()//This generates a new one.
 		return
 	var/self = "You deftly use your [user_religion.holy_item] to create the shrine."
 	var/timer = 20
-	if(user_religion.can_claim_for_gods(src,T))
+	if(user_religion.can_claim_for_gods(src,T) && !doing_something)
 		visible_message("<span class='warning'>\The [src] quickly draws on the floor and begins to whisper quietly to themselves.</span>", "<span class='notice'>[self]</span>", "You hear scratching.")
+		doing_something = 1
 		if(do_after(src, timer))
 			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
 			new user_religion.shrine(T)
+			doing_something = 0
 			return 1
+		doing_something = 0
+	//If we somehow got here
+	doing_something = 0
 	return 0

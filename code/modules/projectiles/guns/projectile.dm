@@ -138,6 +138,7 @@
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 				if(reload_sound)
 					playsound(src.loc, reload_sound, 75, 1)
+				
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
 					to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -215,9 +216,9 @@
 /obj/item/weapon/gun/projectile/attack_self(mob/user as mob)
 	if(is_jammed)
 		unjam(user)
-
-	if(firemodes.len > 1)
-		..()
+	else
+		if(firemodes.len > 1)
+			..()
 		
 /obj/item/weapon/gun/projectile/MouseDrop(var/obj/over_object)
 	if (!over_object || !(ishuman(usr) || issmall(usr)))

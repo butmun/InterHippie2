@@ -32,7 +32,7 @@
 	auto_eject = 0
 	unload_sound = 'sound/weapons/guns/interact/smg_magout.ogg'
 	reload_sound = 'sound/weapons/guns/interact/smg_magin.ogg'
-	jam_chance = 5
+	jam_chance = 3
 
 /obj/item/weapon/gun/projectile/automatic/c20r/oldsmg/update_icon()
 	..()
@@ -45,8 +45,9 @@
 /obj/item/weapon/gun/projectile/automatic/machine_pistol
 	name = ".45 machine pistol"
 	desc = "The Lumoco Arms MP6 Vesper, A fairly common machine pistol. Sometimes refered to as an 'uzi' by the backwater spacers it is often associated with. Uses .45 rounds."
-	icon_state = "mpistolen"
-	item_state = "wt550"
+	icon_state = "mac"
+	item_state = "mac"
+	//wielded_item_state = "mac-wielded"
 	w_class = ITEM_SIZE_NORMAL
 	load_method = MAGAZINE
 	caliber = ".45"
@@ -55,12 +56,20 @@
 	ammo_type = /obj/item/ammo_casing/c45
 	magazine_type = /obj/item/ammo_magazine/c45uzi
 	allowed_magazines = /obj/item/ammo_magazine/c45uzi //more damage compared to the wt550, smaller mag size
+	jam_chance = 6
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=1, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
 		list(mode_name="short bursts",   burst=5, fire_delay=null, move_delay=4,    one_hand_penalty=2, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2)),
 		)
+
+/obj/item/weapon/gun/projectile/automatic/machine_pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mac"
+	else
+		icon_state = "mac-empty"
 
 /obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
 	..()

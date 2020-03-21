@@ -90,7 +90,7 @@
 						found = TRUE
 						spell_components[direction] = a
 				if (found == FALSE)
-					visible_message("<span class='notice'>\The [src] is uninpressed with your offering</span>")
+					visible_message("<span class='notice'>\The [shrine_religion.name] is uninpressed with your offering</span>")
 					return
 			selected_spell.spell_consume(spell_components)
 			selected_spell.spell_effect(M,spell_components)

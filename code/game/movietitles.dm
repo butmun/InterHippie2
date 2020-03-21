@@ -188,12 +188,6 @@ client
 							
 	titles += "<center>[end_round_stat1]</center>"
 	titles += "<center>[end_round_stat2]</center>"
-	var/members = ""
-	for(var/datum/family/F in matchmaker.families)
-		members =  "[F.name] Family head: [F.family_head.mind]. [F.name] family members were:<br>"
-		for(var/mob/living/carbon/human/M in F.members)
-			members += "Member: [M.real_name]"
-		titles += "<center>[members]</center>"
 		
 	var/disclaimer = "<br>Sponsored by [GLOB.using_map.company_name].<br>All rights reserved.<br>\
 					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\

@@ -21,14 +21,15 @@
 	old_god = MESSIAH
 
 	spell_effect(var/mob/living/user)
-		for(var/obj/item/weapon/flame/candle/C in range(2, user))
-			C.light("")
-			for(var/obj/item/crucifix/x in user.contents)
-				x.empowered = TRUE
-				x.update_icon()
+		for(var/obj/item/crucifix/x in user.contents)
+			x.empowered = TRUE
+			x.update_icon()
 
 	//We want to leave behind lit candles
 	spell_consume(var/list/spell_components)
+		for(var/O in spell_components)
+			if(istype(spell_components[O],/obj/item/weapon/flame/candle/))
+				spell_components[O].light("")
 		return
 
 /datum/old_god_spell/blind
@@ -45,7 +46,7 @@
 		if(!target)	return 0
 		to_chat(target, "<span class='danger'>Your eyes burn horrificly!</span>")
 		target.disabilities |= BLIND
-		spawn(500)
+		spawn(600)
 			playsound(target.loc, 'sound/effects/messiah_choir.ogg', 50, 1, -1)
 			target.disabilities &= ~BLIND
 			to_chat(target, "<span class='danger'>You blink rapidly as scales fall from your eyes.  You realize you've been following a false god.  Jes is the true Messiah!</span>")
@@ -53,6 +54,29 @@
 			target.verbs += /mob/living/proc/make_shrine
 			target.verbs += /mob/living/proc/praise_god
 			target.verbs.Remove(/mob/living/proc/recite_prayer)
+
+/datum/old_god_spell/freedom
+	name = "freedom"
+	requirments =  list("NORTH" = /obj/item/weapon/flame/candle/,
+						"SOUTHEAST" = /obj/item/weapon/flame/candle/,
+						"SOUTHWEST" = /obj/item/weapon/flame/candle/,
+						"SOUTH" = /obj/item/weapon/wirecutters)
+	old_god = MESSIAH
+	
+	spell_effect(var/mob/living/user, var/list/spell_components)
+		var/datum/action/uncuff_action = new/datum/action/uncuff
+		uncuff_action.target = new/obj/item/weapon/implant/freedom()
+		uncuff_action.Grant(user)
+		spawn(1500)
+			uncuff_action.Remove(user)
+	
+	//We want to leave behind lit candles and take the wirecutters
+	spell_consume(var/list/spell_components)
+		for(var/O in spell_components)
+			if(istype(spell_components[O],/obj/item/weapon/flame/candle/))
+				spell_components[O].light("")
+		qdel(spell_components["SOUTH"])
+		return
 
 /obj/item/crucifix
 	name = "Crucifix"
@@ -88,3 +112,9 @@
 	name = "Jes shrine"
 	shrine_religion = MESSIAH
 	icon_state = "messiah"
+
+/datum/action/uncuff
+	name = "Jes's Freedon"
+	button_icon_state = "freedom"
+	action_type = AB_GENERIC
+	procname = "remove_cuffs_and_unbuckle"

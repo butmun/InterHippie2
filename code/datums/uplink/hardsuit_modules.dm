@@ -3,6 +3,7 @@
 *******************/
 /datum/uplink_item/item/hardsuit_modules
 	category = /datum/uplink_category/hardsuit_modules
+	antag_roles = list(MODE_MERCENARY)
 
 /datum/uplink_item/item/hardsuit_modules/thermal
 	name = "\improper Thermal Scanner"

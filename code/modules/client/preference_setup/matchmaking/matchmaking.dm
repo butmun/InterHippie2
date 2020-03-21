@@ -47,11 +47,12 @@ var/global/datum/matchmaker/matchmaker = new()
 	for(var/mob/living/carbon/human/H in player_list_copy)
 		var/datum/family/F = pick(families)
 		F.add_member(H)
-	//Prints familes and memebers
+	/* //Prints familes and memebers
 	for(var/datum/family/F in families)
 		to_world("Families head: [F.family_head.mind] Families last name = [F.name] Memebers are:")
 		for(var/mob/living/carbon/human/M in F.members)
 			to_world("Member: [M.real_name]")
+	*/
 	//Testing stuff
 	/*
 	var/list/test_player_list = list("John Doe", "Jane Dane", "Harold buster", "Jame righter", "Matt James", "Tim Panda", "Stever Typing", "The doom", "Debbie Downer", "Frail Mike")

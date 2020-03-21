@@ -388,7 +388,7 @@ client/verb/character_setup()
 		vars["fps"] = prefs.clientfps
 
 /*
-/client/verb/toggle_fullscreen() //it's that fuckin easy.
+/client/proc/toggle_fullscreen() //it's that fuckin easy.
 	set name = "Toggle Fullscreen"
 	set category = "OOC"
 
@@ -400,18 +400,19 @@ client/verb/character_setup()
 		winset(usr, "mainwindow", "statusbar=false")
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "is-maximized=true")
-		winset(usr, "mainwindow", "menu=")
+		winset(usr, "mainwindow", "menu=false")
 	else
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "titlebar=true")
 		winset(usr, "mainwindow", "statusbar=false")
 		winset(usr, "mainwindow", "can-resize=true")
 		winset(usr, "mainwindow", "menu=menu")
+	fit_viewport()
 */
 
 /client/proc/toggle_fullscreen(new_value)
 	if(new_value == TRUE)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;statusbar=false;titlebar=false;menu=menu")
+		winset(src, "mainwindow", "is-maximized=false;can-resize=false;statusbar=false;titlebar=false;menu=")
 		winset(src, "mainwindow.mainvsplit", "pos=0x0")
 	else
 		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;statusbar=true;menu=menu")

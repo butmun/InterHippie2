@@ -258,10 +258,19 @@ its easier to just keep the beam vertical.
 			to_chat(user, "<span class='info'>It's too far away to see clearly.</span>")
 			return
 
-	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, "[icon2html(src, user)] That's [f_name] [suffix]")
 	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
+
+/atom/proc/get_examine_line(mob/user, thats = FALSE)
+	var/f_name = "\a [src]."
+	if(src.blood_DNA && !istype(src, /obj/effect/decal))
+		if(gender == PLURAL)
+			f_name = "some "
+		else
+			f_name = "a "
+	return "[icon2html(src, user)] That's [f_name]"
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -489,8 +498,8 @@ its easier to just keep the beam vertical.
 	user.visible_message("<span class='warning'>\The [user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-
 	if(!do_after(user,(issmall(user) ? smalltime : bigtime) - stat_to_modifier(user.stats[STAT_DX])*10 / 1.75, src))
+
 		climbers -= user
 		return
 

@@ -46,3 +46,20 @@
 /obj/item/weapon/gun/launcher/rocket/handle_post_fire(mob/user, atom/target)
 	log_and_message_admins("fired a rocket from a rocket launcher ([src.name]) at [target].")
 	..()
+
+/obj/item/weapon/gun/launcher/god_rocket
+	name = "australium rocket launcher"
+	desc = "MAN UP, LADIES."
+	icon_state = "rocket"
+	item_state = "rocket"
+	w_class = ITEM_SIZE_HUGE
+	throw_speed = 2
+	throw_range = 10
+	force = 50.0
+	fire_sound = 'sound/effects/bang.ogg'
+
+	release_force = 150
+	throw_distance = 30
+	var/max_rockets = 100
+	var/list/rockets = new/list()
+
