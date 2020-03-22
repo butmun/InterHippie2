@@ -54,7 +54,6 @@
 	dx=(32*end.x+end.pixel_x)-(32*start.x+start.pixel_x)
 	if(!dy)
 		return (dx>=0)?90:270
-	.=arctan(dx/dy)
 	if(dy<0)
 		.+=180
 	else if(dx<0)
