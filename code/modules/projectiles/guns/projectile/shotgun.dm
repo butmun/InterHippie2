@@ -103,7 +103,6 @@
 	return ..()
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/attack_hand(mob/user as mob)
-	to_world("Doing attack_hand")
 	if(user.get_inactive_hand() == src)
 		opened = !opened
 		update_icon()
