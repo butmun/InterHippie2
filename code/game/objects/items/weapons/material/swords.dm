@@ -95,6 +95,15 @@
 	thrown_force_divisor = 0.4
 	block_chance = 50
 
+/obj/item/weapon/material/sword/axe //Yep.
+	name = "axe"
+	desc = "A quite barbaric weapon made for delimbing people."
+	icon_state = "sabre"
+	item_state = "sabre"
+	force_divisor = 0.1
+	thrown_force_divisor = 0.1
+	block_chance = 20
+	sharpness = 35
 
 /obj/item/weapon/material/sword/combat_knife
 	name = "combat knife"
