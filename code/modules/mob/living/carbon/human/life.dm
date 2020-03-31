@@ -77,7 +77,9 @@
 		handle_pain()
 
 		handle_medical_side_effects()
-
+		
+		handle_blood_pools()
+		
 		if(!client && !mind)
 			species.handle_npc(src)
 
@@ -1292,3 +1294,18 @@
 		//if((world.time - soundcooldown) >= 300)
 		var/mask_sound = pick('sound/effects/gasmask1.ogg','sound/effects/gasmask2.ogg','sound/effects/gasmask3.ogg','sound/effects/gasmask4.ogg','sound/effects/gasmask5.ogg','sound/effects/gasmask6.ogg','sound/effects/gasmask7.ogg','sound/effects/gasmask8.ogg','sound/effects/gasmask9.ogg','sound/effects/gasmask10.ogg')
 		playsound(src, mask_sound, 50, 1)
+
+//couldn't find a better way to handle their appearance, maybe there is trigger or hook or whatever when the player rests, i dont know,
+// but this didn't seem to affect performance too much
+/mob/living/carbon/human/proc/handle_blood_pools()
+	if((stat == UNCONSCIOUS || resting) && bloodstr.total_volume)//check if human is laying and has blood, i dont know if this is the right way to check for laying
+		for(var/obj/item/organ/external/org in organs)
+			if(org.status & ORGAN_BLEEDING) // check if bleeding, i dont know if there is another way to do it maybe without the loop
+				if(isturf(loc))
+					var/obj/effect/decal/cleanable/bloodpool/B = locate(/obj/effect/decal/cleanable/bloodpool) in loc
+					if(!B)
+						B = new /obj/effect/decal/cleanable/bloodpool(loc)
+						..()
+						return 0
+					else
+						return 0
