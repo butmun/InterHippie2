@@ -35,6 +35,16 @@
 	carpeted = 1
 	material = "wood"
 
+/obj/structure/table/luxtable
+	icon_state = "gamble_preview"
+	carpeted = 1
+	material = "wood"
+
+/obj/structure/table/gamblingtable
+	icon_state = "gamble_preview"
+	carpeted = 1
+	material = "wood"
+
 /obj/structure/table/glass
 	icon_state = "plain_preview"
 	color = COLOR_DEEP_SKY_BLUE

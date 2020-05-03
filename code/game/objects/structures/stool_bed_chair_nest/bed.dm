@@ -177,6 +177,10 @@
 	desc = "a strange looking bed, not from something you've seen before."
 	icon_state = "bogbed"
 
+/obj/structure/bed/comfy
+	name = "metal bed"
+	desc = "Looks like a standard comfy bed."
+	icon_state = "comfybed"
 
 /*
  * Roller beds

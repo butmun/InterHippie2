@@ -196,6 +196,30 @@
 	base_icon = "officechair_dark"
 	icon_state = "officechair_dark_preview"
 
+/obj/structure/bed/chair/bunker/metal
+	name = "metal chair"
+	desc = "A pretty boring cold chair to sit your ass in."
+	base_icon = "metal_chair"
+	icon_state = "metal_chair"
+
+/obj/structure/bed/chair/bunker/vlt
+	name = "metal chair"
+	desc = "A comfy metal chair to sit in."
+	base_icon = "vlt_chair"
+	icon_state = "vlt_chair"
+
+/obj/structure/bed/chair/bunker/comfy1
+	name = "metal chair"
+	desc = "A comfy metal chair to sit in."
+	base_icon = "tcomfy_chair"
+	icon_state = "tcomfy_chair"
+
+/obj/structure/bed/chair/bunker/comfy
+	name = "comfy chair"
+	desc = "A comfy wooden chair to sit in."
+	base_icon = "comfy_chair1"
+	icon_state = "comfy_chair1"
+
 // Chair types
 /obj/structure/bed/chair/wood
 	desc = "Old is never too old to not be in fashion."
@@ -214,6 +238,18 @@
 /obj/structure/bed/chair/wood/wings
 	base_icon = "wooden_chair_wings"
 	icon_state = "wooden_chair_wings_preview"
+
+/obj/structure/bed/chair/wood/wood
+	name = "wooden chair"
+	desc = "A comfy wooden chair to sit in."
+	base_icon = "wood_chair1"
+	icon_state = "wood_chair1"
+
+/obj/structure/bed/chair/wood/wood1
+	name = "wooden chair"
+	desc = "A comfy wooden chair to sit in."
+	base_icon = "wood_chair2"
+	icon_state = "wood_chair2"
 
 /obj/structure/bed/chair/bogani
 	desc = "A strange chair, not from around here."
