@@ -11,6 +11,9 @@ html, body {
 }
 body {
 	background: #171717;
+	background-image: url("chatbg.png");
+    background-size: 100% 100%;
+	background-attachment: fixed;
 	font-family: Roboto Condensed, sans-serif;
 	font-size: 13px;
 	font-color: #a4bad6;
