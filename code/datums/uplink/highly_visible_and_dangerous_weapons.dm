@@ -9,11 +9,6 @@
 	item_cost = 60
 	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/revolver
 
-/datum/uplink_item/item/visible_weapons/fuckvolver
-	name = "Bigger Revolver, .50"
-	item_cost = 80
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/fuckvolver
-
 /datum/uplink_item/item/visible_weapons/sword
 	name = "berserk sword"
 	item_cost = 15

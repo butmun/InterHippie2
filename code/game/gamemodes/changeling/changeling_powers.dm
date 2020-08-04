@@ -91,6 +91,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		var/datum/absorbed_dna/newDNA = new(H.real_name, H.dna, H.species.name, H.languages)
 		absorbDNA(newDNA)
 
+	H.buff_combatskills()
+
 	return 1
 
 //removes our changeling verbs

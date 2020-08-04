@@ -3,6 +3,8 @@
 	if(!istype(player))
 		return 0
 
+	player.buff_combatskills()
+
 	// This could use work.
 	if(flags & ANTAG_CLEAR_EQUIPMENT)
 		for(var/obj/item/thing in player.contents)

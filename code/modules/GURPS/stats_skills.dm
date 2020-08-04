@@ -236,6 +236,11 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(engineering_val)
 		engineering = engineering_val
 */
+
+/mob/proc/buff_combatskills()
+	skills[SKILL_MELEE] = skills[SKILL_MELEE] + rand(30, 60)
+	skills[SKILL_RANGE] = skills[SKILL_RANGE] + rand(30, 60)
+
 /mob/living/carbon/human/verb/check_skills()//Debug tool for checking skills until I add the icon for it to the HUD.
 	set name = "Check Skills"
 	set category = "IC"
