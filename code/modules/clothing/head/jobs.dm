@@ -13,6 +13,13 @@
 	icon_state = "jester"
 	item_state = "jester"
 
+//Captain
+/obj/item/clothing/head/capshat
+	name = "captain's hat"
+	icon_state = "captshat"
+	item_state = "captshat"
+	desc = "Eternally fashionable statement, surefire way to signal that you're the boss of this station."
+
 //Magistrate
 /obj/item/clothing/head/crown
 	name = "count's crown"

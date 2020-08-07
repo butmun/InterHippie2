@@ -1,13 +1,12 @@
 /decl/hierarchy/outfit/job/dreyfus/magistrate
 	name = OUTFIT_JOB_NAME("Magistrate")
 	l_ear = /obj/item/device/radio/headset/heads/captain
-	uniform = /obj/item/clothing/under/rank/magistrate
+	uniform = /obj/item/clothing/under/rank/captain
 	shoes = /obj/item/clothing/shoes/dress
 	id_type = /obj/item/weapon/card/id/dreyfus/gold
 	pda_type = /obj/item/device/pda/captain
-	gloves = /obj/item/clothing/gloves/white
-	head = /obj/item/clothing/head/crown//FIT FOR A FUCKING KING
-	suit = /obj/item/clothing/suit/robes
+	head = /obj/item/clothing/head/capshat//FIT FOR A FUCKING retard
+	suit = /obj/item/clothing/suit/capsuit
 
 /decl/hierarchy/outfit/job/dreyfus/countess
 	name = OUTFIT_JOB_NAME("Countess")

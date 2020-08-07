@@ -12,6 +12,8 @@
 	body_parts_covered = 0
 	allowed = list (/obj/item/weapon/reagent_containers/spray/plantbgone,/obj/item/device/analyzer/plant_analyzer,/obj/item/seeds,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/weapon/material/minihoe)
 
+
+
 //Magistrate
 /obj/item/clothing/suit/robes
 	name = "magistrate's robes"
@@ -21,13 +23,12 @@
 	body_parts_covered = UPPER_TORSO|ARMS
 
 //Captain
-/obj/item/clothing/suit/captunic
-	name = "captain's parade tunic"
-	desc = "Worn by a Captain to show their class."
-	icon_state = "captunic"
-	item_state = "captunic"
-	body_parts_covered = UPPER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT
+/obj/item/clothing/suit/capsuit
+	name = "captain's suit"
+	desc = "Standard issue to all Tetracorp captains. This one has seen its fair use over the years."
+	icon_state = "newcaptain"
+	item_state = "newcaptain"
+	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO
 
 /obj/item/clothing/suit/captunic/capjacket
 	name = "captain's uniform jacket"
