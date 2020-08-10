@@ -86,9 +86,15 @@
 	if(resting && getupchance)//The incapacitated proc includes resting for whatever fucking stupid reason I hate SS13 code so fucking much.
 		visible_message("<span class='notice'>[usr] is trying to get up.</span>")
 		if(do_after(src, 20 -  stat_to_modifier(stats[STAT_DX])* 3))
-			resting = 0
-			rest.icon_state = "rest0"
+			resting = FALSE
+			rest?.icon_state = "rest0"
+			update_canmove()
 		return
+
 	else
-		resting = 1
-		rest.icon_state = "rest1"
+		resting = TRUE
+		update_canmove()
+		//For stopping runtimes with NPCs
+		rest?.icon_state = "rest1"
+		fixeye?.icon_state = "fixeye"
+		walk_to(src,0)

@@ -60,12 +60,13 @@
 
 	msg += "<br>"
 
-	msg += "I always knew [T.him] as the <b>[H.job]</b>.\n"
+
 
 	if((!skipface || wear_id) && src != user)
 		var/mob/living/carbon/human/H = user
 		var/classdesc = get_social_description(H)
-
+		if(src?.mind?.assigned_role)
+			msg += "I always knew [T.him] as the <b>[src.mind.assigned_role]</b>.\n"
 		msg += "[T.He] [T.is] [get_social_class()]. [classdesc]\n\n"
 
 	//uniform
