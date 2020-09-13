@@ -233,7 +233,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(var/t as text)
-	return ruppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
+	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 //Bolds "shouted" messages.
 /proc/add_shout_append(text)
