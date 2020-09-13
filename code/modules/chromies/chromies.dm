@@ -26,7 +26,7 @@
 		return
 	var/datum/DBQuery/query_inc_chr = dbcon.NewQuery(
 		"UPDATE erro_player SET chromosome = chromosome + :chr_count WHERE key = '[dbckey]'",
-		list("mc_count" = mc_count, "ckey" = ckey)	
+		list("chr_count" = chr_count, "ckey" = ckey)	
 	)
 	query_inc_chr.warn_execute()
 	qdel(query_inc_chr)
