@@ -2,7 +2,7 @@
 	var/dbckey = sql_sanitize_text(ckey)
 	establish_db_connection()
 
-	var/datum/DBQuery/query_get_chromies = dbcon.NewQuery(
+	var/DBQuery/query_get_chromies = dbcon.NewQuery(
 		"SELECT chromosome FROM erro_player WHERE ckey = '[dbckey]'",
 		list("dbckey" = dbckey)
 	)
@@ -20,7 +20,7 @@
 	var/dbckey = sql_sanitize_text(ckey)
 	establish_db_connection()
 
-	var/datum/DBQuery/query_set_chromosomes = dbcon.NewQuery(
+	var/DBQuery/query_set_chromosomes = dbcon.NewQuery(
 		"UPDATE erro_player SET chromosome = :chr_count WHERE key = '[dbckey]'",
 		list("chr_count" = chr_count, "ckey" = ckey)
 	)
@@ -35,7 +35,7 @@
 
 	if(chr_count >= 0)
 		return
-	var/datum/DBQuery/query_inc_chr = dbcon.NewQuery(
+	var/DBQuery/query_inc_chr = dbcon.NewQuery(
 		"UPDATE erro_player SET chromosome = chromosome + :chr_count WHERE key = '[dbckey]'",
 		list("chr_count" = chr_count, "ckey" = ckey)
 	)
