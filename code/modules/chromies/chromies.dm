@@ -14,19 +14,19 @@
 /client/proc/set_chr_count(chr_count, ann=FALSE)
 	var/datum/DBQuery/query_set_chromosomes = dbcon.NewQuery(
 		"UPDATE erro_player SET chromosome = :chr_count WHERE key = '[dbckey]'",
-		list("chr_count" = chr_count, "ckey" = ckey)	
+		list("chr_count" = chr_count, "ckey" = ckey)
 	)
 	query_set_chromosomes.warn_execute()
 	qdel(query_set_chromosomes)
 	if(ann)
 		to_chat(src, "<span class='rose bold'>Your new CHR count is [chr_count]!</span>")
 
-/client/proc/inc_chrbalance(chr_count reason=null)
+/client/proc/inc_chrbalance(chr_count, reason=null)
 	if(chr_count >= 0)
 		return
 	var/datum/DBQuery/query_inc_chr = dbcon.NewQuery(
 		"UPDATE erro_player SET chromosome = chromosome + :chr_count WHERE key = '[dbckey]'",
-		list("chr_count" = chr_count, "ckey" = ckey)	
+		list("chr_count" = chr_count, "ckey" = ckey)
 	)
 	query_inc_chr.warn_execute()
 	qdel(query_inc_chr)
