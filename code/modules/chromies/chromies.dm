@@ -9,7 +9,7 @@
 			chr_count = query_get_chromies.item[1]
 
 	qdel(query_get_chromies)
-	return chr_count
+	return num2text(chr_count)
 
 /client/proc/set_chr_count(chr_count, ann=FALSE)
 	var/datum/DBQuery/query_set_chromosomes = dbcon.NewQuery(
