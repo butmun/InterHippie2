@@ -6,7 +6,7 @@
 	)
 	var/chr_count = 0
 	if(query_get_chromies.NextRow())
-			chr_count = query_get_chromies.item[1]
+		chr_count = query_get_chromies.item[1]
 
 	qdel(query_get_chromies)
 	return num2text(chr_count)
