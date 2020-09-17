@@ -44,9 +44,8 @@
 
 	var/static/list/failure_strikes //How many times we suspect a subsystem type has crashed the MC, 3 strikes and you're out!
 
-//Do not override
-/datum/controller/subsystem/New()
-	return
+//Do not override...no, I don't think I will.
+///datum/controller/subsystem/New()
 
 // Used to initialize the subsystem BEFORE the map has loaded
 // Called AFTER Recover if that is called

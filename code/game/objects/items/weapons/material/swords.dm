@@ -291,6 +291,21 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/lacusia
+	name = "lacusia"
+	desc = "A common steel sword."
+	icon_state = "lacusia"
+	item_state = "sabre"
+	force_divisor = 0.4
+	block_chance = 50
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 20
+	weapon_speed_delay = 14
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/siegesabre
 	name = "sabre"
 	desc = "A rugged sabre used by space raiders and the like."
