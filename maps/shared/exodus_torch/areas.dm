@@ -534,3 +534,9 @@
 	name = "Abandoned Outpost"
 	icon_state = "dark"
 	forced_ambience = list('sound/ambience/hostile_space.ogg')
+
+/area/cyberspace
+	name = "Cyberspace"
+	icon_state = "thunder"
+	has_gravity = 1
+	forced_ambience = list('sound/ambience/hacker.ogg')

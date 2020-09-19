@@ -1,6 +1,6 @@
 #define RESPAWNS_FOR_PAYMENT 3
-#define PRICE_PER_USE 100
 #define POINTS_FOR_CHEATER 10
+
 /obj/machinery/gamepod
 	name = "\improper gamepod"
 	desc = "A gaming pod for wasting time."
@@ -11,14 +11,10 @@
 	var/is_payed = FALSE
 	var/mob/living/carbon/human/occupant = null
 	var/datum/mind/occupant_mind
+	var/test = 0
 
 /obj/machinery/gamepod/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/card/id))
-		if(is_payed)
-			to_chat(user, SPAN_NOTICE("It is already payed."))
-			return
-		scan_card(I)
-	else if(istype(I, /obj/item/weapon/card/emag))
+	if(istype(I, /obj/item/weapon/card/emag))
 		if(emagged)
 			to_chat(user, SPAN_NOTICE("It is already broken."))
 			return
@@ -50,40 +46,6 @@
 		qdel(src)
 		return
 
-/obj/machinery/gamepod/proc/scan_card(obj/item/weapon/card/id/C, mob/user)
-	visible_message("<span class='info'>[user] swipes a card through [src].</span>")
-	if(!station_account)
-		return
-	var/datum/money_account/D = get_account(C.associated_account_number)
-	var/attempt_pin = 0
-	if(D.security_level > 0)
-		attempt_pin = input("Enter pin code", "Transaction") as num
-	if(attempt_pin)
-		D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
-	if(!D)
-		to_chat(user, SPAN_WARNING("No access granted!"))
-		return
-	var/transaction_amount = PRICE_PER_USE
-	if(transaction_amount > D.money)
-		to_chat(user, SPAN_WARNING("You don't have that much money!"))
-		return
-	D.money -= transaction_amount
-	station_account.money += transaction_amount
-	var/datum/transaction/T = new()
-	T.target_name = "[station_account.owner_name] (via [src.name])"
-	T.purpose = "Purchase of thunderfield gamepod use"
-	T.amount = "[transaction_amount]"
-	T.source_terminal = src.name
-	T.date = stationdate2text()
-	T.time = stationtime2text()
-	D.transaction_log.Add(T)
-	T.target_name = D.owner_name
-	station_account.transaction_log.Add(T)
-	qdel(T)
-	to_chat(user, SPAN_NOTICE("Transaction successful. Have a nice time."))
-	is_payed = TRUE
-	if(occupant)
-		create_body()
 
 /obj/machinery/gamepod/verb/get_inside()
 	set name = "Enter Pod"
@@ -93,27 +55,36 @@
 	if(usr.stat != CONSCIOUS || !(ishuman(usr)))
 		return
 
-	if(!is_payed)
-		to_chat(usr, SPAN_NOTICE("Pay first."))
-		return
 	move_inside(usr)
-	to_chat(usr, SPAN_WARNING("Welcome to battleroyal game"))
+	to_chat(usr, SPAN_WARNING("Welcome to the informational highway."))
 
 /obj/machinery/gamepod/MouseDrop_T(mob/target, mob/user)
 	if(user != target || target.stat != CONSCIOUS || !(ishuman(target)))
 		return
-	if(!is_payed)
-		to_chat(user, SPAN_NOTICE("Pay first."))
-		return
+
 	move_inside(target)
 
+/obj/machinery/gamepod/verb/change_destination()
+	set name = "Change Target"
+	set category = "Object"
+
+	var/choice = input(usr, "")
+
 /obj/machinery/gamepod/proc/move_inside(mob/living/carbon/human/H, mob/user)
+
 	if(occupant)
 		to_chat(user, SPAN_NOTICE("[src] is in use."))
 		return
 
 	if(!powered())
 		return
+
+	if(ishuman(usr))
+		for(var/obj/item/weapon/implant/cyberdock/E in usr)
+			test = test + 1
+		if(test < 1)
+			to_chat(usr, "You lack the necessary implant to get into the Cyberspace dock.")
+			return
 
 	icon_state = "gamepod"
 	H.forceMove(src)
@@ -122,7 +93,7 @@
 
 /obj/machinery/gamepod/proc/create_body(mob/user)
 	if(!GLOB.thunderfield_spawns_list.len)
-		to_chat(user, SPAN_WARNING("No spawn points are available. Something went wrong."))
+		to_chat(user, SPAN_WARNING("The Cyberspace firewall is up and running, no luck getting in this day."))
 		return
 	if(!occupant.mind)//How that can even happen?
 		return
@@ -136,9 +107,9 @@
 	occupant.mind.thunder_respawns = RESPAWNS_FOR_PAYMENT
 	occupant.mind.thunderfield_owner = occupant
 	vrbody.vr_mind = occupant.mind
-	vrbody.vr_shop.vr_mind = occupant.mind
 	occupant_mind = occupant.mind //We need to store user's mind to return it to his original body in case of some problems
 	occupant.mind.transfer_to(vrbody)
+	vrbody.name = occupant.mind.name
 	is_payed = FALSE
 
 /obj/machinery/gamepod/verb/get_outside()
