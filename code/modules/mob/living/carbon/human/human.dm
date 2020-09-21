@@ -72,7 +72,6 @@
 		stat(uppertext(STAT_DX), "[round(stats[STAT_DX])]")
 		stat(uppertext(STAT_IQ), "[round(stats[STAT_IQ])]")
 		stat(uppertext(STAT_HT), "[round(stats[STAT_HT])]")
-		stat(uppertext(STAT_CHR), "[client.get_chromosomebalance()]")
 
 		if(SSevac.evacuation_controller)
 			var/eta_status = SSevac.evacuation_controller.get_status_panel_eta()

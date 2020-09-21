@@ -118,6 +118,46 @@
 
 		if(I_GRAB)
 			visible_message("<span class='danger'>[M] attempted to grab \the [src]!</span>")
+			if(istype(H))
+
+				var/obj/item/organ/external/affecting = get_organ(H.zone_sel.selecting)
+				if(!affecting || affecting.is_stump())
+					to_chat(H, "There is nothing to grab!")
+					return
+
+				switch(H.zone_sel.selecting)
+					//Strangling
+					if(BP_THROAT)
+						return H.make_grab(H, src, GRAB_STRANGLE)
+
+					//Wrenching
+					if(BP_L_LEG)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_LEG)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_HAND)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_HAND)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_HEAD)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_FOOT)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_FOOT)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_ARM)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_ARM)
+						return H.make_grab(H, src, GRAB_WRENCH)
+
+					//Tackling?
+					if(BP_CHEST)
+						return H.make_grab(H, src, GRAB_TAKEDOWN)
+					if(BP_GROIN)
+						return H.make_grab(H, src, GRAB_TAKEDOWN)
+
+
+
 			return H.make_grab(H, src)
 
 			if(attempt_dodge())//Trying to dodge it before they even have the chance to miss us.

@@ -69,7 +69,7 @@
 		to_chat(assailant, "<span class='warning'>[affecting] is missing that body part!</span>")
 		return 0
 
-	assailant.visible_message("<span class='danger'>[assailant] begins wrenching [affecting]'s [O.name]!</span>")
+	assailant.visible_message("<span class='danger'>[assailant] begins to [pick("bend", "twist")] [affecting]'s [O.name] into a jointlock!</span>")
 	G.attacking = 1
 
 	if(do_mob(assailant, affecting, action_cooldown - 1))

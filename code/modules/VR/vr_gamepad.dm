@@ -67,6 +67,7 @@
 /obj/machinery/gamepod/verb/change_destination()
 	set name = "Change Target"
 	set category = "Object"
+	set hidden = 1
 
 	var/choice = input(usr, "")
 

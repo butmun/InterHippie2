@@ -19,6 +19,9 @@
 #define GRAB_NORMAL			"normal"
 #define GRAB_NAB			"nab"
 #define GRAB_NAB_SPECIAL	"special nab"
+#define GRAB_TAKEDOWN       "takedown"
+#define GRAB_STRANGLE       "strangle"
+#define GRAB_WRENCH         "wrench"
 
 // Grab levels.
 #define NORM_PASSIVE    "normal passive"

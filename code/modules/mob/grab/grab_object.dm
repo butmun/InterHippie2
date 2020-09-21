@@ -19,12 +19,14 @@
 	var/target_zone
 
 	w_class = ITEM_SIZE_NO_CONTAINER
+
+	atom_flags = ATOM_FLAG_NO_BLOOD
 /*
 	This section is for overrides of existing procs.
 */
 /obj/item/grab/New(mob/living/carbon/human/attacker, mob/living/carbon/human/victim)
 	..()
-	last_upgrade = world.time
+
 	assailant = attacker
 	affecting = victim
 	target_zone = attacker.zone_sel.selecting
@@ -43,11 +45,14 @@
 	current_grab.process(src)
 
 /obj/item/grab/attack_self(mob/user)
+	current_grab.attack_self_act(src)
+	/*
 	switch(assailant.a_intent)
 		if(I_HELP)
 			downgrade()
 		else
 			upgrade()
+	*/
 
 /obj/item/grab/attack(mob/M, mob/living/user)
 	if(ishuman(user) && affecting == M)
@@ -114,9 +119,6 @@
 	if(!assailant || !affecting)
 		return 0
 
-	if(assailant == affecting)
-		to_chat(assailant, "<span class='notice'>You can't grab yourself.</span>")
-		return 0
 
 	if(assailant.get_active_hand())
 		to_chat(assailant, "<span class='notice'>You can't grab someone if your hand is full.</span>")
@@ -248,4 +250,3 @@
 
 /obj/item/grab/proc/resolve_openhand_attack()
 		return current_grab.resolve_openhand_attack(src)
-

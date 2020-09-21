@@ -16,8 +16,8 @@
 	var/shield_assailant = 0					// Whether the person you're grabbing will shield you from bullets.,,
 	var/point_blank_mult = 1					// How much the grab increases point blank damage.
 	var/same_tile = 0							// If the grabbed person and the grabbing person are on the same tile.
-	var/ladder_carry = 0						// If the grabber can carry the grabbed person up or down ladders.
-	var/can_throw = 0							// If the grabber can throw the person grabbed.
+	var/ladder_carry = TRUE						// If the grabber can carry the grabbed person up or down ladders.
+	var/can_throw = TRUE						// If the grabber can throw the person grabbed.
 	var/downgrade_on_action = 0					// If the grab needs to be downgraded when the grabber does stuff.
 	var/downgrade_on_move = 0					// If the grab needs to be downgraded when the grabber moves.
 	var/force_danger = 0						// If the grab is strong enough to be able to force someone to do something harmful to them.
@@ -51,6 +51,7 @@
 	var/disarm_action = "disarm intent"
 	var/grab_action = "grab intent"
 	var/harm_action = "harm intent"
+	var/activate_effect = TRUE
 
 /*
 	These procs shouldn't be overriden in the children unless you know what you're doing with them; they handle important core functions.
@@ -106,7 +107,8 @@
 	else
 		special_target_effect(G)
 
-	process_effect(G)
+	if(activate_effect)	
+		process_effect(G)
 
 /datum/grab/proc/throw_held(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
@@ -300,3 +302,6 @@
 		var/mob/living/L = mob
 		if(!L.canmove && L.grabbed_by.len)
 			L.resist() //shortcut for resisting grabs
+
+/datum/grab/proc/attack_self_act(var/obj/item/grab/G)
+	return
