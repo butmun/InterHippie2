@@ -516,6 +516,13 @@
 	item_state = "trenchuni"
 	worn_state = "trenchuni"
 
+/obj/item/clothing/under/consis
+	name = "consis uniform"
+	desc = "A uniform made for space explores."
+	icon_state = "raider"
+	item_state = "raider"
+	worn_state = "raider"
+
 /obj/item/clothing/under/suit_jacket/charcoal
 	name = "charcoal suit"
 	desc = "A charcoal suit and red tie. Very professional."

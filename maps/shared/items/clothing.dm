@@ -19,6 +19,12 @@
 	icon_state = "undertaker"
 	item_state = "undertaker"
 
+/obj/item/clothing/mask/gas/raider
+	name = "explore's mask"
+	desc = "A very rugged gas mask."
+	icon_state = "raider"
+	item_state = "raider"
+
 /obj/item/clothing/gloves/undertaker
 	name = "undertaker's gloves"
 	desc = "To keep you from touching those gross dead people."
@@ -45,6 +51,13 @@
 	icon_state = "siege_helmet"
 	item_state = "siege_helmet"
 	armor = list(melee = 40, bullet = 25, laser = 35, energy = 35, bomb = 30, bio = 0, rad = 0)
+
+/obj/item/clothing/head/helmet/raider
+	name = "sallet helmet"
+	desc = "Why is there such a helmet in space?"
+	icon_state = "raider"
+	item_state = "raider"
+	armor = list(melee = 60, bullet = 40, laser = 10, energy = 35, bomb = 40, bio = 0, rad = 0)
 
 /obj/item/clothing/under/syndicate/soldier
 	name = "underclothing"

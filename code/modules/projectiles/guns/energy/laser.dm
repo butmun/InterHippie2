@@ -18,6 +18,29 @@
 	use_external_power = 1
 	one_hand_penalty = 0 //just in case
 
+/obj/item/weapon/gun/energy/advpsyko
+	name = "laser carbine"
+	desc = "The advanced PSYKO military grade laser rifle."
+	icon_state = "adv_psyko"
+	item_state = "laser"
+	slot_flags = SLOT_BELT|SLOT_BACK
+	w_class = ITEM_SIZE_LARGE
+	max_shots = 60
+	force = 10
+	one_hand_penalty = 2
+	accuracy = 2
+	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	projectile_type = /obj/item/projectile/beam/midlaser
+	wielded_item_state = "laser-wielded"
+	self_recharge = 1
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=2, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.6, 1.0), automatic = 0),
+		list(mode_name="automatic",   burst=5, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2), automatic = 1),
+		)
+
 /obj/item/weapon/gun/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the T-6B, this one fires less concentrated energy bolts designed for target practice."

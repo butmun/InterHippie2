@@ -63,6 +63,12 @@
 	icon_state = "lifchik"
 	slots = 6
 
+/obj/item/clothing/accessory/storage/raider
+	name = "webbing"
+	desc = "A large webbing."
+	icon_state = "raider"
+	slots = 6
+
 /obj/item/clothing/accessory/storage/skurl
 	name = "skurl webbing"
 	desc = "A webbing used by mercs."
