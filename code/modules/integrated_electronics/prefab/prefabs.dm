@@ -11,7 +11,6 @@
 		},
 		/datum/ic_assembly_integrated_circuits { // 3,
 			circuit_type = /obj/item/integrated_circuit/input/button
-			circuit_name = "Open Rift"
 		}
 	)
 	connections = newlist(
