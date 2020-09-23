@@ -69,7 +69,7 @@
 	set category = "Object"
 	set hidden = 1
 
-	var/choice = input(usr, "")
+	//var/choice = input(usr, "")
 
 /obj/machinery/gamepod/proc/move_inside(mob/living/carbon/human/H, mob/user)
 

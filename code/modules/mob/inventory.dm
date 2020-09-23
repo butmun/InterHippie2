@@ -155,8 +155,13 @@ var/list/slot_equipment_priority = list( \
 	if(W)
 		if(W.wielded)
 			W.unwield(src)
+		if(!target)
+			target = loc
+
 		remove_from_mob(W, target)
-		if(!(W && W.loc)) return 1 // self destroying objects (tk, grabs)
+		if(!(W && W.loc))
+			return TRUE // self destroying objects (tk, grabs)
+
 		update_icons()
 		return 1
 	return 0

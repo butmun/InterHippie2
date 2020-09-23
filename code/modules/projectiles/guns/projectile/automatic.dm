@@ -144,6 +144,96 @@
 	wielded_item_state = (ammo_magazine)? "arifle-wielded" : "arifle-wielded-empty"
 	..()
 
+/obj/item/weapon/gun/projectile/automatic/ak47
+	name = "AK-C45"
+	desc = "This old gun was pretty iconic in the old world. It seems to be fake wood on this rifle."
+	icon_state = "ak47"
+	item_state = null
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	caliber = "a762x39"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 5)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/ak47
+	allowed_magazines = /obj/item/ammo_magazine/ak47
+	one_hand_penalty = 3
+	wielded_item_state = "ak47"
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+
+
+	//Assault rifle, burst fire degrades quicker than SMG, worse one-handing penalty, slightly increased move delay
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=4, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="automatic",   burst=1, fire_delay=null, move_delay=6,    one_hand_penalty=6, burst_accuracy=list(0,-1,-2,-3,-3), dispersion=list(0.6, 1.0, 1.2, 1.2, 1.5), automatic = 1),
+		)
+
+/obj/item/weapon/gun/projectile/automatic/ak47/update_icon()
+	icon_state = (ammo_magazine)? "ak47" : "ak47"
+	wielded_item_state = (ammo_magazine)? "ak47" : "ak47"
+	..()
+
+/obj/item/weapon/gun/projectile/automatic/lr
+	name = "LR-204 rifle"
+	desc = "The LR-204 is a civilian assault rifle and is common to most people. This rifle is very easy to modify and easy to maintain."
+	icon_state = "lr204"
+	item_state = null
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	caliber = "a556"
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 1, TECH_ILLEGAL = 1)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/lr
+	allowed_magazines = /obj/item/ammo_magazine/lr
+	one_hand_penalty = 3
+	wielded_item_state = "arifle-wielded"
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+
+
+	//Assault rifle, burst fire degrades quicker than SMG, worse one-handing penalty, slightly increased move delay
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=1,    move_delay=null, one_hand_penalty=3, burst_accuracy=null, dispersion=null, automatic = 0),
+		)
+
+/obj/item/weapon/gun/projectile/automatic/lr/update_icon()
+	icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
+	wielded_item_state = (ammo_magazine)? "arifle-wielded" : "arifle-wielded-empty"
+	..()
+
+/obj/item/weapon/gun/projectile/automatic/tacticalgun
+	name = "CTAC B-2 rifle"
+	desc = "The special CTAC B-2 is a durable automatic rifle used by special forces. It uses A.P.T to land accurate and precise hits on the target. Uses 5.56mm rounds."
+	icon_state = "tacticalgun"
+	item_state = null
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	caliber = "a762x39"
+	origin_tech = list(TECH_COMBAT = 9, TECH_MATERIAL = 4, TECH_ILLEGAL = 6)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/c556
+	allowed_magazines = /obj/item/ammo_magazine/c556
+	one_hand_penalty = 0
+	wielded_item_state = "arifle-wielded"
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+
+
+	//Assault rifle, burst fire degrades quicker than SMG, worse one-handing penalty, slightly increased move delay
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=null,    one_hand_penalty=0, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.0, 1.0), automatic = 0),
+		list(mode_name="automatic",   burst=1, fire_delay=null, move_delay=null,    one_hand_penalty=0, burst_accuracy=list(0,0,0,0,0), dispersion=list(0.0, 0.0, 0.0, 0.0, 0.0), automatic = 1),
+		)
+
+/obj/item/weapon/gun/projectile/automatic/tacticalgun/update_icon()
+	icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
+	wielded_item_state = (ammo_magazine)? "arifle-wielded" : "arifle-wielded-empty"
+	..()
+
 /obj/item/weapon/gun/projectile/automatic/tbr21
 	name = "TBR-21"
 	desc = "The rugged TBR-21 is an open bolt, gas operated, battle rifle, reliable, and expensive, as body armor becomes more popular so too will this rifle."

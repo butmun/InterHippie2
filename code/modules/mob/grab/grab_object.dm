@@ -1,4 +1,3 @@
-
 /obj/item/grab
 	name = "grab"
 
@@ -55,10 +54,6 @@
 	*/
 
 /obj/item/grab/attack(mob/M, mob/living/user)
-	if(ishuman(user) && affecting == M)
-		var/mob/living/carbon/human/H = user
-		if(H.check_psi_grab(src))
-			return
 	current_grab.hit_with_grab(src)
 
 /obj/item/grab/dropped()
@@ -124,9 +119,6 @@
 		to_chat(assailant, "<span class='notice'>You can't grab someone if your hand is full.</span>")
 		return 0
 
-	if(assailant.grabbed_by.len)
-		to_chat(assailant, "<span class='notice'>You can't grab someone if you're being grabbed.</span>")
-		return 0
 
 	return 1
 
@@ -249,4 +241,4 @@
 	return current_grab.restrains
 
 /obj/item/grab/proc/resolve_openhand_attack()
-		return current_grab.resolve_openhand_attack(src)
+	return current_grab.resolve_openhand_attack(src)

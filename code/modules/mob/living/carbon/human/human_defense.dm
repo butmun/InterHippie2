@@ -318,9 +318,9 @@ meteor_act
 				if(prob(effective_force - stat_to_modifier(user.stats[STAT_HT])))
 					visible_message("<span class='danger'>[src] [species.knockout_message]</span>")
 					apply_effect(20, PARALYZE, blocked)
-			else
+			else if(hit_zone == (BP_L_LEG || BP_R_LEG || BP_L_FOOT || BP_R_FOOT))
 				//Easier to score a stun but lasts less time
-				if(prob(effective_force + 10))
+				if(prob(effective_force + 10 - stat_to_modifier(user.stats[STAT_HT])))
 					visible_message("<span class='danger'>[src] has been knocked down!</span>")
 					apply_effect(6, WEAKEN, blocked)
 		//Apply blood

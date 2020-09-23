@@ -62,7 +62,7 @@
 
 /datum/grab/special/wrench
 	type_name = GRAB_WRENCH
-	icon_state = "wrench"
+	icon_state = "wrench_grab"
 	state_name = GRAB_WRENCH
 
 /datum/grab/special/wrench/attack_self_act(var/obj/item/grab/G)
@@ -82,15 +82,15 @@
 		return
 
 	assailant.doing_something = TRUE
+	assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
 
-	if(!do_after(assailant, 6, affecting))
+	if(!do_after(assailant, 10, affecting))
 		assailant.doing_something = FALSE
 		return
 
 
 	if(!O.is_broken()) // The limb is broken and we're grabbing it in both hands.
-		assailant.visible_message("<span class='danger'>[assailant] tries to break [affecting]'s [O.name]!</span>")
-		var/break_chance = (assailant.stats[STAT_ST]*10) - 70 // let's not make it too easy
+		var/break_chance = (assailant.stats[STAT_ST]*10) - 80 // let's not make it too easy
 		if(break_chance <= 0)
 			break_chance = 10
 		if(prob(break_chance))
@@ -126,14 +126,13 @@
 		return
 
 	assailant.doing_something = TRUE
+	affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 
 	if(!do_after(assailant, 30, affecting))
 		assailant.doing_something = FALSE
 		return
 
 	if(!G.attacking && !affecting.lying)
-
-		affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 		G.attacking = 1
 
 		if(!assailant.statcheck(assailant.stats[STAT_ST] / 2 + 3) >= SUCCESS && do_mob(assailant, affecting, 30))

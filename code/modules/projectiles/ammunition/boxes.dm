@@ -145,6 +145,20 @@
 /obj/item/ammo_magazine/betta/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/c6
+	name = "C6 magazine (9mm)"
+	icon_state = "c6"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 600)
+	caliber = "a9mm"
+	ammo_type = /obj/item/ammo_casing/a9mm
+	max_ammo = 27
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/c6/empty
+	initial_ammo = 0
+
 /obj/item/ammo_magazine/maers14
 	name = "Maers-14 magazine (9mm)"
 	icon_state = "shellguard"
@@ -344,6 +358,26 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 1800)
 	ammo_type = /obj/item/ammo_casing/a762x51
 	max_ammo = 25
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/lr
+	name = "LR-204 magazine (556)"
+	icon_state = "c5.56b"
+	mag_type = MAGAZINE
+	caliber = "a556"
+	matter = list(DEFAULT_WALL_MATERIAL = 1800)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 30
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/ak47
+	name = "AK-C45 magazine (7.62x39)"
+	icon_state = "c762"
+	mag_type = MAGAZINE
+	caliber = "a762x39"
+	matter = list(DEFAULT_WALL_MATERIAL = 1800)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 30
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/ak

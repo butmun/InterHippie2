@@ -107,7 +107,7 @@
 	else
 		special_target_effect(G)
 
-	if(activate_effect)	
+	if(activate_effect)
 		process_effect(G)
 
 /datum/grab/proc/throw_held(var/obj/item/grab/G)
@@ -269,7 +269,6 @@
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 
 	break_strength = breakability + size_difference(affecting, assailant)
-
 	break_strength = affecting.stats[STAT_ST] - assailant.stats[STAT_ST]  //Stats are used for grab
 
 	if(affecting.incapacitated(INCAPACITATION_ALL))

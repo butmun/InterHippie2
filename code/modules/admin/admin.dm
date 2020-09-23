@@ -982,7 +982,7 @@ var/global/floorIsLava = 0
 	if(!usr.client.holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	to_world("<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
+	to_world("<span class='danger'>The Clock ticks backwards!</span> <span class='notice'>Initiated by Father Time!</span>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	SSstatistics.set_field_details("end_error","immediate admin reboot - by [usr.key]")

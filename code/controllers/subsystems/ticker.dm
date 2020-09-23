@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize()
 	to_world("<B><FONT color='blue'>Welcome back.</FONT></B>")
-	to_world("Setup your character and select ready. The carnage will start in [round(pregame_timeleft/10)] seconds.")
+	to_world("Choose your face, and prepare to act out your part. The Clock starts ticking in [round(pregame_timeleft/10)] seconds.")
 	return ..()
 
 /datum/controller/subsystem/ticker/fire(resumed = 0)

@@ -517,13 +517,11 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		else		direction = WEST
 	if(direction)
 		scrambling = 1
-		if(do_after(src, 10))//spawn(10)
-			Move(get_step(src,direction))
-			scrambling = 0
-			dir = 2
-			src.visible_message("\red <b>[src]</b> crawls!")
-		else
-			scrambling = 0
+		Move(get_step(src,direction))
+		scrambling = 0
+		dir = 2
+		src.visible_message("\red <b>[src]</b> crawls!")
+		src.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 /atom/proc/middle_click_intent_check(var/mob/M)
 	if(M.middle_click_intent == "kick")

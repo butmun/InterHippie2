@@ -70,6 +70,21 @@
 	one_hand_penalty = 3 //a little heavier than the regular shotgun
 	wielded_item_state = "shotgun-wielded"
 
+/obj/item/weapon/gun/projectile/shotgun/pump/raider
+	name = "coneax shotgun"
+	desc = "A old shotgun with rusted steel and a rugged look to it, this sure will bring a victory to the battle."
+	icon_state = "raider_gun2"
+	item_state = "sshotgun"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
+	max_shells = 42
+	ammo_type = /obj/item/ammo_casing/shotgun
+	one_hand_penalty = 2
+	wielded_item_state = "shotgun-wielded"
+	force = 18
+	sharp = 1
+	attack_verb = list ("stabbed", "sliced")
+	hitsound = "stab_sound"
+
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A true classic."

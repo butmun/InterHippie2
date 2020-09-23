@@ -262,7 +262,7 @@
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
 	visible_message("<span class='danger'>[src] slams into \the [T]!</span>")
 	playsound(loc, 'sound/effects/bangtaper.ogg', 50, 1, -1)
-	src.take_organ_damage(3)
+	src.take_organ_damage(1)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)

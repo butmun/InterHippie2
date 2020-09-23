@@ -136,6 +136,28 @@
 	else
 		icon_state = "m9_empty"
 
+/obj/item/weapon/gun/projectile/c6
+	name = "C6 pistol"
+	desc = "A old heavily modified version of the luger. Chambered in (9mm)."
+	icon_state = "raider_gun"
+	item_state = "pistol1"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "a9mm"
+	silenced = 0
+	fire_delay = 3
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/c6
+	allowed_magazines = /obj/item/ammo_magazine/c6
+	jam_chance = 2
+
+/obj/item/weapon/gun/projectile/c6/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "raider_gun"
+	else
+		icon_state = "raider_gun_empty"
+
 /obj/item/weapon/gun/projectile/maers14
 	name = "Maers-14"
 	desc = "The shellguard standard Maers-14. Typically used by space marines. Chambered in (9mm)."
