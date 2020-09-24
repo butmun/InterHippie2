@@ -44,15 +44,15 @@
 			circuit_type = /obj/item/integrated_circuit/memory/constant
 		},
 		/datum/ic_assembly_integrated_circuits { // 5,
-			circuit_type = /obj/item/integrated_circuit/output/led/red
+			circuit_type = /obj/item/integrated_circuit/output/led/red;
 			circuit_name = "Arming"
 		},
 		/datum/ic_assembly_integrated_circuits { // 6,
-			circuit_type = /obj/item/integrated_circuit/output/led/red
+			circuit_type = /obj/item/integrated_circuit/output/led/red;
 			circuit_name = "Armed"
 		},
 		/datum/ic_assembly_integrated_circuits { // 7 - Starts the whole setup,
-			circuit_type = /obj/item/integrated_circuit/input/button
+			circuit_type = /obj/item/integrated_circuit/input/button;
 			circuit_name = "Arm"
 		},
 		/datum/ic_assembly_integrated_circuits { // 8 - Audible warning 1,
