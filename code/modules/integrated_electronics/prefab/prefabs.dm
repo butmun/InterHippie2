@@ -10,16 +10,17 @@
 			circuit_type = /obj/item/integrated_circuit/input/teleporter_locator
 		},
 		/datum/ic_assembly_integrated_circuits { // 3,
-			circuit_type = /obj/item/integrated_circuit/input/button
+			circuit_type = /obj/item/integrated_circuit/input/button;
+			circuit_name = "Open Rift"
 		}
 	)
 	connections = newlist(
 		/datum/ic_assembly_connection/output_to_input {
-			circuit_index_a = 2 // Teleport Control Locator to
+			circuit_index_a = 2; // Teleport Control Locator to
 			circuit_index_b = 1 // Bluespace Generator Input
 		},
 		/datum/ic_assembly_connection/activator_to_activator {
-			circuit_index_a = 1 // Open Rift (button) to
+			circuit_index_a = 1; // Open Rift (button) to
 			circuit_index_b = 3 // Bluespace Rift Generator
 		}
 	)
