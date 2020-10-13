@@ -3,7 +3,7 @@
 	holy_item = new /obj/item/crucifix()
 	shrine = /obj/old_god_shrine/messiah_shrine
 	whisper_lines = list("Father, son, ghost.", "Peace be with you, my humble servant.", "Turn the other cheek.")
-	offering_items = list(/obj/item/weapon/flame/candle/, /obj/item/weapon/spacecash/bundle/c10, /obj/effect/decal/cleanable/blood/)
+	offering_items = list(/obj/item/weapon/flame/candle/, /obj/effect/decal/cleanable/blood/)
 
 /datum/religion/messiah/generate_random_phrase()
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], our Lord and Saviour. ")

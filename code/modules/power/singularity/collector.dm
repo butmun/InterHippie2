@@ -16,8 +16,8 @@ var/global/list/rad_collectors = list()
 	var/locked = 0
 	var/drainratio = 1
 
-/obj/machinery/power/rad_collector/New()
-	..()
+/obj/machinery/power/rad_collector/Initialize()
+	. = ..()
 	rad_collectors += src
 
 /obj/machinery/power/rad_collector/Destroy()
@@ -42,7 +42,6 @@ var/global/list/rad_collectors = list()
 			P.air_contents.adjust_gas("phoron", -0.001*drainratio)
 	return
 
-
 /obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
 	if(anchored)
 		if(!src.locked)
@@ -54,7 +53,7 @@ var/global/list/rad_collectors = list()
 		else
 			to_chat(user, "<span class='warning'>The controls are locked!</span>")
 			return
-..()
+
 
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)

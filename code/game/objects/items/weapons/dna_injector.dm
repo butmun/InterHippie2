@@ -593,4 +593,4 @@
 	//block = 14
 	New()
 		block = GLOB.MONKEYBLOCK
-..()
+		..()

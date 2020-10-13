@@ -1701,7 +1701,7 @@ var/list/rank_prefix = list(\
 	var/obj/item/organ/external/E = get_organ(def_zone)
 	if(!E || E.is_stump())
 		return BULLET_IMPACT_NONE
-	if(ORGAN_ROBOT(E))
+	if(BP_IS_ROBOTIC(E))
 		return BULLET_IMPACT_METAL
 	return BULLET_IMPACT_MEAT
 
