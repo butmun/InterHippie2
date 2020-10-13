@@ -2,7 +2,6 @@
 	name = "chair"
 	desc = "You sit in this, either by will or force."
 	icon_state = "chair_preview"
-	color = "#666666"
 	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled

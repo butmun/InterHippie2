@@ -195,7 +195,7 @@ proc/generate_random_prayer()//This generates a new one.
 			if(do_after(src, timer))
 				var/T =  get_turf(src)
 				playsound(get_turf(src), praise_sound,30,0)
-				to_chat(src, "A [user_religion.holy_item] apears at your feet")
+				to_chat(src, "<span class='danger'>A [user_religion.holy_item] appears at your feet!</span>")
 				var/holy_item_type = GLOB.all_religions[religion].holy_item.type
 				var/new_holy_item = new holy_item_type(T)
 				religion_token = new_holy_item

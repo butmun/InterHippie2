@@ -3,7 +3,7 @@
 	holy_item = new /obj/item/weapon/bikehorn()
 	shrine = /obj/old_god_shrine/xom_shrine
 	whisper_lines = list("This is a game, just a game!", "TURN THE PC OFF, RIGHT NOW.", "HA-HA-HA-HA-HA!!!")
-	offering_items = list(/obj/item/weapon/flame/candle/, /obj/item/weapon/spacecash/bundle/c10, /obj/item/clothing/head/jester)
+	offering_items = list(/obj/item/stack/teeth, /obj/item/weapon/flame/candle/, /obj/item/clothing/head/jester)
 
 /datum/religion/xom/generate_random_phrase()
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], the God of Chaos! ")
