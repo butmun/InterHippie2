@@ -28,7 +28,7 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	winset(src, "rpanewindow", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "mainwindow", "background-color = none;background-color = [COLOR_DARKMODE_BACKGROUND]")
 	winset(src, "split", "background-color = none;background-color = [COLOR_DARKMODE_BACKGROUND]")
-	winset(src, "mainvsplit", "background-color = none;background-color = [COLOR_DARKMODE_BACKGROUND]")
+	winset(src, "mainvsplit", "background-color = none;background-color = [COLOR_VERYDARKMODE_BACKGROUND]")
 	//Buttons
 	winset(src, "textb", "background-color = none;background-color = #494949")
 	winset(src, "textb", "text-color = #000000;text-color = [COLOR_DARKMODE_TEXT]")

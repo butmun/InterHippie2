@@ -115,6 +115,7 @@
 	// only carbons can eat
 	if(istype(target, /mob/living/carbon))
 		if(target == user)
+			var/mob/living/carbon/C = user
 			if(istype(user, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = user
 				if(!H.check_has_mouth())
@@ -129,6 +130,7 @@
 			self_feed_message(user)
 			reagents.trans_to_mob(user, issmall(user) ? ceil(amount_per_transfer_from_this/2) : amount_per_transfer_from_this, CHEM_INGEST)
 			user.bladder += amount_per_transfer_from_this //For peeing
+			C.adjust_thirst(amount_per_transfer_from_this * 5)
 			feed_sound(user)
 			return 1
 
@@ -155,6 +157,8 @@
 			admin_attack_log(user, target, "Fed the victim with [name] (Reagents: [contained])", "Was fed [src] (Reagents: [contained])", "used [src] (Reagents: [contained]) to feed")
 
 			reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_INGEST)
+			target.bladder += amount_per_transfer_from_this //For peeing
+			H.adjust_thirst(amount_per_transfer_from_this * 5)
 			feed_sound(user)
 			return 1
 

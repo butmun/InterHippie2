@@ -32,6 +32,7 @@
 		/obj/structure/iv_drip,
 		/obj/machinery/disease2/incubator,
 		/obj/machinery/disposal,
+		/obj/machinery/dna_scannernew,
 		/mob/living/simple_animal/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
 		/obj/machinery/computer/centrifuge,

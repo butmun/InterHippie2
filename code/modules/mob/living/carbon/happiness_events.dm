@@ -158,21 +158,10 @@
 	happiness = -12
 	timeout = 1800
 
-/datum/happiness_event/badsex
-	description = "<span class='warning'>Ugh, that sex was horrible.\n"
-	happiness = -4
-	timeout = 1800
-
 //For when you get branded.
 /datum/happiness_event/humiliated
 	description = "<span class='danger'>I've been humiliated, and I am embarrassed.</span>\n"
 	happiness = -10
-	timeout = 1800
-
-//Good sex here too because why not.
-/datum/happiness_event/came
-	description = "<span class='binfo'>I came!\n"
-	happiness = 10
 	timeout = 1800
 
 //And when you've seen someone branded
@@ -209,3 +198,19 @@
 /datum/happiness_event/surgery
 	description = "<span class='danger'>HE'S CUTTING ME OPEN!!</span>\n"
 	happiness = -8
+
+/datum/happiness_event/pain
+	description = "<span class='danger'>IT HURTS SO MUCH!</span>\n"
+	happiness = -10
+	timeout = 1800
+
+//For when you see someone die and you're not hardcore.
+/datum/happiness_event/dead
+	description = "<span class='danger'>OH MY GOD THEY'RE DEAD!</span>\n"
+	happiness = -10
+	timeout = 5 MINUTES
+
+/datum/happiness_event/overdose
+	description = "<span class='danger'>I shouldn't have taken so much drugs!</span>\n"
+	happiness = -15
+	timeout = 1800

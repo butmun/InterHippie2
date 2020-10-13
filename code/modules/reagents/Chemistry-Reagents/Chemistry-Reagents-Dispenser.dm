@@ -117,7 +117,6 @@
 
 /datum/reagent/ethanol/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjust_nutrition(nutriment_factor * removed)
-	M.adjust_hydration(hydration_factor * removed)
 	var/strength_mod = 1
 	if(alien == IS_SKRELL)
 		strength_mod *= 5

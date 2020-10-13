@@ -36,7 +36,7 @@
 
 	//For sad, thirsty, and dirty lads.
 	var/happiness = 0
-	var/hydration = 400
+	var/thirst = THIRST_LEVEL_FILLED
 	var/hygiene = HYGIENE_LEVEL_NORMAL
 	var/my_hygiene_factor = HYGIENE_FACTOR
 	// organ-related variables, see organ.dm and human_organs.dm

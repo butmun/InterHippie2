@@ -187,12 +187,21 @@ proc/generate_random_prayer()//This generates a new one.
 	set name = "Praise your God"
 
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
-	//You need your god's item to do this
-	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
-		to_chat(src, "<span class='warning'>You can't praise your god without your [user_religion.holy_item]!</span>")
-		return
 	var/timer = 30
 	var/praise_sound = "sound/effects/Cultistemessage[pick(1,10)].ogg"
+	//You need your god's item to do this
+	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
+		if(isnull(religion_token))
+			if(do_after(src, timer))
+				var/T =  get_turf(src)
+				playsound(get_turf(src), praise_sound,30,0)
+				to_chat(src, "A [user_religion.holy_item] apears at your feet")
+				var/holy_item_type = GLOB.all_religions[religion].holy_item.type
+				var/new_holy_item = new holy_item_type(T)
+				religion_token = new_holy_item
+		else
+			to_chat(src, "<span class='warning'>You can't praise your god without your [user_religion.holy_item]!</span>")
+		return
 	if(!doing_something)
 		var/self = "You raise your [user_religion.holy_item] and chant praise to your god."
 		visible_message("<span class='warning'>\The [src] begins speaking praise for their god.</span>", "<span class='notice'>[self]</span>", "[src] praises their god! .")

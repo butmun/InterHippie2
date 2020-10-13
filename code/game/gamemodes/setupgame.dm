@@ -39,27 +39,29 @@
 	GLOB.XRAYBLOCK          = getAssignedBlock("XRAY",          numsToAssign, DNA_HARDER_BOUNDS)
 	GLOB.CLUMSYBLOCK        = getAssignedBlock("CLUMSY",        numsToAssign)
 	GLOB.FAKEBLOCK          = getAssignedBlock("FAKE",          numsToAssign)
+	GLOB.HEADACHEBLOCK      = getAssignedBlock("HEADACHE",      numsToAssign)
+	GLOB.NOBREATHBLOCK      = getAssignedBlock("NOBREATH",      numsToAssign, DNA_HARD_BOUNDS)
+	GLOB.REMOTEVIEWBLOCK    = getAssignedBlock("REMOTEVIEW",    numsToAssign, DNA_HARDER_BOUNDS)
+	GLOB.REGENERATEBLOCK    = getAssignedBlock("REGENERATE",    numsToAssign, DNA_HARDER_BOUNDS)
+	GLOB.INCREASERUNBLOCK   = getAssignedBlock("INCREASERUN",   numsToAssign, DNA_HARDER_BOUNDS)
+	GLOB.REMOTETALKBLOCK    = getAssignedBlock("REMOTETALK",    numsToAssign, DNA_HARDER_BOUNDS)
+	GLOB.MORPHBLOCK         = getAssignedBlock("MORPH",         numsToAssign, DNA_HARDER_BOUNDS)
+	//GLOB.COLDBLOCK          = getAssignedBlock("COLD",          numsToAssign) No Coldblock on bay.
+	GLOB.HALLUCINATIONBLOCK = getAssignedBlock("HALLUCINATION", numsToAssign)
+	GLOB.NOPRINTSBLOCK      = getAssignedBlock("NOPRINTS",      numsToAssign, DNA_HARD_BOUNDS)
+	GLOB.SHOCKIMMUNITYBLOCK = getAssignedBlock("SHOCKIMMUNITY", numsToAssign)
+	GLOB.SMALLSIZEBLOCK     = getAssignedBlock("SMALLSIZE",     numsToAssign, DNA_HARD_BOUNDS)
+	GLOB.COUGHBLOCK         = getAssignedBlock("COUGH",         numsToAssign)
+	GLOB.GLASSESBLOCK       = getAssignedBlock("GLASSES",       numsToAssign)
+	GLOB.EPILEPSYBLOCK      = getAssignedBlock("EPILEPSY",      numsToAssign)
+	GLOB.TWITCHBLOCK        = getAssignedBlock("TWITCH",        numsToAssign)
+	GLOB.NERVOUSBLOCK       = getAssignedBlock("NERVOUS",       numsToAssign)
 
 	// UNUSED!
-	//GLOB.COUGHBLOCK         = getAssignedBlock("COUGH",         numsToAssign)
-	//GLOB.GLASSESBLOCK       = getAssignedBlock("GLASSES",       numsToAssign)
-	//GLOB.EPILEPSYBLOCK      = getAssignedBlock("EPILEPSY",      numsToAssign)
-	//GLOB.TWITCHBLOCK        = getAssignedBlock("TWITCH",        numsToAssign)
-	//GLOB.NERVOUSBLOCK       = getAssignedBlock("NERVOUS",       numsToAssign)
+
 
 	// Bay muts (UNUSED)
-	//GLOB.HEADACHEBLOCK      = getAssignedBlock("HEADACHE",      numsToAssign)
-	//GLOB.NOBREATHBLOCK      = getAssignedBlock("NOBREATH",      numsToAssign, DNA_HARD_BOUNDS)
-	//GLOB.REMOTEVIEWBLOCK    = getAssignedBlock("REMOTEVIEW",    numsToAssign, DNA_HARDER_BOUNDS)
-	//GLOB.REGENERATEBLOCK    = getAssignedBlock("REGENERATE",    numsToAssign, DNA_HARDER_BOUNDS)
-	//GLOB.INCREASERUNBLOCK   = getAssignedBlock("INCREASERUN",   numsToAssign, DNA_HARDER_BOUNDS)
-	GLOB.REMOTETALKBLOCK    = getAssignedBlock("REMOTETALK",    numsToAssign, DNA_HARDER_BOUNDS)
-	//GLOB.MORPHBLOCK         = getAssignedBlock("MORPH",         numsToAssign, DNA_HARDER_BOUNDS)
-	//GLOB.COLDBLOCK          = getAssignedBlock("COLD",          numsToAssign)
-	//GLOB.HALLUCINATIONBLOCK = getAssignedBlock("HALLUCINATION", numsToAssign)
-	//GLOB.NOPRINTSBLOCK      = getAssignedBlock("NOPRINTS",      numsToAssign, DNA_HARD_BOUNDS)
-	//GLOB.SHOCKIMMUNITYBLOCK = getAssignedBlock("SHOCKIMMUNITY", numsToAssign)
-	//GLOB.SMALLSIZEBLOCK     = getAssignedBlock("SMALLSIZE",     numsToAssign, DNA_HARD_BOUNDS)
+
 
 	//
 	// Static Blocks

@@ -18,15 +18,14 @@
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 0
 
-
 // see code/modules/food/recipes_microwave.dm for recipes
 
 /*******************
 *   Initialising
 ********************/
 
-/obj/machinery/microwave/New()
-	..()
+/obj/machinery/microwave/Initialize()
+	. = ..()
 	create_reagents(100)
 	if (!available_recipes)
 		available_recipes = new
@@ -166,12 +165,12 @@
 
 /obj/machinery/microwave/interact(mob/user as mob) // The microwave Menu
 	var/dat = list()
-	if(src.broken > 0)
+	if(broken > 0)
 		dat += "<TT>Bzzzzttttt</TT>"
-	else if(src.operating)
+	else if(operating)
 		dat += "<TT>Microwaving in progress!<BR>Please wait...!</TT>"
-	else if(src.dirty==100)
-		dat += "<TT>This microwave is dirty!<BR>Please clean it before use!</TT>"
+	else if(dirty==100)
+		dat += "<TT>This microwave is covered in muck. You'll need to wipe it down or clean it out before you can use it again.</TT>"
 	else
 		var/list/items_counts = new
 		var/list/items_measures = new
@@ -222,8 +221,6 @@
 	show_browser(user, "<HEAD><TITLE>Microwave Controls</TITLE></HEAD><TT>[jointext(dat,"<br>")]</TT>", "window=microwave")
 	onclose(user, "microwave")
 	return
-
-
 
 /***********************************
 *   Microwave Menu Handling/Cooking

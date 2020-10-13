@@ -188,10 +188,12 @@
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 15)
+	M.add_event("relaxed", /datum/happiness_event/relaxed)
 
 /datum/reagent/paracetamol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
 	M.druggy = max(M.druggy, 2)
+	M.add_event("overdosed", /datum/happiness_event/overdose)
 	M.add_chemical_effect(CE_PAINKILLER, 10)
 	M.add_chemical_effect(CE_BREATHLOSS, 0.3) //Have trouble breathing, need more air
 	M.add_chemical_effect(CE_TOXIN, 0.5)
@@ -231,6 +233,7 @@
 		if(prob(1))
 			M.Weaken(2)
 			M.drowsyness = max(M.drowsyness, 5)
+	M.add_event("relaxed", /datum/happiness_event/relaxed)
 	var/boozed = isboozed(M)
 	if(boozed)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
@@ -240,6 +243,7 @@
 	..()
 	M.hallucination(120, 30)
 	M.druggy = max(M.druggy, 10)
+	M.add_event("overdosed", /datum/happiness_event/overdose)
 	M.add_chemical_effect(CE_PAINKILLER, pain_power*0.5) //extra painkilling for extra trouble
 	M.add_chemical_effect(CE_BREATHLOSS, 0.6) //Have trouble breathing, need more air
 	M.add_chemical_effect(CE_TOXIN, 1)

@@ -23,7 +23,7 @@
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
 			user.do_attack_animation(src)
 			user.adjust_nutrition(-(5 * DEFAULT_HUNGER_FACTOR))
-			user.adjust_hydration(-(5 * DEFAULT_THIRST_FACTOR))
+			user.adjust_thirst(-(5 * DEFAULT_THIRST_FACTOR))
 			if(user.statcheck(user.stats[STAT_ST], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", STAT_ST))
 				to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
 
@@ -62,7 +62,7 @@
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)
 			var/adj_weight = weight * 5
 			user.adjust_nutrition(-(adj_weight * DEFAULT_HUNGER_FACTOR))
-			user.adjust_hydration(-(adj_weight * DEFAULT_THIRST_FACTOR))
+			user.adjust_thirst(-(adj_weight * DEFAULT_THIRST_FACTOR))
 			if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", STAT_ST))
 				to_chat(user, "<span class='notice'>You lift the weights [qualifiers[weight]].</span>")
 			being_used = 0

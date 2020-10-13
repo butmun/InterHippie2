@@ -25,7 +25,7 @@
 	ingested.clear_reagents()
 	touching.clear_reagents()
 	set_nutrition(400)
-	set_hydration(400)
+	set_thirst(400)
 	..()
 
 /mob/living/carbon/Move(NewLoc, direct)
@@ -42,7 +42,7 @@
 			nut_removed *= 2
 			hyd_removed *= 2
 		adjust_nutrition(-nut_removed)
-		adjust_hydration(-hyd_removed)
+		adjust_thirst(-hyd_removed)
 
 		// Moving around increases germ_level faster
 		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
@@ -511,9 +511,3 @@
 
 /mob/living/carbon/proc/adjust_nutrition(var/amt)
 	set_nutrition(nutrition + amt)
-
-/mob/living/carbon/proc/set_hydration(var/amt)
-	hydration = Clamp(amt, 0, initial(hydration))
-
-/mob/living/carbon/proc/adjust_hydration(var/amt)
-	set_hydration(hydration + amt)

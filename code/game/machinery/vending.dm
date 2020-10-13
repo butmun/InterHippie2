@@ -835,20 +835,20 @@
 
 
 /obj/machinery/vending/medical
-	name = "NanoMed Plus"
-	desc = "Medical drug dispenser."
+	name = "TetraMed Plus"
+	desc = "Medical drug dispenser, with limited supply."
 	icon_state = "med"
 	icon_deny = "med-deny"
 	icon_vend = "med-vend"
 	vend_delay = 18
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical_equip)
-	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/syringe = 12,
+	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 2,/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 2,
+					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 2,/obj/item/weapon/reagent_containers/glass/bottle/toxin = 2,
+					/obj/item/weapon/reagent_containers/syringe/antiviral = 2,/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5,/obj/item/weapon/reagent_containers/glass/beaker = 4, /obj/item/weapon/reagent_containers/dropper = 2,
-					/obj/item/stack/medical/advanced/bruise_pack = 3, /obj/item/stack/medical/advanced/ointment = 3, /obj/item/stack/medical/splint = 2,
-					/obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 4)
+					/obj/item/stack/medical/advanced/bruise_pack = 1, /obj/item/stack/medical/advanced/ointment = 1, /obj/item/stack/medical/splint = 2,
+					/obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 2)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6,
 					/obj/item/weapon/reagent_containers/hypospray/autoinjector/combatpain = 2)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -863,24 +863,24 @@
 					/obj/item/device/assembly/prox_sensor = 6,/obj/item/device/assembly/igniter = 6)
 
 /obj/machinery/vending/wallmed1
-	name = "NanoMed"
-	desc = "A wall-mounted version of the NanoMed."
+	name = "TetraMed Wall Edition"
+	desc = "A wall-mounted version of the TetraMed."
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4)
+	products = list(/obj/item/stack/medical/bruise_pack = 1,/obj/item/stack/medical/ointment = 1,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 2)
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 
 /obj/machinery/vending/wallmed2
-	name = "NanoMed Mini"
-	desc = "A wall-mounted version of the NanoMed, containing only vital first aid equipment."
+	name = "TetraMed Mini"
+	desc = "A wall-mounted version of the TetraMed, containing only vital first aid equipment."
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 5,/obj/item/weapon/reagent_containers/syringe/antitoxin = 1,/obj/item/stack/medical/bruise_pack = 3,
-					/obj/item/stack/medical/ointment =3)
+	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 3,/obj/item/weapon/reagent_containers/syringe/antitoxin = 1,/obj/item/stack/medical/bruise_pack = 1,
+					/obj/item/stack/medical/ointment = 1)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3, /obj/item/weapon/reagent_containers/hypospray/autoinjector/pain = 2)
 
 /obj/machinery/vending/security

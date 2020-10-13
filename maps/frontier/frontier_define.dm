@@ -14,14 +14,14 @@
 
 	allowed_spawns = list("Cryogenic Storage")
 
-	station_name  = "NO DATA"
+	station_name  = "Zvezda Array"
 	station_short = "Frontier"
 	dock_name     = "TCTM1-54 GR-32 ST"
 	boss_name     = "TetraCorp Announcement Relay"
 	boss_short    = "TetraCorp"
 	company_name  = "TetraCorp Announcement Relay"
 	company_short = "TRC"
-	system_name = "Algol System"
+	system_name = "Zvesda"
 
 	id_hud_icons = 'maps/dreyfus/icons/assignment_hud.dmi'
 

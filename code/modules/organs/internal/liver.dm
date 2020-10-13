@@ -20,6 +20,8 @@
 	if(!owner)
 		return
 
+	handle_thirst()
+
 	if (germ_level > INFECTION_LEVEL_ONE)
 		if(prob(1))
 			to_chat(owner, "<span class='danger'>Your skin itches.</span>")
@@ -66,3 +68,23 @@
 			owner.adjust_nutrition(-30)
 		else if(owner.nutrition >= 200)
 			owner.adjust_nutrition(-20)
+
+/obj/item/organ/internal/liver/proc/handle_thirst()
+	owner.adjust_thirst(-THIRST_FACTOR)
+	switch(owner.thirst)
+		if(THIRST_LEVEL_THIRSTY to INFINITY)
+			owner.clear_event("thirst")
+		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY)
+			owner.add_event("thirst", /datum/happiness_event/thirst/thirsty)
+		if(0 to THIRST_LEVEL_DEHYDRATED)
+			owner.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
+			if(prob(5))
+				to_chat(owner, "<span class='warning'>You faint from dehydration.</span>")
+				owner.Paralyse(5)
+			else if(prob(6))
+				to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
+				owner.Weaken(1)
+				owner.Stun(1)
+			if(prob(10))
+				to_chat(owner, "<span class='warning'>You lick around your mouth as a craving for water sets in.</span>")
+				take_damage(1)

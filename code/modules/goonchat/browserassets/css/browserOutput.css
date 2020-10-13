@@ -331,7 +331,7 @@ h1.alert, h2.alert		{color: #a4bad6;}
 .boldannounce			{color: #c51e1e;	font-weight: bold; text-shadow: 0 0 3px #c51e1e;}
 .rose					{color: #ff5050;}
 .info					{color: #9696E4; text-shadow: 0 0 3px #9696E4;}
-.notice					{color: #704bd6; text-shadow: 0 0 4px #704bd6; font-family: OpenType, PTSANS}
+.notice					{color: #7A8ABD; text-shadow: 0 0 4px #7A8ABD;}
 .alium					{color: #00ff00;}
 .cult					{color: #aa1c1c;}
 
@@ -405,3 +405,11 @@ h1.alert, h2.alert		{color: #a4bad6;}
 .ml-1 {margin-left: 1em;}
 .ml-2 {margin-left: 2em;}
 .ml-3 {margin-left: 3em;}
+
+.playerjoinbox {
+    border: 1px groove #5C41C6;
+	background: rgba(40, 40, 40, 0.3);
+	margin: 2px 8px;
+	padding: 8px 12px;
+	max-width: 550px;
+}

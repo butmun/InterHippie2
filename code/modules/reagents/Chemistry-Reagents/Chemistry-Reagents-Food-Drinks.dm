@@ -47,13 +47,10 @@
 
 /datum/reagent/nutriment/proc/adjust_nutrition(var/mob/living/carbon/M, var/alien, var/removed)
 	var/nut_removed = removed
-	var/hyd_removed = removed
 	if(alien == IS_UNATHI)
 		removed *= 0.1 // Unathi get most of their nutrition from meat.
 	if(nutriment_factor)
 		M.adjust_nutrition(nutriment_factor * nut_removed) // For hunger and fatness
-	if(hydration_factor)
-		M.adjust_hydration(hydration_factor * hyd_removed) // For thirst
 	M.bowels += nutriment_factor * removed	//For pooping
 
 /datum/reagent/nutriment/glucose
@@ -431,8 +428,6 @@
 /datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(nutrition)
 		M.adjust_nutrition(nutrition * removed)
-	if(hydration)
-		M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
 	M.sleeping = max(0, M.sleeping + adj_sleepy)

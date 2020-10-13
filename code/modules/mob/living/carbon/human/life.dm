@@ -78,8 +78,6 @@
 
 		handle_medical_side_effects()
 
-		handle_stomach()
-
 		handle_blood_pools()
 
 		if(!client && !mind)
@@ -452,10 +450,7 @@
 	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
 		bodytemperature += body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
-		var/hyd_remove = 10 * DEFAULT_THIRST_FACTOR
-		if(hydration >= hyd_remove)
-			adjust_hydration(-hyd_remove)
-			bodytemperature += min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)
+		bodytemperature += min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)
 
 	//This proc returns a number made up of the flags for body parts which you are protected on. (such as HEAD, UPPER_TORSO, LOWER_TORSO, etc. See setup.dm for the full list)
 /mob/living/carbon/human/proc/get_heat_protection_flags(temperature) //Temperature is the temperature you're being exposed to.
@@ -676,8 +671,6 @@
 		// nutrition decrease
 		if(nutrition > 0)
 			adjust_nutrition(-species.hunger_factor)
-		if(hydration > 0)
-			adjust_hydration(-species.thirst_factor)
 
 		if(stasis_value > 1 && drowsyness < stasis_value * 5)
 			drowsyness += min(stasis_value, 3)
@@ -807,7 +800,7 @@
 				else							nutrition_icon.icon_state = "nutrition4"
 
 		if(hydration_icon)
-			switch(hydration)
+			switch(thirst)
 				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
 				if(350 to 450)					hydration_icon.icon_state = "hydration1"
 				if(250 to 350)					hydration_icon.icon_state = "hydration2"
@@ -930,25 +923,6 @@
 		A.play_ambience(src)
 	if(stat == UNCONSCIOUS && world.time - l_move_time < 5 && prob(10))
 		to_chat(src,"<span class='notice'>You feel like you're [pick("moving","flying","floating","falling","hovering")].</span>")
-
-/mob/living/carbon/human/handle_stomach()
-	spawn(0)
-		for(var/a in stomach_contents)
-			if(!(a in contents) || isnull(a))
-				stomach_contents.Remove(a)
-				continue
-			if(iscarbon(a)|| isanimal(a))
-				var/mob/living/M = a
-				if(M.stat == DEAD)
-					M.death(1)
-					stomach_contents.Remove(M)
-					qdel(M)
-					continue
-				if(life_tick % 3 == 1)
-					if(!(M.status_flags & GODMODE))
-						M.adjustBruteLoss(5)
-					nutrition += 10
-	handle_excrement()
 
 /mob/living/carbon/human/proc/handle_changeling()
 	if(mind && mind.changeling)

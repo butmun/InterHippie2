@@ -34,20 +34,21 @@ mob/var/next_pain_time = 0
 				actual_flash = flash_pain
 
 			switch(actual_flash)
-				if(1 to 20)
+				if(1 to 50)
 					flash_weakest_pain()
-				if(20 to 90)
+				if(50 to 90)
 					flash_weak_pain()
-					if(stuttering < 3)
-						stuttering += 3
+					if(stuttering < 10)
+						stuttering += 5
 				if(90 to INFINITY)
 					flash_pain()
-					if(stuttering < 5)
-						stuttering += 5
-					if(prob(2))
+					if(stuttering < 10)
+						stuttering += 10
+					if(prob(4))
 						Stun(5)//makes you drop what you're holding.
 						shake_camera(src, 20, 3)
 						agony_scream()
+					add_event("pain", /datum/happiness_event/pain)
 		else
 			adjustHalLoss(ceil(power/2))
 

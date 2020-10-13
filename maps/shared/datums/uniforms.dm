@@ -24,10 +24,6 @@
 /decl/hierarchy/outfit/job/dreyfus/adjoint
 	name = OUTFIT_JOB_NAME("Directeur Adjoint")
 	l_ear = /obj/item/device/radio/headset/heads/hop
-	uniform = /obj/item/clothing/under/rank/internalaffairs/plain/nt
-//	suit = /obj/item/clothing/suit/storage/toggle/internalaffairs
-	shoes = /obj/item/clothing/shoes/dress
-	l_hand = /obj/item/weapon/storage/briefcase
 	id_type = /obj/item/weapon/card/id/dreyfus/hop
 	pda_type = /obj/item/device/pda/heads/hop
 
