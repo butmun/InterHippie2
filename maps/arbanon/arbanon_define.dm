@@ -4,7 +4,7 @@
 	full_name = "Station 12 - 'Arbanon'"
 	path = "arbanon"
 
-	lobby_icon = 'maps/frontier/arbanon_lobby.dmi'
+	lobby_icon = 'maps/arbanon/arbanon_lobby.dmi'
 
 	station_levels = list(1,2,3,4)
 	admin_levels = list(5)
