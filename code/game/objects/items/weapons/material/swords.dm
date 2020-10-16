@@ -216,6 +216,21 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/bonesword
+	name = "bone sword"
+	desc = "A medium sized sword made of flesh and bone."
+	icon_state = "bonesword"
+	item_state = "longsword"
+	force_divisor = 0.3
+	block_chance = 20
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 15
+	weapon_speed_delay = 24
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/broadsword
 	name = "broad sword"
 	desc = "A huge two handed sword."
