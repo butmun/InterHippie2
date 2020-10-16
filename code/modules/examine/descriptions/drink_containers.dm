@@ -1,5 +1,5 @@
-/obj/item/weapon/reagent_containers/food/drinks/cans/cola
-	description_fluff = "Space Cola is the most popular drink made by Robust Industries LLC. While it is only slightly different from traditional cola recipes, its blend of syrups and sugars is enticing to children and adults alike."
+/obj/item/weapon/reagent_containers/food/drinks/cans/pepsi
+	description_fluff = "Space pepsi is the most popular drink made by Robust Industries LLC. While it is only slightly different from traditional cola recipes, its blend of syrups and sugars is enticing to children and adults alike."
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
 	description_fluff = "This is a generic, NanoTrasen branded bottle of water, included in vending machines for the benefit of Skrellian employees. The company swears on the quality of the water, saying it comes from the Martian poles. Most people disregard that and assume it's recycled from hydroponics trays."

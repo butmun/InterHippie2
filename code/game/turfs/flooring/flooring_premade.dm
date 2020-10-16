@@ -510,6 +510,16 @@
 	return	// Dirt doesn't doesn't become dirty
 
 
+/turf/simulated/floor/helldirt
+	name = "fleshy surface"
+	icon = 'icons/turf/dirt.dmi'
+	icon_state = "hell_dirt"
+
+/turf/simulated/floor/hellslate
+	name = "rock slate"
+	icon = 'icons/turf/dirt.dmi'
+	icon_state = "slat"
+
 /turf/simulated/floor/light
 /turf/simulated/floor/airless/ceiling
 

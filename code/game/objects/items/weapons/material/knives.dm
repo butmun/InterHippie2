@@ -144,6 +144,26 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	applies_material_colour = FALSE
 
+/obj/item/weapon/material/knife/bone
+	name = "bone knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "boneknife"
+	item_state = "knife1"
+	desc = "A knife with handle of flesh and bone."
+	force_divisor = 0.17 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
+
+/obj/item/weapon/material/knife/bonesickel
+	name = "bone sickel"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "bonesickel"
+	item_state = "knife1"
+	desc = "A sickel made of flesh and bone."
+	force_divisor = 0.17 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
+
 /obj/item/weapon/material/knife/fishknife
 	name = "fish knife"
 	icon = 'icons/obj/weapons.dmi'

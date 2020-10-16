@@ -12,3 +12,11 @@
 
 /turf/unsimulated/wall/other
 	icon_state = "r_wall"
+
+/turf/unsimulated/hellwall
+	name = "fleshy wall"
+	desc = "It's almost moving.."
+	icon = 'icons/turf/walls.dmi'
+	icon_state = "hell_wall"
+	opacity = 1
+	density = 1
