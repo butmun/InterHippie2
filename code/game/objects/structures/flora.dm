@@ -32,6 +32,21 @@
 	..()
 	icon_state = "tree_[rand(1, 6)]"
 
+/obj/structure/flora/tree/hell
+	icon = 'icons/obj/flora/deadtrees.dmi'
+	icon_state = "hell_tree"
+
+/obj/structure/flora/tree/hell/New()
+	..()
+	icon_state = "hell_tree"
+
+/obj/structure/flora/tree/plant
+	icon = 'icons/obj/flora/deadtrees.dmi'
+	icon_state = "hell_plant"
+
+/obj/structure/flora/tree/plant/New()
+	..()
+	icon_state = "hell_plant"
 
 //grass
 /obj/structure/flora/grass
@@ -196,6 +211,33 @@
 	..()
 	icon_state = "fullgrass_[rand(1, 3)]"
 
+/obj/structure/flora/ausbushes/hellgrass
+	icon_state = "hell_grass"
+
+/obj/structure/flora/ausbushes/hellgrass/New()
+	..()
+	icon_state = "hell_grass"
+
+/obj/structure/flora/ausbushes/hellgrass2
+	icon_state = "hell_grass2"
+
+/obj/structure/flora/ausbushes/hellgrass2/New()
+	..()
+	icon_state = "hell_grass2"
+
+/obj/structure/flora/ausbushes/hellgrass3
+	icon_state = "hell_grass3"
+
+/obj/structure/flora/ausbushes/hellgrass3/New()
+	..()
+	icon_state = "hell_grass3"
+
+/obj/structure/flora/ausbushes/hellgrass4
+	icon_state = "hell_grass4"
+
+/obj/structure/flora/ausbushes/hellgrass4/New()
+	..()
+	icon_state = "hell_grass4"
 
 //potted plants credit: Flashkirby
 /obj/structure/flora/pottedplant

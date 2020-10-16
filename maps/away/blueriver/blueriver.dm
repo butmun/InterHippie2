@@ -158,3 +158,22 @@
 
 /turf/unsimulated/wall/supermatter/no_spread/Process()
 	return PROCESS_KILL
+
+/turf/unsimulated/wall/supermatter/hell
+	name = "blood"
+	desc = "Looks like glowing blood, I dont think it is a good idea to touch it."
+	icon='blueriver.dmi'
+	icon_state = "bloodf2"
+	layer = SUPERMATTER_WALL_LAYER
+	plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	opacity = 0
+	dynamic_lighting = 0
+
+/turf/unsimulated/wall/supermatter/hell/Initialize()
+	.=..()
+
+	icon_state = "bloodf2"
+	set_light(l_range = 5, l_power = 2, l_color = "#e53131")
+
+/turf/unsimulated/wall/supermatter/hell/Process()
+	return PROCESS_KILL
