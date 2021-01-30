@@ -20,8 +20,6 @@
 	if(!owner)
 		return
 
-	handle_thirst()
-
 	if (germ_level > INFECTION_LEVEL_ONE)
 		if(prob(1))
 			to_chat(owner, "<span class='danger'>Your skin itches.</span>")
@@ -69,6 +67,7 @@
 		else if(owner.nutrition >= 200)
 			owner.adjust_nutrition(-20)
 
+/*
 /obj/item/organ/internal/liver/proc/handle_thirst()
 	owner.adjust_thirst(-THIRST_FACTOR)
 	switch(owner.thirst)
@@ -92,3 +91,4 @@
 			if(prob(6))
 				to_chat(owner, "<span class='danger'><font size = 3>You lick around your mouth as a craving for water sets in.</span></font>")
 				take_damage(1)
+*/
