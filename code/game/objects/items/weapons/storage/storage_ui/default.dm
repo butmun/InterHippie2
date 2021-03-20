@@ -55,13 +55,13 @@
 	I.color = c
 	return I
 
-/obj/screen/storage/gridbox/MouseEntered(location,control,params)
-	..()
+/obj/screen/storage/gridbox/MouseEntered(location, control, params)
+	. = ..()
 	var/obj/item/weapon/storage/storage = master
 	if(istype(storage))
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
-			border_overlay = new()
+			border_overlay = new /obj/screen( )
 			border_overlay.icon_state = "blank"
 			border_overlay.mouse_opacity = 0
 			border_overlay.screen_loc = screen_loc
@@ -94,7 +94,6 @@
 			border_overlay.overlays += I_img
 
 			usr.client.screen.Add(border_overlay)
-
 
 /obj/screen/storage/gridbox/MouseExited()
 	..()
@@ -180,7 +179,7 @@
 /obj/screen/storage/item_underlay
 	name = "storage"
 	icon = 'icons/mob/screen1_small.dmi'
-	icon_state = "store_c00"
+	icon_state = "store_c"
 	var/obj/stored
 	var/xoff = 0
 	var/yoff = 0
@@ -225,28 +224,30 @@
 	. = ..()
 
 /datum/storage_ui/default/on_open(var/mob/user)
+	if (user.s_active)
+		user.s_active.close(user)
 	// Do nothing for now.
 
 /datum/storage_ui/default/after_close(var/mob/user)
 	user.s_active = null
 
 /datum/storage_ui/default/on_insertion(var/mob/user)
-	if(storage in user.s_active)
-		storage.show_to(user)
+	if(user.s_active)
+		user.s_active.show_to(user)
 
 /datum/storage_ui/default/on_pre_remove(var/mob/user, var/obj/item/W)
 	for(var/mob/M in range(1, storage.loc))
-		if (storage in M.s_active)
+		if (M.s_active == storage)
 			if (M.client)
 				M.client.screen -= W
 
 /datum/storage_ui/default/on_post_remove(var/mob/user)
-	if(storage in user.s_active)
-		storage.show_to(user)
+	if(user.s_active)
+		user.s_active.show_to(user)
 
 /datum/storage_ui/default/on_hand_attack(var/mob/user)
 	for(var/mob/M in range(1))
-		if (storage in M.s_active)
+		if (M.s_active == storage)
 			storage.close(M)
 
 // I was doing this manually far too much.
@@ -259,12 +260,12 @@
 	csu.client.screen += next_underlay
 
 /datum/storage_ui/default/show_to(var/mob/user)
-	if(!(storage in user.s_active))
+	if(user.s_active != storage)
 		for(var/obj/item/I in storage)
 			if(I.on_found(user))
 				return
-	if(storage in user.s_active)
-		storage.hide_from(user)
+	if(user.s_active)
+		user.s_active.hide_from(user)
 	var/datum/client_storage_ui/csu = client_uis[user.client]
 	if(csu)
 		for(var/obj/screen/storage/gridbox/box in csu.grid_boxes)
@@ -376,13 +377,12 @@
 		client_uis.Remove(csu)
 		QDEL_NULL(csu)
 	user.client.screen -= storage.contents
-	if(storage in user.s_active)
-		user.s_active -= storage
+	if(user.s_active == storage)
+		user.s_active = null
 
 //Creates the storage UI
 /datum/storage_ui/default/prepare_ui()
 	neo_orient_objs()
-
 
 /datum/storage_ui/default/close_all()
 	for(var/mob/M in can_see_contents())
@@ -392,7 +392,7 @@
 /datum/storage_ui/default/proc/can_see_contents()
 	var/list/cansee = list()
 	for(var/mob/M in is_seeing)
-		if((storage in M.s_active) && M.client)
+		if(M.s_active == storage && M.client)
 			cansee |= M
 		else
 			is_seeing -= M
