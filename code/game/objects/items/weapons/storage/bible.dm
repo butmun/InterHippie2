@@ -5,8 +5,8 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
-	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = 4
+	storage_slots_w = 2
+	storage_slots_h = 4
 	var/mob/affecting = null
 	var/deity_name = "Christ"
 

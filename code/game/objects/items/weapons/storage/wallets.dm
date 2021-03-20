@@ -4,9 +4,8 @@
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-white"
 	w_class = ITEM_SIZE_SMALL
-	obj_flags = OBJ_FLAG_NO_EMBED
-	max_w_class = ITEM_SIZE_SMALL //Don't worry, see can_hold[]
-	max_storage_space = 8
+	storage_slots_w = 6
+	storage_slots_h = 4
 	can_hold = list(
 		/obj/item/weapon/spacecash,
 		/obj/item/weapon/card,
@@ -36,9 +35,7 @@
 		/obj/item/weapon/reagent_containers/glass/beaker/vial,
 		/obj/item/device/radio/headset,
 		/obj/item/device/paicard,
-		/obj/item/weapon/stamp,
-		/obj/item/weapon/key,
-		/obj/item/clothing/accessory/badge)
+		/obj/item/weapon/stamp)
 	slot_flags = SLOT_ID
 
 	var/obj/item/weapon/card/id/front_id = null
@@ -57,7 +54,7 @@
 	if(.)
 		if(W == front_id)
 			front_id = null
-			SetName(initial(name))
+			name = initial(name)
 			update_icon()
 
 /obj/item/weapon/storage/wallet/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
@@ -65,7 +62,7 @@
 	if(.)
 		if(!front_id && istype(W, /obj/item/weapon/card/id))
 			front_id = W
-			SetName("[name] ([front_id])")
+			name = "[name] ([front_id])"
 			update_icon()
 
 /obj/item/weapon/storage/wallet/update_icon()
@@ -90,11 +87,11 @@
 
 /obj/item/weapon/storage/wallet/random/New()
 	..()
-	var/item1_type = pick( /obj/item/weapon/spacecash/bundle/c10,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50, /obj/item/weapon/spacecash/bundle/c500)
+	var/item1_type = pick( /obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50, /obj/item/weapon/spacecash/bundle/c500)
 	var/item2_type
 	if(prob(50))
-		item2_type = pick( /obj/item/weapon/spacecash/bundle/c10,/obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50, /obj/item/weapon/spacecash/bundle/c500)
-	var/item3_type = pick( /obj/item/weapon/coin/silver, /obj/item/weapon/coin/silver, /obj/item/weapon/coin/gold, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron, /obj/item/weapon/coin/iron )
+		item2_type = pick( /obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50, /obj/item/weapon/spacecash/bundle/c500)
+	var/item3_type = pick( /obj/item/weapon/spacecash/bundle/c100,/obj/item/weapon/spacecash/bundle/c1000,/obj/item/weapon/spacecash/bundle/c20,/obj/item/weapon/spacecash/bundle/c200,/obj/item/weapon/spacecash/bundle/c50, /obj/item/weapon/spacecash/bundle/c500)
 
 	spawn(2)
 		if(item1_type)

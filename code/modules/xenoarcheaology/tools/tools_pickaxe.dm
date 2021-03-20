@@ -104,7 +104,6 @@
 	icon_state = "excavation"
 	desc = "A set of picks for excavation."
 	item_state = "syringe_kit"
-	storage_slots = 7
 	w_class = ITEM_SIZE_SMALL
 	can_hold = list(/obj/item/weapon/pickaxe/brush,
 	/obj/item/weapon/pickaxe/one_pick,
@@ -114,8 +113,8 @@
 	/obj/item/weapon/pickaxe/five_pick,
 	/obj/item/weapon/pickaxe/six_pick,
 	/obj/item/weapon/pickaxe/hand)
-	max_storage_space = 18
-	max_w_class = ITEM_SIZE_SMALL
+	storage_slots_w = 12
+	storage_slots_h = 4
 	use_to_pickup = 1
 
 /obj/item/weapon/storage/excavation/New()

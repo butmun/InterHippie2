@@ -1,7 +1,6 @@
 /*
 	Mining and plant bags, can store a ridiculous number of items in order to deal with the ridiculous amount of ores or plant products
 	that can be produced by mining or (xeno)botany, however it can only hold those items.
-
 	These storages typically should also support quick gather and quick empty to make managing large numbers of items easier.
 */
 
@@ -15,8 +14,8 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT
-	max_storage_space = 200
-	max_w_class = ITEM_SIZE_NORMAL
+	storage_slots_w = 20
+	storage_slots_h = 20
 	w_class = ITEM_SIZE_LARGE
 	can_hold = list(/obj/item/weapon/ore)
 	allow_quick_gather = 1
@@ -34,8 +33,8 @@
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "plantbag"
 	slot_flags = SLOT_BELT
-	max_storage_space = 100
-	max_w_class = ITEM_SIZE_SMALL
+	storage_slots_w = 20
+	storage_slots_h = 20
 	w_class = ITEM_SIZE_NORMAL
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown,/obj/item/seeds,/obj/item/weapon/grown)
 	allow_quick_gather = 1
@@ -56,11 +55,11 @@
 	icon_state = "sheetsnatcher"
 	desc = "A patented storage system designed for any kind of mineral sheet."
 
-	storage_ui = /datum/storage_ui/default/sheetsnatcher
+	storage_ui = /datum/storage_ui/default
 
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = ITEM_SIZE_NORMAL
-	storage_slots = 7
+	storage_slots_w = 7
 
 	allow_quick_empty = 1 // this function is superceded
 	use_to_pickup = 1
@@ -128,8 +127,8 @@
 			if(!S.amount)
 				qdel(S) // todo: there's probably something missing here
 		prepare_ui()
-		if(usr.s_active)
-			usr.s_active.show_to(usr)
+		if(src in usr.s_active)
+			src.show_to(usr)
 		update_icon()
 
 // Instead of removing

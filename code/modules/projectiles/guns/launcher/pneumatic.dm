@@ -26,8 +26,8 @@
 	..()
 	item_storage = new(src)
 	item_storage.SetName("hopper")
-	item_storage.max_w_class = max_w_class
-	item_storage.max_storage_space = max_storage_space
+	item_storage.storage_slots_h = max_w_class
+	item_storage.storage_slots_w = max_storage_space
 	item_storage.use_sound = null
 
 /obj/item/weapon/gun/launcher/pneumatic/verb/set_pressure() //set amount of tank pressure.

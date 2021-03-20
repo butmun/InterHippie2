@@ -82,7 +82,7 @@
 		return 0
 
 	for(var/mob/M in range(1, master_item.loc))
-		if (M.s_active == src)
+		if (src in M.s_active)
 			src.close(M)
 	return 1
 
@@ -91,10 +91,11 @@
 
 // Used by webbings, coat pockets, etc
 /obj/item/weapon/storage/internal/pockets/New(var/newloc, var/slots, var/slot_size)
-	storage_slots = slots
-	max_w_class = slot_size
+	storage_slots_w = slot_size
+	storage_slots_h = slots * slot_size
 	..()
 
 /obj/item/weapon/storage/internal/pouch/New(var/newloc, var/storage_space)
-	max_storage_space = storage_space
+	storage_slots_w = storage_space
+	storage_slots_h = storage_space
 	..()

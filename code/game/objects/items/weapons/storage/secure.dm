@@ -24,9 +24,8 @@
 	var/emagged = 0
 	var/open = 0
 	w_class = ITEM_SIZE_NORMAL
-	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = DEFAULT_BOX_STORAGE
-	use_sound = 'sound/effects/briefcase.ogg'
+	storage_slots_w = 8
+	storage_slots_h = 2
 
 	examine(mob/user)
 		if(..(user, 1))
@@ -42,12 +41,12 @@
 				playsound(src.loc, "sparks", 50, 1)
 				return
 
-			if(isScrewdriver(W))
+			if (istype(W, /obj/item/weapon/screwdriver))
 				if (do_after(user, 20, src))
 					src.open =! src.open
 					user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
 				return
-			if(isMultitool(W) && (src.open == 1)&& (!src.l_hacking))
+			if ((istype(W, /obj/item/device/multitool)) && (src.open == 1)&& (!src.l_hacking))
 				user.show_message("<span class='notice'>Now attempting to reset internal memory, please hold.</span>", 1)
 				src.l_hacking = 1
 				if (do_after(usr, 100, src))
@@ -120,6 +119,7 @@
 					src.code += text("[]", href_list["type"])
 					if (length(src.code) > 5)
 						src.code = "ERROR"
+			src.add_fingerprint(usr)
 			for(var/mob/M in viewers(1, src.loc))
 				if ((M.client && M.machine == src))
 					src.attack_self(M)
@@ -150,8 +150,8 @@
 	throw_speed = 1
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = DEFAULT_BACKPACK_STORAGE
+	storage_slots_w = 12
+	storage_slots_h = 4
 
 	attack_hand(mob/user as mob)
 		if ((src.loc == user) && (src.locked == 1))
@@ -161,7 +161,7 @@
 		else
 			..()
 			for(var/mob/M in range(1))
-				if (M.s_active == src)
+				if (src in M.s_active)
 					src.close(M)
 		src.add_fingerprint(user)
 		return
@@ -179,8 +179,8 @@
 	icon_sparking = "safespark"
 	force = 8.0
 	w_class = ITEM_SIZE_NO_CONTAINER
-	max_w_class = ITEM_SIZE_HUGE
-	max_storage_space = 56
+	storage_slots_w = 56
+	storage_slots_h = 6
 	anchored = 1.0
 	density = 0
 	cant_hold = list(/obj/item/weapon/storage/secure/briefcase)

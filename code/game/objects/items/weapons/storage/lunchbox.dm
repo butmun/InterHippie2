@@ -1,11 +1,11 @@
 /obj/item/weapon/storage/lunchbox
-	max_storage_space = 8 //slightly smaller than a toolbox
 	name = "rainbow lunchbox"
 	icon_state = "lunchbox_rainbow"
 	item_state = "toolbox_pink"
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
 	w_class = ITEM_SIZE_NORMAL
-	max_w_class = ITEM_SIZE_SMALL
+	storage_slots_w = 6
+	storage_slots_h = 4
 	var/filled = FALSE
 	attack_verb = list("lunched")
 
@@ -46,10 +46,10 @@
 	filled = TRUE
 
 /obj/item/weapon/storage/lunchbox/nt
-	name = "Corporate brand lunchbox"
+	name = "NanoTrasen brand lunchbox"
 	icon_state = "lunchbox_nanotrasen"
 	item_state = "toolbox_blue"
-	desc = "A little lunchbox. This one is branded with the Corporate logo!"
+	desc = "A little lunchbox. This one is branded with the Nanotrasen logo!"
 
 /obj/item/weapon/storage/lunchbox/nt/filled
 	filled = TRUE
@@ -89,13 +89,3 @@
 
 /obj/item/weapon/storage/lunchbox/syndicate/filled
 	filled = TRUE
-
-/obj/item/weapon/storage/lunchbox/TCC
-	name = "\improper TCC lunchbox"
-	icon_state = "lunchbox_tcc"
-	item_state = "toolbox_syndi"
-	desc = "A little lunchbox. This one is branded with the flag of the Terran Colonial Confederation!"
-
-/obj/item/weapon/storage/lunchbox/syndicate/filled
-	filled = TRUE
-

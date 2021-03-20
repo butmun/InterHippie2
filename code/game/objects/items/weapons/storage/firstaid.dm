@@ -9,13 +9,12 @@
  */
 /obj/item/weapon/storage/firstaid
 	name = "first-aid kit"
-	desc = "An emergency medical kit."
+	desc = "It's an emergency medical kit for those serious boo-boos."
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
-	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = DEFAULT_BOX_STORAGE
-	use_sound = 'sound/effects/box.ogg'
+	storage_slots_w = 6
+	storage_slots_h = 2
 
 /obj/item/weapon/storage/firstaid/empty
 	icon_state = "firstaid"
@@ -23,7 +22,7 @@
 
 /obj/item/weapon/storage/firstaid/fire
 	name = "fire first-aid kit"
-	desc = "It's an emergency medical kit, used to treat burns."
+	desc = "It's an emergency medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
 	icon_state = "ointment"
 	item_state = "firstaid-ointment"
 
@@ -88,9 +87,10 @@
 
 	startswith = list(
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
-		/obj/item/stack/medical/advanced/bruise_pack = 3,
+		/obj/item/stack/medical/advanced/bruise_pack = 2,
 		/obj/item/stack/medical/advanced/ointment = 2,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/weapon/storage/pill_bottle/paracetamol
 		)
 
 /obj/item/weapon/storage/firstaid/combat
@@ -116,9 +116,8 @@
 	item_state = "firstaid-surgery"
 	use_sound = 'sound/effects/briefcase.ogg'
 
-	storage_slots = 14
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = null
+	storage_slots_w = 14
+	storage_slots_h = 9
 
 	can_hold = list(
 		/obj/item/weapon/bonesetter,
@@ -129,7 +128,6 @@
 		/obj/item/weapon/scalpel,
 		/obj/item/weapon/surgicaldrill,
 		/obj/item/weapon/bonegel,
-		/obj/item/weapon/FixOVein/suture,
 		/obj/item/weapon/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste
@@ -144,8 +142,8 @@
 		/obj/item/weapon/scalpel,
 		/obj/item/weapon/surgicaldrill,
 		/obj/item/weapon/bonegel,
-		/obj/item/weapon/FixOVein/suture,
-		/obj/item/stack/medical/advanced/bruise_pack
+		/obj/item/weapon/FixOVein,
+		/obj/item/stack/medical/advanced/bruise_pack,
 		)
 
 /*
@@ -158,118 +156,100 @@
 	icon = 'icons/obj/chemical.dmi'
 	item_state = "contsolid"
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = 21
-	use_sound = 'sound/effects/pillbottle.ogg'
+	storage_slots_w = 7
+	storage_slots_h = 1
 	can_hold = list(/obj/item/weapon/reagent_containers/pill,/obj/item/weapon/dice,/obj/item/weapon/paper)
 	allow_quick_gather = 1
 	use_to_pickup = 1
 	use_sound = null
 
-/obj/item/weapon/storage/pill_bottle/attack_self(mob/user)
-	if(user.get_inactive_hand())
-		to_chat(user, "<span class='notice'>You need an empty hand to take something out.</span>")
-		return
-	if(length(contents))
-		var/obj/item/I = contents[1]
-		if(!remove_from_storage(I, user))
-			return
-		if(user.put_in_inactive_hand(I))
-			to_chat(user, "<span class='notice'>You take \the [I] out of \the [src].</span>")
-			user.swap_hand()
-		else
-			I.dropInto(loc)
-			to_chat(user, "<span class='warning'>You fumble around with \the [src] and drop \the [I] on the floor.</span>")
-	else
-		to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
-
 /obj/item/weapon/storage/pill_bottle/antitox
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to counter toxins."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/antitox = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/antitox = 7)
 
 /obj/item/weapon/storage/pill_bottle/bicaridine
 	name = "bottle of Bicaridine pills"
 	desc = "Contains pills used to stabilize the severely injured."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/bicaridine = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/bicaridine = 7)
 
 /obj/item/weapon/storage/pill_bottle/dexalin_plus
 	name = "bottle of Dexalin Plus pills"
 	desc = "Contains pills used to treat extreme cases of oxygen deprivation."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/dexalin_plus = 14)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/dexalin_plus = 7)
 
 /obj/item/weapon/storage/pill_bottle/dexalin
 	name = "bottle of Dexalin pills"
 	desc = "Contains pills used to treat oxygen deprivation."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/dexalin = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/dexalin = 7)
 
 /obj/item/weapon/storage/pill_bottle/dermaline
 	name = "bottle of Dermaline pills"
 	desc = "Contains pills used to treat burn wounds."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/dermaline = 14)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/dermaline = 7)
 
 /obj/item/weapon/storage/pill_bottle/dylovene
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to treat toxic substances in the blood."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/dylovene = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/dylovene = 7)
 
 /obj/item/weapon/storage/pill_bottle/inaprovaline
 	name = "bottle of Inaprovaline pills"
 	desc = "Contains pills used to stabilize patients."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/inaprovaline = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/inaprovaline = 7)
 
 /obj/item/weapon/storage/pill_bottle/kelotane
 	name = "bottle of kelotane pills"
 	desc = "Contains pills used to treat burns."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/kelotane = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/kelotane = 7)
 
 /obj/item/weapon/storage/pill_bottle/spaceacillin
 	name = "bottle of Spaceacillin pills"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/spaceacillin = 14)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/spaceacillin = 7)
 
 /obj/item/weapon/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
 	desc = "Contains pills used to relieve pain."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/tramadol = 14)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/tramadol = 7)
 
 //Baycode specific Psychiatry pills.
 /obj/item/weapon/storage/pill_bottle/citalopram
 	name = "bottle of Citalopram pills"
 	desc = "Mild antidepressant. For use in individuals suffering from depression or anxiety. 15u dose per pill."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/citalopram = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/citalopram = 7)
 
 /obj/item/weapon/storage/pill_bottle/methylphenidate
 	name = "bottle of Methylphenidate pills"
 	desc = "Mental stimulant. For use in individuals suffering from ADHD, or general concentration issues. 15u dose per pill."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/methylphenidate = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/methylphenidate = 7)
 
 /obj/item/weapon/storage/pill_bottle/paroxetine
 	name = "bottle of Paroxetine pills"
 	desc = "High-strength antidepressant. Only for use in severe depression. 10u dose per pill. <span class='warning'>WARNING: side-effects may include hallucinations.</span>"
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/paroxetine = 14)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/paroxetine = 7)
 
 /obj/item/weapon/storage/pill_bottle/antidexafen
 	name = "bottle of cold medicine pills"
-	desc = "All-in-one cold medicine. 15u dose per pill. Safe for babies like you!"
+	desc = "All-in-one cold medicine. 10u dose per pill. Safe for babies like you!"
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/antidexafen = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/antidexafen = 7)
 
 /obj/item/weapon/storage/pill_bottle/paracetamol
 	name = "bottle of paracetamol"
 	desc = "Mild painkiller, also known as Tylenol. Won't fix the cause of your headache (unlike cyanide), but might make it bearable."
 
-	startswith = list(/obj/item/weapon/reagent_containers/pill/paracetamol = 21)
+	startswith = list(/obj/item/weapon/reagent_containers/pill/paracetamol = 7)

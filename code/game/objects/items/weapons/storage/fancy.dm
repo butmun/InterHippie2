@@ -38,7 +38,6 @@
 	else
 		var/key_count = count_by_type(contents, key_type)
 		to_chat(user, "There [key_count == 1? "is" : "are"] [key_count] [key_name]\s in the box.")
-
 /*
  * Egg Box
  */
@@ -47,8 +46,8 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "eggbox"
 	name = "egg box"
-	storage_slots = 12
-	max_w_class = ITEM_SIZE_SMALL
+	storage_slots_w = 12
+	storage_slots_h = 8
 	w_class = ITEM_SIZE_NORMAL
 
 	key_type = /obj/item/weapon/reagent_containers/food/snacks/egg
@@ -75,8 +74,8 @@
 	opened = 1 //no closed state
 	throwforce = 2
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = 5
+	storage_slots_w = 5
+	storage_slots_h = 1
 	slot_flags = SLOT_BELT
 
 	key_type = /obj/item/weapon/flame/candle
@@ -92,8 +91,8 @@
 	icon = 'icons/obj/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = 6
+	storage_slots_w = 6
+	storage_slots_h = 1
 
 	key_type = /obj/item/weapon/pen/crayon
 	startswith = list(
@@ -121,8 +120,8 @@
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = 6
+	storage_slots_w = 10
+	storage_slots_h = 1
 	throwforce = 2
 	slot_flags = SLOT_BELT
 
@@ -132,7 +131,7 @@
 /obj/item/weapon/storage/fancy/cigarettes/New()
 	..()
 	atom_flags |= ATOM_FLAG_NO_REACT|ATOM_FLAG_OPEN_CONTAINER
-	create_reagents(5 * max_storage_space)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
+	create_reagents(5 * storage_slots_w)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 
 /obj/item/weapon/storage/fancy/cigarettes/remove_from_storage(obj/item/W as obj, atom/new_location)
 	// Don't try to transfer reagents to lighters
@@ -259,11 +258,11 @@
 	item_state = "cigpacket"
 	icon = 'icons/obj/cigarettes.dmi'
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = 6
+	storage_slots_w = 6
+	storage_slots_h = 1
 	throwforce = 2
 	slot_flags = SLOT_BELT
-	storage_slots = 7
+	storage_slots_w = 7
 
 	key_type = /obj/item/clothing/mask/smokable/cigarette/cigar
 	startswith = list(/obj/item/clothing/mask/smokable/cigarette/cigar = 6)
@@ -271,7 +270,7 @@
 /obj/item/weapon/storage/fancy/cigar/New()
 	..()
 	atom_flags |= ATOM_FLAG_NO_REACT
-	create_reagents(10 * storage_slots)
+	create_reagents(10 * storage_slots_w)
 
 /obj/item/weapon/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W
@@ -288,8 +287,9 @@
 	icon_state = "vialbox"
 	name = "vial storage box"
 	w_class = ITEM_SIZE_NORMAL
-	max_w_class = ITEM_SIZE_TINY
-	storage_slots = 12
+	storage_slots_w = 12
+	storage_slots_h = 1
+
 
 	key_type = /obj/item/weapon/reagent_containers/glass/beaker/vial
 	startswith = list(/obj/item/weapon/reagent_containers/glass/beaker/vial = 12)
@@ -308,9 +308,8 @@
 	icon_state = "vialbox0"
 	item_state = "syringe_kit"
 	w_class = ITEM_SIZE_NORMAL
-	max_w_class = ITEM_SIZE_TINY
-	max_storage_space = null
-	storage_slots = 12
+	storage_slots_w = 12
+	storage_slots_h = 1
 	req_access = list(access_virology)
 
 /obj/item/weapon/storage/lockbox/vials/New()

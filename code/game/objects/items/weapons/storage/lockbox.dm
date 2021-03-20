@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/weapon/storage/lockbox
 	name = "lockbox"
@@ -6,8 +5,8 @@
 	icon_state = "lockbox+l"
 	item_state = "syringe_kit"
 	w_class = ITEM_SIZE_HUGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = 32 //The sum of the w_classes of all the items in this storage item.
+	storage_slots_w = 4
+	storage_slots_h = 24
 	req_access = list(access_armory)
 	var/locked = 1
 	var/broken = 0
@@ -75,7 +74,7 @@
 
 /obj/item/weapon/storage/lockbox/loyalty
 	name = "lockbox of loyalty implants"
-	req_access = list(access_security)
+	req_access = list()
 
 	New()
 		..()
@@ -88,7 +87,7 @@
 /obj/item/weapon/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
-	req_access = list(access_security)
+	req_access = list()
 
 	New()
 		..()

@@ -176,7 +176,7 @@
 
 /proc/fill_cigarre_package(var/obj/item/weapon/storage/fancy/cigarettes/C, var/list/reagents)
 	for(var/reagent in reagents)
-		C.reagents.add_reagent(reagent, reagents[reagent] * C.max_storage_space)
+		C.reagents.add_reagent(reagent, reagents[reagent] * C.storage_slots_h)
 
 //Rig Electrowarfare and Voice Synthesiser kit
 /obj/item/weapon/storage/backpack/satchel/syndie_kit/ewar_voice

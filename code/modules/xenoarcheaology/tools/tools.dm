@@ -33,9 +33,9 @@
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT | SLOT_POCKET
 	w_class = ITEM_SIZE_NORMAL
-	storage_slots = 50
-	max_storage_space = 200
-	max_w_class = ITEM_SIZE_NORMAL
+	storage_slots_w = 50
+	storage_slots_w = 10
+	storage_slots_h = 10
 	can_hold = list(/obj/item/weapon/fossil)
 
 /obj/item/weapon/storage/box/samplebags

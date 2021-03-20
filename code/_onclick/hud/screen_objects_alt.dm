@@ -36,6 +36,8 @@
 
 /obj/screen/close
 	name = "close"
+	icon = 'icons/mob/screen1_small.dmi'
+	icon_state = "x"
 
 /obj/screen/close/Click()
 	if(master)

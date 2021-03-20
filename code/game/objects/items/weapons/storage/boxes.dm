@@ -24,16 +24,16 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	item_state = "syringe_kit"
-	max_storage_space = DEFAULT_BOX_STORAGE
-	use_sound = 'sound/effects/box.ogg'
+	storage_slots_w = 6
+	storage_slots_h = 3
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 
 /obj/item/weapon/storage/box/large
 	name = "large box"
 	icon_state = "largebox"
 	w_class = ITEM_SIZE_LARGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = DEFAULT_LARGEBOX_STORAGE
+	storage_slots_w = 9
+	storage_slots_h = 3
 
 // BubbleWrap - A box can be folded up to make card
 /obj/item/weapon/storage/box/attack_self(mob/user as mob)
@@ -48,7 +48,7 @@
 	var/found = 0
 	// Close any open UI windows first
 	for(var/mob/M in range(1))
-		if (M.s_active == src)
+		if (src in M.s_active)
 			src.close(M)
 		if ( M == user )
 			found = 1
@@ -167,11 +167,6 @@
 	name = "box of practice shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	startswith = list(/obj/item/stack/bullets/shotgun/practice = 7)
-
-/obj/item/weapon/storage/box/brifleammo
-	name = "box of 7.62mm shells"
-	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/stack/bullets/rifle = 15)
 
 /obj/item/weapon/storage/box/sniperammo
 	name = "box of 14.5mm shells"
@@ -437,17 +432,18 @@
 	icon_state = "portafreezer"
 	item_state = "medicalpack"
 	foldable = null
-	max_w_class = ITEM_SIZE_NORMAL
+	storage_slots_w = 9
+	storage_slots_h = 3
 	w_class = ITEM_SIZE_HUGE
 	can_hold = list(/obj/item/organ, /obj/item/weapon/reagent_containers/food, /obj/item/weapon/reagent_containers/glass)
-	max_storage_space = DEFAULT_BACKPACK_STORAGE
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
 /obj/item/weapon/storage/box/checkers
 	name = "checkers box"
 	desc = "This box holds a nifty portion of checkers. Foam-shaped on the inside so that only checkers may fit."
 	icon_state = "checkers"
-	max_storage_space = 24
+	storage_slots_w = 36
+	storage_slots_h = 6
 	foldable = null
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/checker)
 	startswith = list(/obj/item/weapon/reagent_containers/food/snacks/checker = 12,

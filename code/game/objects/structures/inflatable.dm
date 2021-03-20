@@ -257,6 +257,7 @@
 	icon_state = "inf_box"
 	item_state = "syringe_kit"
 	w_class = ITEM_SIZE_LARGE
-	max_storage_space = DEFAULT_LARGEBOX_STORAGE
+	storage_slots_w = 15
+	storage_slots_h = 3
 	can_hold = list(/obj/item/inflatable)
 	startswith = list(/obj/item/inflatable/door = 2, /obj/item/inflatable/wall = 3)

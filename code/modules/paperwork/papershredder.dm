@@ -68,7 +68,7 @@
 	if(empty_into && !istype(empty_into))
 		empty_into = null
 
-	if(empty_into && empty_into.contents.len >= empty_into.storage_slots)
+	if(empty_into && empty_into.contents.len >= empty_into.storage_slots_w)
 		to_chat(user, "<span class='notice'>\The [empty_into] is full.</span>")
 		return
 
@@ -77,7 +77,7 @@
 		if(!SP) break
 		if(empty_into)
 			empty_into.handle_item_insertion(SP)
-			if(empty_into.contents.len >= empty_into.storage_slots)
+			if(empty_into.contents.len >= empty_into.storage_slots_w)
 				break
 	if(empty_into)
 		if(paperamount)

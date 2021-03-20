@@ -4,16 +4,20 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
-	storage_slots = 7
-	max_w_class = ITEM_SIZE_NORMAL
+	storage_slots_w = 15
+	storage_slots_h = 3
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
+	var/show_above_suit = 0
 
 /obj/item/weapon/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
 	set category = "Object"
 
-	use_alt_layer = !use_alt_layer
+	if(show_above_suit == -1)
+		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		return
+	show_above_suit = !show_above_suit
 	update_icon()
 
 /obj/item/weapon/storage/update_icon()
@@ -152,7 +156,7 @@
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away."
 	icon_state = "soulstonebelt"
 	item_state = "soulstonebelt"
-	storage_slots = 6
+	storage_slots_w = 6
 	can_hold = list(
 		/obj/item/device/soulstone
 		)
@@ -172,7 +176,7 @@
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "championbelt"
 	item_state = "champion"
-	storage_slots = 1
+	storage_slots_w = 1
 	can_hold = list(
 		/obj/item/clothing/mask/luchador
 		)
@@ -182,16 +186,16 @@
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swatbelt"
 	item_state = "swatbelt"
-	storage_slots = 9
+	storage_slots_w = 9
 
 /obj/item/weapon/storage/belt/waistpack
 	name = "waist pack"
 	desc = "A small bag designed to be worn on the waist. May make your butt look big."
 	icon_state = "fannypack_white"
 	item_state = "fannypack_white"
-	storage_slots = null
-	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = ITEM_SIZE_SMALL * 4
+	storage_slots_w = null
+	storage_slots_w = 8
+	storage_slots_h = 2
 	slot_flags = SLOT_BELT | SLOT_BACK
 
 /obj/item/weapon/storage/belt/waistpack/big
@@ -200,8 +204,8 @@
 	icon_state = "fannypack_big_white"
 	item_state = "fannypack_big_white"
 	w_class = ITEM_SIZE_LARGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = ITEM_SIZE_NORMAL * 4
+	storage_slots_w = 12
+	storage_slots_h = 3
 
 /obj/item/weapon/storage/belt/waistpack/big/New()
 	..()

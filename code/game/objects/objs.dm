@@ -6,6 +6,8 @@
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
+	var/x_class
+	var/y_class
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
 	var/throwforce = 1
@@ -15,6 +17,13 @@
 	var/damtype = "brute"
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
+
+/obj/New()
+	..()
+	if(x_class == null)
+		x_class = w_class
+	if(y_class == null)
+		y_class = x_class
 
 /obj/Destroy()
 	STOP_PROCESSING(SSobj, src)

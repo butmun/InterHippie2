@@ -19,9 +19,11 @@
 		)
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
-	max_w_class = ITEM_SIZE_LARGE
-	max_storage_space = DEFAULT_BACKPACK_STORAGE
 	open_sound = 'sound/effects/unzip.ogg'
+	storage_slots_w = 6
+	storage_slots_h = 12
+
+	use_dynamic_slowdown = 1
 
 /obj/item/weapon/storage/backpack/equipped()
 	if(!has_extension(src, /datum/extension/appearance))
@@ -47,8 +49,8 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = 56
+	storage_slots_w = 10
+	storage_slots_h = 16
 
 	New()
 		..()
@@ -73,8 +75,8 @@
 	icon_state = "giftbag0"
 	item_state = "giftbag"
 	w_class = ITEM_SIZE_HUGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = 400 // can store a ton of shit!
+	storage_slots_w = 10
+	storage_slots_h = 10
 	item_state_slots = null
 
 /obj/item/weapon/storage/backpack/cultpack
@@ -114,7 +116,7 @@
 
 /obj/item/weapon/storage/backpack/toxins
 	name = "\improper toxins backpack"
-	desc = "It's a light backpack modeled for use in laboratories and other scientific institutions. The colors on it denote it as a backpack used in toxin research."
+	desc = "It's a light backpack modeled for use in laboratories and other scientific institutions."
 	icon_state = "ntpack"
 
 /obj/item/weapon/storage/backpack/hydroponics
@@ -147,7 +149,8 @@
 	icon_state = "duffle"
 	item_state_slots = null
 	w_class = ITEM_SIZE_HUGE
-	max_storage_space = DEFAULT_BACKPACK_STORAGE + 10
+	storage_slots_w = 16
+	storage_slots_h = 6
 
 /obj/item/weapon/storage/backpack/dufflebag/New()
 	..()
@@ -159,6 +162,7 @@
 	name = "black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
+	slot_flags = null
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/New()
 	..()
@@ -203,6 +207,9 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 
+	storage_slots_w = 12
+	storage_slots_h = 6
+
 /obj/item/weapon/storage/backpack/satchel/grey
 	name = "grey satchel"
 
@@ -235,23 +242,10 @@
 	name = "auburn leather satchel"
 	color = "#512828"
 
-/obj/item/weapon/storage/backpack/satchel/pocketbook //black, master type
-	name = "black pocketbook"
-	desc = "A neat little folding clasp pocketbook with a shoulder sling."
-	icon_state = "pocketbook"
-	w_class = ITEM_SIZE_HUGE // to avoid recursive backpacks
-	slot_flags = SLOT_BACK
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = DEFAULT_LARGEBOX_STORAGE
-	color = "#212121"
-
-/obj/item/weapon/storage/backpack/satchel/pocketbook/brown
-	name = "brown pocketbook"
-	color = "#3d2711"
-
-/obj/item/weapon/storage/backpack/satchel/pocketbook/reddish
-	name = "auburn pocketbook"
-	color = "#512828"
+/obj/item/weapon/storage/backpack/satchel_norm
+	name = "satchel"
+	desc = "A trendy looking satchel."
+	icon_state = "satchel-norm"
 
 /obj/item/weapon/storage/backpack/satchel_eng
 	name = "industrial satchel"
@@ -318,6 +312,24 @@
 	name = "black leather satchel"
 	desc = "It's a very fancy satchel made with fine black leather."
 	icon_state = "satchel_black"
+
+/obj/item/weapon/storage/backpack/satchel/pocketbook //black, master type
+	name = "black pocketbook"
+	desc = "A neat little folding clasp pocketbook with a shoulder sling."
+	icon_state = "pocketbook"
+	w_class = ITEM_SIZE_HUGE // to avoid recursive backpacks
+	slot_flags = SLOT_BACK
+	storage_slots_w = 12
+	storage_slots_h = 4
+	color = "#212121"
+
+/obj/item/weapon/storage/backpack/satchel/pocketbook/brown
+	name = "brown pocketbook"
+	color = "#3d2711"
+
+/obj/item/weapon/storage/backpack/satchel/pocketbook/reddish
+	name = "auburn pocketbook"
+	color = "#512828"
 
 //ERT backpacks.
 /obj/item/weapon/storage/backpack/ert
@@ -406,7 +418,7 @@
 	desc = "A sturdy military-grade backpack with low-profile straps. Designed to work well with armor."
 	icon_state = "rucksack_black"
 	w_class = ITEM_SIZE_HUGE
-	max_storage_space = DEFAULT_BACKPACK_STORAGE + 10
+	storage_slots_w = DEFAULT_BACKPACK_STORAGE + 10
 
 /obj/item/weapon/storage/backpack/rucksack/New()
 	..()

@@ -4,6 +4,7 @@
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
 
+
 /obj/item/weapon/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
@@ -12,9 +13,10 @@
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 
-	var/max_w_class = ITEM_SIZE_SMALL //Max size of objects that this object can store (in effect only if can_hold isn't set)
-	var/max_storage_space = null //Total storage cost of items this can hold. Will be autoset based on storage_slots if left null.
-	var/storage_slots = null //The number of storage slots in this container.
+	var/list/stored_locations = new/list()
+
+	var/storage_slots_w = null
+	var/storage_slots_h = null
 
 	var/use_to_pickup	//Set this to make it possible to use this item in an inverse way, so you can have the item in your hand and click items on the floor to pick them up.
 	var/allow_quick_empty	//Set this variable to allow the object to have the 'empty' verb, which dumps all the contents on the floor.
@@ -28,6 +30,7 @@
 	//the assoc value can either be the quantity, or a list whose first value is the quantity and the rest are args.
 	var/list/startswith
 	var/datum/storage_ui/storage_ui = /datum/storage_ui/default
+	var/use_dynamic_slowdown = 1
 
 /obj/item/weapon/storage/Destroy()
 	QDEL_NULL(storage_ui)
@@ -108,9 +111,25 @@
 	for(var/obj/item/I in contents)
 		. += I.get_storage_cost()
 
+
+/obj/item/weapon/storage/proc/get_from_point(var/store_x, var/store_y, var/store_w = 1, var/store_h = 1)
+	for (var/obj/item/I in contents)
+		if(stored_locations[I])
+			var/datum/vec2/stored_at = stored_locations[I]
+			if(store_x + store_w <= stored_at.x || store_x >= stored_at.x + I.x_class || store_y + store_h <= stored_at.y || store_y >= stored_at.y + I.y_class)
+				continue
+			return I
+	return 0
+
+/obj/item/weapon/storage/proc/find_space(var/obj/item/W)
+	for(var/y = 1 to storage_slots_h - (W.y_class - 1))
+		for(var/x = 1 to storage_slots_w - (W.x_class - 1))
+			if(!get_from_point(x,y,W.x_class,W.y_class))
+				return new/datum/vec2(x,y)
+
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/weapon/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = 0)
+/obj/item/weapon/storage/proc/can_be_inserted(obj/item/W, mob/user, var/store_x = -1, var/store_y = -1, stop_messages = 0)
 	if(!istype(W)) return //Not an item
 
 	if(user && user.isEquipped(W) && !user.canUnEquip(W))
@@ -118,10 +137,6 @@
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
-	if(storage_slots != null && contents.len >= storage_slots)
-		if(!stop_messages)
-			to_chat(user, "<span class='notice'>\The [src] is full, make some space.</span>")
-		return 0 //Storage item is full
 
 	if(W.anchored)
 		return 0
@@ -150,9 +165,19 @@
 			to_chat(user, "<span class='notice'>\The [src] cannot hold \the [W].</span>")
 		return 0
 
-	if (max_w_class != null && W.w_class > max_w_class)
-		if(!stop_messages)
-			to_chat(user, "<span class='notice'>\The [W] is too big for this [src.name].</span>")
+	if(store_x < 0 || store_y < 0)
+		var/datum/vec2/new_loc = find_space(W)
+		if(!istype(new_loc))
+			if(!stop_messages)
+				to_chat(user, "<span class='notice'>\The [src] is too full, make some space.</span>")
+			return 0
+		store_x = new_loc.x
+		store_y = new_loc.y
+
+	if(store_x < 1 || store_y < 1 || store_x - 1 + W.x_class > storage_slots_w || store_y - 1 + W.y_class > storage_slots_h)
+		return 0
+
+	if(get_from_point(store_x, store_y, W.x_class, W.y_class)) // Obstructed.
 		return 0
 
 	var/total_storage_space = W.get_storage_cost()
@@ -160,24 +185,27 @@
 		if(!stop_messages)
 			to_chat(user, "<span class='notice'>\The [W] cannot be placed in [src].</span>")
 		return 0
-
-	total_storage_space += storage_space_used() //Adds up the combined w_classes which will be in the storage item if the item is added to it.
-	if(total_storage_space > max_storage_space)
-		if(!stop_messages)
-			to_chat(user, "<span class='notice'>\The [src] is too full, make some space.</span>")
-		return 0
-
 	return 1
 
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, var/prevent_warning = 0, var/NoUpdate = 0)
+/obj/item/weapon/storage/proc/handle_item_insertion(var/obj/item/W, var/store_x = -1, var/store_y = -1, var/prevent_warning = 0, var/NoUpdate = 0)
 	if(!istype(W))
 		return 0
 	if(istype(W.loc, /mob))
 		var/mob/M = W.loc
 		M.remove_from_mob(W)
+
+	if(store_x < 0 || store_y < 0)
+		var/datum/vec2/new_loc = find_space(W)
+		if(!istype(new_loc))
+			return 0
+		store_x = new_loc.x
+		store_y = new_loc.y
+
+	stored_locations[W] = new/datum/vec2(store_x, store_y)
+
 	W.forceMove(src)
 	W.on_enter_storage(src)
 	if(usr)
@@ -288,13 +316,9 @@
 /obj/item/weapon/storage/proc/gather_all(var/turf/T, var/mob/user)
 	var/success = 0
 	var/failure = 0
-	var/list/rejections = list()
 
 	for(var/obj/item/I in T)
-		if(I.type in rejections)			//Skip anything that already failed
-			continue
 		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
-			rejections += I.type
 			failure = 1
 			continue
 		success = 1
@@ -344,9 +368,6 @@
 	else
 		verbs -= /obj/item/weapon/storage/verb/toggle_gathering_mode
 
-	if(isnull(max_storage_space) && !isnull(storage_slots))
-		max_storage_space = storage_slots*base_storage_cost(max_w_class)
-
 	storage_ui = new storage_ui(src)
 	prepare_ui()
 
@@ -364,6 +385,16 @@
 					new item_path(src)
 		update_icon()
 
+	for(var/obj/O in contents)
+		var/datum/vec2/stored_at = stored_locations[O]
+		if(!stored_at)
+			stored_at = find_space(O)
+			// If you can't fit it, just... drop where you are.
+			if(!stored_at)
+				O.loc = get_turf(src)
+				log_debug("<span class='warning'>[type] spawned with item that does not fit [O]</span>")
+			stored_locations[O] = stored_at
+
 /obj/item/weapon/storage/emp_act(severity)
 	if(!istype(src.loc, /mob/living))
 		for(var/obj/O in contents)
@@ -378,15 +409,14 @@
 			return 1
 
 /obj/item/weapon/storage/proc/make_exact_fit()
-	storage_slots = contents.len
-
 	can_hold.Cut()
-	max_w_class = 0
-	max_storage_space = 0
+	storage_slots_w = 0
+	storage_slots_h = 0
 	for(var/obj/item/I in src)
 		can_hold[I.type]++
-		max_w_class = max(I.w_class, max_w_class)
-		max_storage_space += I.get_storage_cost()
+		var/datum/vec2/stored_at = stored_locations[I]
+		storage_slots_w = max(storage_slots_w, stored_at.x + I.x_class - 1)
+		storage_slots_h = max(storage_slots_h, stored_at.y + I.y_class - 1)
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.

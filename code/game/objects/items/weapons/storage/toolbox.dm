@@ -13,8 +13,8 @@
 	throw_speed = 1
 	throw_range = 7
 	w_class = ITEM_SIZE_LARGE
-	max_w_class = ITEM_SIZE_NORMAL
-	max_storage_space = DEFAULT_LARGEBOX_STORAGE //enough to hold all starting contents
+	storage_slots_w = 12
+	storage_slots_h = 4
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	block_chance = 10
@@ -72,7 +72,7 @@
 	desc = "A toolbox in black, with stylish red trim. This one feels particularly heavy."
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
-	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
+	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)
 	force = 7.0
 
 /obj/item/weapon/storage/toolbox/syndicate/New()
