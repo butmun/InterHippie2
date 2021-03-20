@@ -55,6 +55,7 @@
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.
 	var/thirst_factor = DEFAULT_THIRST_FACTOR // Multiplier for thirst.
 	var/taste_sensitivity = TASTE_NORMAL      // How sensitive the species is to minute tastes.
+	var/genitals = 0
 
 	var/min_age = 17
 	var/max_age = 60 //people don't live for long in our universe
