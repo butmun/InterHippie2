@@ -533,6 +533,7 @@
 
 
 		occupant.forceMove(get_turf(src))
+		occupant.resting = 0
 		playsound(src, 'sound/machines/cryoexit.ogg', 40)
 		set_occupant(null)
 
