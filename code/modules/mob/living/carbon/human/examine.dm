@@ -133,7 +133,7 @@
 		msg += "[T.He] [T.is] wearing [wear_id.get_examine_line(user)].\n"
 
 	if(wear_amulet)
-		msg += "[T.He] [T.is] wearing [wear_amulet.get_examine_line(user)].\n"
+		msg += "[T.He] [T.is] wearing [wear_amulet.get_examine_line(user)] on his neck.\n"
 
 	//handcuffed?
 	if(handcuffed)
