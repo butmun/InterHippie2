@@ -1605,6 +1605,8 @@
 #include "code\modules\integrated_electronics\~defines.dm"
 #include "code\modules\integrated_electronics\prefab\prefab.dm"
 #include "code\modules\integrated_electronics\prefab\prefabs.dm"
+#include "code\modules\interpost\emoji.dm"
+#include "code\modules\interpost\flag.dm"
 #include "code\modules\item_worth\_helpers.dm"
 #include "code\modules\item_worth\item_worth.dm"
 #include "code\modules\item_worth\material_weapons.dm"
