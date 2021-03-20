@@ -50,18 +50,18 @@
 	store_x = x
 	store_y = y
 
-/obj/screen/storage/gridbox/proc/place_image(var/ic_state, var/d, var/c, var/px, var/py)
-	var/image/I = image('icons/mob/screen1_small.dmi', ic_state, dir = d, pixel_x = px, pixel_y = py)
+/obj/screen/storage/gridbox/proc/place_image(var/d, var/c, var/px, var/py)
+	var/image/I = image('icons/mob/screen1_small.dmi', icon_state, dir = d, pixel_x = px, pixel_y = py)
 	I.color = c
 	return I
 
-/obj/screen/storage/gridbox/MouseEntered(location, control, params)
-	. = ..()
+/obj/screen/storage/gridbox/MouseEntered()
+	..()
 	var/obj/item/weapon/storage/storage = master
 	if(istype(storage))
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
-			border_overlay = new /obj/screen( )
+			border_overlay = new()
 			border_overlay.icon_state = "blank"
 			border_overlay.mouse_opacity = 0
 			border_overlay.screen_loc = screen_loc
