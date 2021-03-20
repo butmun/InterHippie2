@@ -352,7 +352,7 @@
 	user.client.screen += csu.close_button
 
 	is_seeing |= user
-	user.s_active |= storage
+	user.s_active = storage
 
 /datum/storage_ui/default/hide_from(var/mob/user)
 	is_seeing -= user
