@@ -144,3 +144,13 @@
 			range -= 0.333
 
 		playsound(T, S, volume, 1, range)
+
+	var/obj/effect/decal/cleanable/blood/B = locate(/obj/effect/decal/cleanable/blood) in T
+
+	if(B)
+		playsound(T, "liquid_step", 15)
+
+	var/obj/effect/decal/cleanable/bloodpool/BP = locate(/obj/effect/decal/cleanable/bloodpool) in T
+
+	if(BP && !B) // to prevent double sounds
+		playsound(T, "liquid_step", 15)

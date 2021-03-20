@@ -17,3 +17,7 @@
 #define SMOOTH_ALL 1	//Smooth with all of type
 #define SMOOTH_WHITELIST 2	//Smooth with a whitelist of subtypes
 #define SMOOTH_BLACKLIST 3 //Smooth with all but a blacklist of subtypes
+
+// Lighting helpers.
+#define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
+#define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))

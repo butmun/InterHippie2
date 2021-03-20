@@ -6,5 +6,5 @@
 	ASSERT(zlevel)
 
 	for(var/turf/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
-		if(T.dynamic_lighting)
+		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			T.lighting_build_overlay()

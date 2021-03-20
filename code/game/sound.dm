@@ -145,6 +145,8 @@ GLOBAL_LIST_INIT(blunt_swing, list('sound/weapons/blunt_swing1.ogg','sound/weapo
 GLOBAL_LIST_INIT(swing_sound, list('sound/weapons/swing_01.ogg', 'sound/weapons/swing_02.ogg', 'sound/weapons/swing_03.ogg'))
 GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.ogg','sound/weapons/chop3.ogg'))
 GLOBAL_LIST_INIT(truekeyboard_sound, list('sound/effects/keyboard/keyboard1.ogg', 'sound/effects/keyboard/keyboard2.ogg', 'sound/effects/keyboard/keyboard3.ogg', 'sound/effects/keyboard/keyboard4.ogg'))
+GLOBAL_LIST_INIT(blood_sound, list('sound/effects/gore/blood1.ogg', 'sound/effects/gore/blood2.ogg', 'sound/effects/gore/blood3.ogg', 'sound/effects/gore/blood3.ogg', 'sound/effects/gore/blood4.ogg', 'sound/effects/gore/blood5.ogg', 'sound/effects/gore/blood6.ogg'))
+GLOBAL_LIST_INIT(liquid_step_sound, list('sound/effects/footsteps/water1.ogg', 'sound/effects/footsteps/water2.ogg', 'sound/effects/footsteps/water3.ogg', 'sound/effects/footsteps/water4.ogg'))
 
 /*
 job music
@@ -155,7 +157,6 @@ GLOBAL_VAR_INIT(religion_combat_music, pick(list('sound/music/religion_combat_01
 GLOBAL_VAR_INIT(jester_combat_music, pick(list('sound/music/jester_combat_01.ogg','sound/music/jester_combat_02.ogg')))
 GLOBAL_VAR_INIT(security_combat_music, pick(list('sound/music/security_combat_01.ogg','sound/music/security_combat_02.ogg')))
 
-GLOBAL_LIST_INIT(blood_drip, list('sound/effects/gore/blood1.ogg', 'sound/effects/gore/blood2.ogg', 'sound/effects/gore/blood3.ogg', 'sound/effects/gore/blood3.ogg', 'sound/effects/gore/blood4.ogg', 'sound/effects/gore/blood5.ogg', 'sound/effects/gore/blood6.ogg'))
 //We should look into making this shit work
 /*
 var/list/climb_sound = list(
@@ -497,6 +498,8 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("far_fire") 			soundin = pick(GLOB.far_fire_sound)
 			if ("explosion") 			soundin = pick(GLOB.explosion_sound)
 			if ("sparks") 				soundin = pick(GLOB.spark_sound)
+			if ("blood_drip")			soundin = pick (GLOB.blood_sound)
+			if ("liquid_step")			soundin = pick (GLOB.liquid_step_sound)
 			if ("rustle") 				soundin = pick(GLOB.rustle_sound)
 			if ("punch") 				soundin = pick(GLOB.punch_sound)
 			if ("clownstep") 			soundin = pick(GLOB.clown_sound)

@@ -83,7 +83,7 @@
 		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting))
 			reconsider_lights()
 		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
+			if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(W))
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
