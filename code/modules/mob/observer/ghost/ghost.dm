@@ -552,7 +552,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/ghost/verb/respawn()
 	set name = "Respawn"
 	set category = "OOC"
-	set hidden = 1 //Finally.
 
 	if(!check_rights(R_ADMIN))	return
 
