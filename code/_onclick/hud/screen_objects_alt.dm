@@ -32,34 +32,6 @@
 
 /obj/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
-	var/list/object_overlays = list() // Required for inventory/screen overlays.
-
-/obj/screen/inventory/MouseEntered()
-	..()
-	add_overlays()
-
-/obj/screen/inventory/MouseExited()
-	..()
-	cut_overlay(object_overlays)
-	object_overlays.Cut()
-
-/obj/screen/inventory/proc/add_overlays()
-
-	var/mob/user = hud.mymob
-
-	if(hud && user && slot_id)
-		var/obj/item/holding = user.get_active_hand()
-		if(!holding || user.get_equipped_item(slot_id))
-			return
-
-		var/image/item_overlay = image(holding)
-		item_overlay.alpha = 92
-		if(!holding.mob_can_equip(user, slot_id, disable_warning = TRUE))
-			item_overlay.color = "#ff0000"
-		else
-			item_overlay.color = "#00ff00"
-		object_overlays += item_overlay
-		add_overlay(object_overlays)
 
 
 /obj/screen/close
@@ -97,8 +69,6 @@
 
 /obj/screen/storage
 	name = "storage"
-	layer = HUD_BASE_LAYER
-	screen_loc = "7,7 to 10,8"
 
 /obj/screen/storage/Click()
 	if(!usr.canClick())
