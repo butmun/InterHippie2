@@ -142,6 +142,9 @@ SUBSYSTEM_DEF(lighting)
 		var/atom/movable/lighting_overlay/O = overlay_queue[oq_idex]
 		oq_idex += 1
 
+		if(QDELETED(O))
+			continue
+
 		O.update_overlay()
 		O.needs_update = 0
 

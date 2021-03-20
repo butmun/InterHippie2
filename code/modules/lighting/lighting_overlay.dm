@@ -124,7 +124,6 @@
 
 /atom/movable/lighting_overlay/Destroy()
 	total_lighting_overlays--
-	SSlighting.overlay_queue -= src
 
 	var/turf/T = loc
 	if(istype(T))
