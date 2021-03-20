@@ -7,7 +7,7 @@
 	l_ear = null
 	uniform = null
 	shoes = null
-	id_slot = slot_wear_mask
+	id_slot = slot_wear_amulet
 	head = null
 	suit = null
 	id_type = /obj/item/weapon/card/id/cargo/head
@@ -19,7 +19,7 @@
 	l_ear = null
 	uniform = null
 	shoes = null
-	id_slot = slot_wear_mask
+	id_slot = slot_wear_amulet
 	head = null
 	suit = null
 	pda_slot = slot_wear_id
@@ -31,7 +31,7 @@
 	l_ear = null
 	uniform = null
 	shoes = null
-	id_slot = slot_wear_mask
+	id_slot = slot_wear_amulet
 	head = null
 	suit = null
 	id_type = /obj/item/weapon/card/id/cargo/mining

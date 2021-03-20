@@ -14,7 +14,7 @@ body {
 	background-size: 50%;
 	background-attachment: fixed;
 	font-family: Roboto Condensed;
-	font-size: 13px;
+	font-size: 15px;
 	font-color: #CCCCE2;
 	line-height: 1.2;
 	overflow-x: hidden;
@@ -315,8 +315,8 @@ em						{font-style: normal;	font-weight: bold;}
 .inqradio				{color: #696969;}
 /* Miscellaneous */
 .name					{font-weight: bold;}
-.alert					{color: #d82020; text-shadow: 0 0 2px #d82020;}
-h1.alert, h2.alert		{color: #a4bad6;}
+.alert					{color: #d82020; text-shadow: 0 0 4px #d82020}
+h1.alert, h2.alert		{color: #a4bad6; text-shadow: 0 0 8px #a4bad6}
 
 .emote					{font-style: italic;}
 
@@ -326,12 +326,12 @@ h1.alert, h2.alert		{color: #a4bad6;}
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
 
-.danger					{color: #c51e1e; text-shadow: 0 0 7px #c51e1e;}
-.warning				{color: #c51e1e; text-shadow: 0 0 4px #c51e1e;}
-.boldannounce			{color: #c51e1e;	font-weight: bold; text-shadow: 0 0 3px #c51e1e;}
+.danger					{color: #c51e1e; text-shadow: 0 0 7px #c51e1e}
+.warning				{color: #c51e1e;	font-style: italic; text-shadow: 0 0 4px #c51e1e}
+.boldannounce			{color: #c51e1e;	font-weight: bold; text-shadow: 0 0 3px #c51e1e}
 .rose					{color: #ff5050;}
-.info					{color: #9696E4; text-shadow: 0 0 3px #9696E4;}
-.notice					{color: #7A8ABD; text-shadow: 0 0 4px #7A8ABD;}
+.info					{color: #6685f5; text-shadow: 0 0 5px #6685f5}
+.notice					{color: #6685f5; text-shadow: 0 0 3px #6685f5}
 .alium					{color: #00ff00;}
 .cult					{color: #aa1c1c;}
 

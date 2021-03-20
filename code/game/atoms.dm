@@ -625,9 +625,8 @@ its easier to just keep the beam vertical.
 		var/mob/living/carbon/human/H = mob
 		if(a.mouse_opacity)  // i spread this out to make it more "readable"
 			H.hovertext.maptext = "<center><span style=\"\
-			color: #535AB2; \
-			font-weight: bold; \
-			text-shadow: 0 0 15px #535AB2; \
+			color: #FFF3D1; \
+			font-weight: bolder; \
 			font-family: 'Bahnschrift', Constantia, sans-serif; \
 			\">[uppertext(a.name)]\
 			</span></center>"

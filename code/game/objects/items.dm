@@ -497,6 +497,7 @@ var/list/global/slot_flags_enumeration = list(
 	"[slot_r_ear]" = SLOT_EARS|SLOT_TWOEARS,
 	"[slot_w_uniform]" = SLOT_ICLOTHING,
 	"[slot_wear_id]" = SLOT_ID,
+	"[slot_wear_amulet]" = SLOT_AMULET,
 	"[slot_tie]" = SLOT_TIE,
 	)
 

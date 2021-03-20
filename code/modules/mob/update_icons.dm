@@ -46,6 +46,9 @@
 /mob/proc/update_inv_wear_id()
 	return
 
+/mob/proc/update_inv_wear_amulet()
+	return
+
 /mob/proc/update_inv_shoes()
 	return
 

@@ -90,6 +90,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(slot_wear_id)
 			// the only relevant check for this is the uniform check
 			return 1
+		if(slot_wear_amulet)
+			return has_organ(BP_HEAD)
 		if(slot_l_ear)
 			return has_organ(BP_HEAD)
 		if(slot_r_ear)
@@ -183,6 +185,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 	else if (W == wear_id)
 		wear_id = null
 		update_inv_wear_id()
+	else if (W == wear_amulet)
+		wear_amulet = null
+		update_inv_wear_amulet()
 	else if (W == r_store)
 		r_store = null
 		update_inv_pockets()
@@ -265,6 +270,10 @@ This saves us from having to call add_fingerprint() any time something is put in
 			update_inv_belt(redraw_mob)
 			if(W.equipsound)//So like a sword being sheathed.
 				playsound(src, W.equipsound, 50, 1)
+		if(slot_wear_amulet)
+			src.wear_amulet = W
+			W.equipped(src, slot)
+			update_inv_wear_amulet(redraw_mob)
 		if(slot_wear_id)
 			src.wear_id = W
 			W.equipped(src, slot)

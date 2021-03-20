@@ -122,6 +122,8 @@
 #define ui_l_ear "0,12"
 #define ui_r_ear "-2,12"
 
+#define ui_amulet "0,13"
+
 #define ui_head "-1,14"
 
 //#define ui_swapbutton "6:-16,1:5" //Unused

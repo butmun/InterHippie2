@@ -15,10 +15,12 @@
 #define SLOT_BELT       0x200
 #define SLOT_BACK       0x400
 #define SLOT_POCKET     0x800  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
-#define SLOT_DENYPOCKET 0x1000  // This is to  deny items with a w_class of 2 or 1 from fitting in pockets.
+#define SLOT_AMULET     0x1000  // amulet (id cards) slot
 #define SLOT_TWOEARS    0x2000
 #define SLOT_TIE        0x4000
 #define SLOT_HOLSTER	0x8000 //16th bit - higher than this will overflow
+
+#define SLOT_DENYPOCKET 0x1
 
 #define ACCESSORY_SLOT_UTILITY  "Utility"
 #define ACCESSORY_SLOT_HOLSTER  "Holster"
@@ -76,7 +78,8 @@
 #define slot_r_ear       20
 #define slot_legs        21
 #define slot_tie         22
-#define slot_last        22
+#define slot_wear_amulet 23
+#define slot_last        23
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.
@@ -95,6 +98,7 @@
 #define slot_legcuffed_str "slot_legcuffed"
 #define slot_wear_mask_str 	"slot_wear_mask"
 #define slot_wear_id_str  	"slot_wear_id"
+#define slot_wear_amulet_str "slot_wear_amulet"
 #define slot_gloves_str  	"slot_gloves"
 #define slot_glasses_str  	"slot_glasses"
 #define slot_s_store_str	"slot_s_store"
@@ -210,6 +214,7 @@ var/list/default_onmob_icons = list(
 		slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',
 		slot_belt_str = 'icons/mob/onmob/belt.dmi',
+		slot_wear_amulet_str = 'icons/mob/onmob/amulet.dmi',
 		slot_back_str = 'icons/mob/onmob/back.dmi',
 		slot_l_ear_str = 'icons/mob/onmob/ears.dmi',
 		slot_r_ear_str = 'icons/mob/onmob/ears.dmi',

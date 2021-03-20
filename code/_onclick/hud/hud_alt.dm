@@ -104,6 +104,8 @@
 						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
 					if(slot_wear_id)
 						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
+					if(slot_wear_amulet)
+						if(H.wear_amulet) H.wear_amulet.screen_loc = hud_data["loc"]
 					if(slot_belt)
 						if(H.belt)    H.belt.screen_loc =    hud_data["loc"]
 					if(slot_back)
@@ -126,6 +128,8 @@
 						if(H.s_store) H.s_store.screen_loc = null
 					if(slot_wear_id)
 						if(H.wear_id) H.wear_id.screen_loc = null
+					if(slot_wear_amulet)
+						if(H.wear_amulet) H.wear_amulet.screen_loc = null
 					if(slot_belt)
 						if(H.belt)    H.belt.screen_loc =    null
 					if(slot_back)

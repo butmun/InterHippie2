@@ -39,6 +39,7 @@ var/list/outfits_decls_by_type_
 	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
+	var/amulet = null
 	var/list/backpack_contents = list() // In the list(path=count,otherpath=count) format
 
 	var/id_type
@@ -144,6 +145,8 @@ var/list/outfits_decls_by_type_
 		H.equip_to_slot_or_del(new mask(H),slot_wear_mask)
 	if(head)
 		H.equip_to_slot_or_del(new head(H),slot_head)
+	if(amulet)
+		H.equip_to_slot_or_del(new amulet(H),slot_wear_amulet)
 	if(l_ear)
 		var/l_ear_path = (OUTFIT_ADJUSTMENT_PLAIN_HEADSET & equip_adjustments) && ispath(l_ear, /obj/item/device/radio/headset) ? /obj/item/device/radio/headset : l_ear
 		if(!SSticker.eof || SSticker.eof.id != "CANYOUHEARMEMAJTOM")

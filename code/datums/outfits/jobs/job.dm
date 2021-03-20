@@ -6,7 +6,7 @@
 	l_ear = /obj/item/device/radio/headset
 	shoes = /obj/item/clothing/shoes/jackboots
 
-	id_slot = slot_wear_mask
+	id_slot = slot_wear_amulet
 	id_type = /obj/item/weapon/card/id/civilian
 	pda_slot = slot_wear_id
 	pda_type = /obj/item/device/pda

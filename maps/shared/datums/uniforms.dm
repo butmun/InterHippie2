@@ -4,7 +4,7 @@
 	uniform = null
 	shoes = null
 	id_type = /obj/item/weapon/card/id/dreyfus/gold
-	id_slot = slot_wear_mask
+	id_slot = slot_wear_amulet
 	pda_type = /obj/item/device/pda/captain
 	pda_slot = slot_wear_id
 	head = null//FIT FOR A FUCKING retard

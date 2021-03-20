@@ -17,7 +17,7 @@
 	icon = 'icons/obj/card.dmi'
 	w_class = ITEM_SIZE_TINY
 	obj_flags = OBJ_FLAG_NO_EMBED
-	slot_flags = SLOT_EARS
+	slot_flags = SLOT_EARS | SLOT_AMULET
 	var/associated_account_number = 0
 
 	var/list/files = list(  )
@@ -100,7 +100,7 @@ var/const/NO_EMAG_ACT = -50
 
 	var/access = list()
 	var/registered_name = "Unknown" // The name registered_name on the card
-	slot_flags = SLOT_ID | SLOT_MASK
+	slot_flags = SLOT_ID | SLOT_AMULET
 
 	var/age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"

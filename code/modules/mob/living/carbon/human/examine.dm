@@ -62,7 +62,7 @@
 
 
 
-	if((!skipface || wear_id) && src != user)
+	if((!skipface || wear_id || wear_amulet) && src != user)
 		var/mob/living/carbon/human/H = user
 		var/classdesc = get_social_description(H)
 		if(src?.mind?.assigned_role)
@@ -131,6 +131,9 @@
 	//ID
 	if(wear_id)
 		msg += "[T.He] [T.is] wearing [wear_id.get_examine_line(user)].\n"
+
+	if(wear_amulet)
+		msg += "[T.He] [T.is] wearing [wear_amulet.get_examine_line(user)].\n"
 
 	//handcuffed?
 	if(handcuffed)
