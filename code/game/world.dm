@@ -73,8 +73,8 @@
 	SetupLogs()
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
+	diary = "data/logs/[date_string].log"
+	log_startup()
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
@@ -109,7 +109,7 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
+	log_topic(T, addr, master, key)
 
 	if (T == "ping")
 		var/x = 1
@@ -457,6 +457,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		*/
 
 	Master.Shutdown()
+	shutdown_logging()
 
 	var/datum/chatOutput/co
 	for(var/client/C in GLOB.clients)

@@ -11,6 +11,17 @@
 
 /var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
 
+// logging.dm
+/proc/log_startup()
+	var/static/already_logged = FALSE
+	if (!already_logged)
+		WRITE_LOG(diary, "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]")
+		already_logged = TRUE
+	else
+		crash_with("log_startup() was called more then once")
+
+/proc/log_topic(T, addr, master, key, var/list/queryparams)
+	WRITE_LOG(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key], auth:[queryparams["auth"] ? queryparams["auth"] : "null"] [log_end]")
 
 /proc/log_ss(subsystem, text, log_world = TRUE)
 	if (!subsystem)
@@ -23,6 +34,9 @@
 /proc/error(msg)
 	to_world_log("## ERROR: [msg][log_end]")
 
+/proc/shutdown_logging()
+	call(RUST_G, "log_close_all")()
+
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
@@ -33,7 +47,7 @@
 	to_world_log("## TESTING: [msg][log_end]")
 
 /proc/game_log(category, text)
-	diary << "\[[time_stamp()]] [game_id] [category]: [text][log_end]"
+	WRITE_LOG(diary, "\[[time_stamp()]] [game_id] [category]: [text][log_end]")
 
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)
