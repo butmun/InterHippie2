@@ -69,12 +69,12 @@
 		name = "[name] ([sequential_id(/mob/living/simple_animal/mouse)])"
 	real_name = name
 
-	if(prob(15))
-		if(prob(1))
+	if(prob(35))
+		if(prob(5))
 			virus = new (VIRUS_EXOTIC)
-		else if(prob(5))
-			virus = new (VIRUS_ENGINEERED)
 		else if(prob(10))
+			virus = new (VIRUS_ENGINEERED)
+		else if(prob(20))
 			virus = new (VIRUS_COMMON)
 		else
 			virus = new (VIRUS_MILD)
@@ -109,7 +109,7 @@
 				break
 
 		var/blocked = H.run_armor_check(limb.organ_tag, "melee")
-		if(H.apply_damage(rand(1, 2), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
+		if(H.apply_damage(rand(2, 5), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
 			limb.germ_level += rand(75, 150)
 			if(virus)
 				infect_virus2(H, virus)
@@ -160,3 +160,14 @@
 	// Change my name back, don't want to be named Tom (666)
 	SetName(initial(name))
 	real_name = name
+
+/mob/living/simple_animal/mouse/plague
+	name = "Plague Rat"
+	body_color = "comical"
+	icon_state = "comicallylargerat"
+	desc = "This is a comically large rat."
+	health = 3
+	maxHealth = 3
+	mob_size = MOB_SMALL
+	melee_damage_lower = 2
+	melee_damage_upper = 4

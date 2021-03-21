@@ -1,4 +1,4 @@
-//goat
+ //goat
 /mob/living/simple_animal/hostile/retaliate/goat
 	name = "goat"
 	desc = "Not known for their pleasant disposition."
