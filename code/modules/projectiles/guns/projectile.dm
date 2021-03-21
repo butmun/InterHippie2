@@ -11,7 +11,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEM_SIZE_NORMAL
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
-	screen_shake = 0
+	screen_shake = 1
 	combustion = 1
 
 	var/caliber = "357"		//determines which casings will fit

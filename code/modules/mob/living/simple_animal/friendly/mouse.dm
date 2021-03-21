@@ -169,7 +169,7 @@
 /mob/living/simple_animal/mouse/plague
 	name = "Plague Rat"
 	body_color = "comical"
-	icon_state = "comicallylargerat"
+	icon_state = "mouse_comical"
 	desc = "This is a comically large rat."
 	health = 3
 	maxHealth = 3
