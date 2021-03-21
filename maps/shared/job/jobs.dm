@@ -104,7 +104,7 @@
 /datum/map/alpha
 	allowed_jobs = list(
 						/datum/job/captain,
-						/datum/job/countess,
+						//datum/job/countess,
 						/datum/job/hop,
 						/datum/job/supreme_arbiter,
 						/datum/job/arbiter,

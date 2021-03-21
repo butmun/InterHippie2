@@ -150,6 +150,11 @@
 	body_color = "brown"
 	icon_state = "mouse_brown"
 
+/mob/living/simple_animal/mouse/black
+	body_color = "black"
+	icon_state = "mouse_black"
+
+
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
 	name = "Tom"

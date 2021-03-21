@@ -69,7 +69,8 @@ var/list/slot_equipment_priority = list( \
 		slot_s_store,\
 		slot_tie,\
 		slot_l_store,\
-		slot_r_store\
+		slot_r_store,\
+		slot_wear_amulet\
 	)
 
 //Checks if a given slot can be accessed at this time, either to equip or unequip I

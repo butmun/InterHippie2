@@ -3,24 +3,23 @@
 #define CANDLE_LUM 3 // For how bright candles are.
 
 // Item inventory slot bitmasks.
-#define SLOT_OCLOTHING  0x1
-#define SLOT_ICLOTHING  0x2
-#define SLOT_GLOVES     0x4
-#define SLOT_EYES       0x8
-#define SLOT_EARS       0x10
-#define SLOT_MASK       0x20
-#define SLOT_HEAD       0x40
-#define SLOT_FEET       0x80
-#define SLOT_ID         0x100
-#define SLOT_BELT       0x200
-#define SLOT_BACK       0x400
-#define SLOT_POCKET     0x800  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
-#define SLOT_AMULET     0x1000  // amulet (id cards) slot
-#define SLOT_TWOEARS    0x2000
-#define SLOT_TIE        0x4000
-#define SLOT_HOLSTER	0x8000 //16th bit - higher than this will overflow
-
-#define SLOT_DENYPOCKET 0x1
+#define SLOT_OCLOTHING  (1<<0)
+#define SLOT_ICLOTHING  (1<<1)
+#define SLOT_GLOVES     (1<<2)
+#define SLOT_EYES       (1<<3)
+#define SLOT_EARS       (1<<4)
+#define SLOT_MASK       (1<<5)
+#define SLOT_HEAD       (1<<6)
+#define SLOT_FEET       (1<<7)
+#define SLOT_ID         (1<<8)
+#define SLOT_BELT       (1<<9)
+#define SLOT_BACK       (1<<10)
+#define SLOT_POCKET     (1<<11)  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
+#define SLOT_AMULET     (1<<12)  // amulet (id cards) slot
+#define SLOT_TWOEARS    (1<<13)
+#define SLOT_TIE        (1<<14)
+#define SLOT_HOLSTER	(1<<15) //16th bit - higher than this will overflow
+#define SLOT_DENYPOCKET (1<<16)
 
 #define ACCESSORY_SLOT_UTILITY  "Utility"
 #define ACCESSORY_SLOT_HOLSTER  "Holster"
@@ -79,7 +78,7 @@
 #define slot_legs        21
 #define slot_tie         22
 #define slot_wear_amulet 23
-#define slot_last        23
+#define slot_last        24
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.
