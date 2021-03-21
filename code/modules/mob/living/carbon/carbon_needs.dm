@@ -12,8 +12,7 @@
 
 	if(!events.len)
 		msg += "<span class='info'>I feel indifferent.</span>\n"
-
-	if(happiness < MOOD_LEVEL_SAD2)
+	else if(happiness < MOOD_LEVEL_SAD2)
 		msg += "<span class='warning'>I am stressed out!</span>\n"
 
 
