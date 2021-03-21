@@ -101,7 +101,7 @@
 			if(H.isMonkey())
 				return
 
-			message = "loses their fucking mind!"
+			message = "freaks the hell out!"
 		else
 			message = "makes a loud noise!"
 
