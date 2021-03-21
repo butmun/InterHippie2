@@ -176,3 +176,9 @@
 /obj/screen/fullscreen/pain
 	icon_state = "brutedamageoverlay6"
 	alpha = 0
+
+/obj/screen/fullscreen/freakout
+	icon = 'icons/mob/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "extreme"
+	blend_mode = BLEND_MULTIPLY

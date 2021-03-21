@@ -964,7 +964,7 @@
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
 
-	if(shock_stage == 80)
+	if(shock_stage == 70)
 		custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", 0)
 		src.agony_moan()
 		emote("moan")

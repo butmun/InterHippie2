@@ -337,7 +337,7 @@
 				max_mult = G.point_blank_mult()
 	P.damage *= max_mult
 
-/obj/item/weapon/gun/proc/process_accuracy(obj/projectile, mob/user, atom/target, var/burst, var/held_twohanded)
+/obj/item/weapon/gun/proc/process_accuracy(obj/projectile, mob/living/carbon/human/user, atom/target, var/burst, var/held_twohanded)
 	var/obj/item/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
@@ -354,15 +354,33 @@
 	P.accuracy = accuracy + acc_mod
 	P.dispersion = disp_mod
 
+	var/mod = rand(5,20)
+
+	if(user.horror_loop)//They're freaking the fuck out, make it hard to aim.
+		P.dispersion += 5
+		P.accuracy -= 3
+
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
 		P.accuracy += 2
-	if(!user.skillcheck(user.skills["ranged"], 55, "How the heck do you aim this thing?!", "ranged") || !user.combat_mode)//Being unskilled at guns decreased accuracy.
+
+	if(!user.skillcheck(user.skills["ranged"], 55, "How do you even aim this?!", "ranged") || !user.combat_mode)//Being unskilled at guns decreased accuracy.
 		P.accuracy -= 4
-	if(!user.combat_mode == 1)
+
+	if(user.combat_mode)
+		P.accuracy += 3
+
+	if(!user.combat_mode)
+		P.dispersion += mod
+
+	if(user.staminaloss >= (STAMINA_EXHAUST/2))
+		P.dispersion += mod
+
+	if(user.chem_effects[CE_PAINKILLER] > 100)
+		P.dispersion += 10
 		P.accuracy -= 3
 
 //does the actual launching of the projectile

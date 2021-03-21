@@ -13,6 +13,9 @@
 	if(!events.len)
 		msg += "<span class='info'>I feel indifferent.</span>\n"
 
+	if(happiness < MOOD_LEVEL_SAD2)
+		msg += "<span class='warning'>I am stressed out!</span>\n"
+
 
 	msg += "</div></div>"
 	to_chat(src, msg)
@@ -77,8 +80,16 @@
 		sound_to(src, spoopysound)
 
 /mob/living/carbon/proc/handle_happiness()
+	if(happiness > MOOD_LEVEL_SAD4)
+		if(horror_loop)
+			to_chat(src, "<span class='phobia'>My nerves relax some... I can think clearly again...</span>")
+			sound_to(src, sound(null, repeat = 1, wait = 0, volume = 50, channel = 6))
+			horror_loop = FALSE
+			clear_fullscreen("freakout", /obj/screen/fullscreen/freakout)
+
 	switch(happiness)
-		if(-5000000 to MOOD_LEVEL_SAD4)
+		if(-INFINITY to MOOD_LEVEL_SAD4)
+			do_stress_effects()
 			flash_sadness()
 			crit_mood_modifier = -10
 		if(MOOD_LEVEL_SAD4 to MOOD_LEVEL_SAD3)
@@ -90,6 +101,19 @@
 			crit_mood_modifier = 5
 		if(MOOD_LEVEL_HAPPY4 to INFINITY)
 			crit_mood_modifier = 10
+
+/mob/living/carbon/proc/do_stress_effects()
+	return
+
+/mob/living/carbon/human/do_stress_effects()
+	if(!horror_loop)
+		freakout_emote()
+		sound_to(src, sound('sound/effects/White_noise.ogg', repeat = 1, wait = 0, volume = 25, channel = 6))
+		horror_loop = TRUE
+		overlay_fullscreen("freakout", /obj/screen/fullscreen/freakout)
+		to_chat(src, "<span class='phobia'<big>NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL</big></span>")
+	stuttering = 5
+	shake_camera(src, 5, 0.1)
 
 
 /mob/living/carbon/proc/add_event(category, type) //Category will override any events in the same category, should be unique unless the event is based on the same thing like hunger.

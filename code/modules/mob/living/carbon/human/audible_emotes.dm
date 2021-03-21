@@ -85,3 +85,32 @@
 
 	if(message)
 		custom_emote(2,message)
+
+/mob/proc/freakout_emote()
+	if(stat)
+		return
+	if(emote_cd == 1)		// Check if we need to suppress the emote attempt.
+		return
+	var/screamsound = null
+	var/message = null
+
+	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(!muzzled)
+			if(H.isMonkey())
+				return
+
+			message = "loses their fucking mind!"
+		else
+			message = "makes a loud noise!"
+
+		screamsound = "sound/voice/gagscream[rand(1,3)].wav"
+
+
+	if(screamsound)
+		playsound(src, screamsound, 50, 0, 1)
+
+	if(message)
+		custom_emote(2,message)
+	handle_emote_CD()
