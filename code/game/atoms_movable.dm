@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 
-	appearance_flags = TILE_BOUND | PIXEL_SCALE | LONG_GLIDE
+	appearance_flags = TILE_BOUND | PIXEL_SCALE | LONG_GLIDE | TILE_MOVER
 	glide_size = 8
 
 	var/last_move = null
