@@ -65,3 +65,5 @@
 	var/updates = 0
 	var/update_progress = 0
 	var/update_postshutdown
+
+	pixel_z = -2
