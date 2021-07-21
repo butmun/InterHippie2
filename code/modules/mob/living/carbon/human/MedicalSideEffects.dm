@@ -149,3 +149,12 @@
 		if(31 to INFINITY)
 			H.visible_message("<B>\The [src]</B> shivers slightly.")
 			H.custom_pain("This itch makes it really hard to concentrate.",1)
+
+/mob/living/carbon/human/proc/updatepale()
+	if(!pale)
+		stand_icon.Blend(rgb(300,300,300), ICON_MULTIPLY)
+		lying_icon.Blend(rgb(300,300,300), ICON_MULTIPLY)
+		pale = 1
+	else
+		update_body()
+		pale = 0

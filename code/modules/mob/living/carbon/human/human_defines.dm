@@ -127,3 +127,4 @@
 	var/potenzia = 10
 	var/resistenza = 200
 	var/mutilated_genitals = 0 //Whether or not they were humiliated.
+	var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
