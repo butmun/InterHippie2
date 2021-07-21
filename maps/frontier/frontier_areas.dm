@@ -170,7 +170,7 @@
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
 	requires_power = 0
-	dynamic_lighting = 0
+	dynamic_lighting = 1
 
 /area/syndicate_mothership/ninja
 	name = "\improper Ninja Base"
@@ -350,6 +350,9 @@
 	name = "Atmospherics Substation"
 
 // Maintenance
+
+/area/maintenance
+	forced_ambience = list('sound/ambience/maintenance.ogg')
 
 /area/maintenance/atmos_control
 	name = "\improper Atmospherics Maintenance"
