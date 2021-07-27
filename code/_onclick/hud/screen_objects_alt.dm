@@ -29,10 +29,8 @@
 	maptext_height = 480
 	maptext_width = 480
 
-
 /obj/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
-
 
 /obj/screen/close
 	name = "close"
