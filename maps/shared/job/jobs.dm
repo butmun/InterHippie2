@@ -2,12 +2,12 @@
 	allowed_jobs = list(
 						/datum/job/captain,
 						//datum/job/countess,
-						/datum/job/hop,
+						//datum/job/hop,
 						/datum/job/supreme_arbiter,
 						/datum/job/arbiter,
 						///datum/job/medassist
 						/datum/job/hos,
-						/datum/job/officer,
+						//datum/job/officer,
 						//datum/job/detective,
 						/datum/job/cmo,
 						/datum/job/doctor,
