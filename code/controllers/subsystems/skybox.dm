@@ -12,8 +12,7 @@ SUBSYSTEM_DEF(skybox)
 	var/BGpath = 'icons/turf/skybox.dmi' //Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
 	var/BGstate = "dyable"
 	var/use_stars = TRUE
-	var/star_path = 'icons/turf/skybox.dmi'
-	var/star_state = "stars"
+	var/star_path = 'icons/turf/stars.dmi'
 	var/list/skyboxes = list() //Keep track of all existing skyboxes.
 
 /datum/controller/subsystem/skybox/Initialize(timeofday)
@@ -45,11 +44,6 @@ SUBSYSTEM_DEF(skybox)
 
 		//Checking the subsystem deliberately, just to be safe. Allows the use of stars in universe
 		//states. You'll need to VV the subsystem for this to check custom files.
-
-		if(use_stars)
-			var/image/stars = image(star_path, src, star_state)
-			stars.appearance_flags = RESET_COLOR
-			P.overlays += stars
 
 //new_color_and_rotation(bool, bool, string) Where the string is to be a color in hexadecimal form. Accepts input as color.
 /datum/controller/subsystem/skybox/proc/new_color_and_rotation(var/do_rotate, var/do_recolor, var/forced_color)

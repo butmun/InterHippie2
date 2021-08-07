@@ -16,6 +16,16 @@
 	var/base_offset_x = -224 // -(world.view x dimension * world.icon_size)
 	var/base_offset_y = -224 // -(world.view y dimension * world.icon_size)
 
+/obj/skybox/stars
+	name = "stars"
+	icon = 'icons/turf/stars.dmi'
+	mouse_opacity = 0
+	blend_mode = BLEND_OVERLAY
+	plane = DUST_PLANE
+	appearance_flags = TILE_BOUND | PIXEL_SCALE | TILE_MOVER
+
+/obj/skybox/stars/Initialize()
+	icon_state = "star_[rand(1, 64)]"
 
 /obj/skybox/Initialize()
 	. = ..()
@@ -55,7 +65,6 @@
 
 /mob
 	var/obj/skybox/skybox
-
 /mob/Move()
 	. = ..()
 	if(. && skybox)

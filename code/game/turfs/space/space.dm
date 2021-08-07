@@ -8,7 +8,9 @@
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	var/static/list/dust_cache
+	var/obj/skybox/stars
 	permit_ao = FALSE
+	appearance_flags = TILE_BOUND | PIXEL_SCALE | TILE_MOVER
 
 /turf/space/New()
 	icon_state = "white"
@@ -16,14 +18,15 @@
 
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
-	for (var/i in 0 to 64)
-		var/image/im = image('icons/turf/stars.dmi',"[i]")
+	for (var/i in 0 to 25)
+		var/image/im = image('icons/turf/space_dust.dmi',"[i]")
 		im.plane = DUST_PLANE
-		im.alpha = 200
+		im.alpha = 80
 		im.blend_mode = BLEND_ADD
-		im.screen_loc = "CENTER"
-		im.appearance_flags = TILE_BOUND | PIXEL_SCALE
 		dust_cache["[i]"] = im
+
+/turf/space/proc/build_skybox_stars()
+	new /obj/skybox/stars(src)
 
 /turf/space/Initialize()
 	. = ..()
@@ -31,6 +34,8 @@
 	if (!dust_cache)
 		build_dust_cache()
 	overlays += dust_cache["[((x + y) ^ ~(x * y) + z) % 64]"]
+
+	build_skybox_stars()
 
 	if(!HasBelow(z))
 		return

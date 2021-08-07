@@ -1,4 +1,2 @@
-
 /lobby_music/lowlife1
-	song = 'sound/music/lobby1.ogg'
-
+	song = 'sound/music/lobby.ogg'
