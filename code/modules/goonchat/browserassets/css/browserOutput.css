@@ -7,15 +7,15 @@ html, body {
 	padding: 0;
 	margin: 0;
 	height: 100%;
-	color: #CCCCE2;
+	color: #cccce2;
 }
 body {
 	background-image: url("chatbg.png");
-	background-size: 50%;
+	background-size: 100%;
 	background-attachment: fixed;
-	font-family: Roboto Condensed;
-	font-size: 15px;
-	font-color: #CCCCE2;
+	font-family: Bahnschrift, sans-serif;
+	font-size: 20px;
+	font-color: #cccce2;
 	line-height: 1.2;
 	overflow-x: hidden;
 	overflow-y: scroll;
