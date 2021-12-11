@@ -22,6 +22,8 @@
 	combustion = 1
 	deaf_ability = 0
 
+	z_flags = ZMM_MANGLE_PLANES
+
 /obj/item/weapon/gun/energy/switch_firemodes()
 	. = ..()
 	if(.)

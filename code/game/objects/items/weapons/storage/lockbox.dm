@@ -5,8 +5,8 @@
 	icon_state = "lockbox+l"
 	item_state = "syringe_kit"
 	w_class = ITEM_SIZE_HUGE
-	storage_slots_w = 4
-	storage_slots_h = 24
+	storage_slots_w = 8
+	storage_slots_h = 12
 	req_access = list(access_armory)
 	var/locked = 1
 	var/broken = 0

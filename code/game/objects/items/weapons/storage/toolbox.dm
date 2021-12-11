@@ -13,7 +13,7 @@
 	throw_speed = 1
 	throw_range = 7
 	w_class = ITEM_SIZE_LARGE
-	storage_slots_w = 12
+	storage_slots_w = 10
 	storage_slots_h = 4
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")

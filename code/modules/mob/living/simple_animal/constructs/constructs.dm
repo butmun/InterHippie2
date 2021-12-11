@@ -26,6 +26,9 @@
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	var/nullblock = 0
 
+	z_flags = ZMM_MANGLE_PLANES
+
+
 	mob_swap_flags = HUMAN|SIMPLE_ANIMAL|SLIME|MONKEY
 	mob_push_flags = ALLMOBS
 

@@ -9,7 +9,9 @@
 	anchored = 1.0
 	idle_power_usage = 20
 	power_channel = LIGHT
-	var/on = 1
+	z_flags = ZMM_MANGLE_PLANES
+
+	var/on = 0
 	var/area/connected_area = null
 	var/other_area = null
 	var/image/overlay

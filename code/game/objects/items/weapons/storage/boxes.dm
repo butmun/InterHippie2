@@ -25,7 +25,7 @@
 	icon_state = "box"
 	item_state = "syringe_kit"
 	storage_slots_w = 6
-	storage_slots_h = 3
+	storage_slots_h = 4
 	var/foldable = /obj/item/stack/material/cardboard	// BubbleWrap - if set, can be folded (when empty) into a sheet of cardboard
 
 /obj/item/weapon/storage/box/large
@@ -33,7 +33,7 @@
 	icon_state = "largebox"
 	w_class = ITEM_SIZE_LARGE
 	storage_slots_w = 9
-	storage_slots_h = 3
+	storage_slots_h = 5
 
 // BubbleWrap - A box can be folded up to make card
 /obj/item/weapon/storage/box/attack_self(mob/user as mob)
@@ -67,7 +67,7 @@
 	..()
 	foldable = null //special form fitted boxes should not be foldable.
 
-/obj/item/weapon/storage/box/survival/
+/obj/item/weapon/storage/box/survival
 	name = "crew survival kit"
 	desc = "A box decorated in warning colors that contains a limited supply of survival tools. The panel and white stripe indicate this one contains oxygen."
 	icon_state = "survival"
@@ -79,7 +79,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 1,
 					/obj/item/stack/medical/bruise_pack/handmade = 1)
 
-/obj/item/weapon/storage/box/vox/
+/obj/item/weapon/storage/box/vox
 	name = "vox survival kit"
 	desc = "A box decorated in warning colors that contains a limited supply of survival tools. The panel and black stripe indicate this one contains nitrogen."
 	icon_state = "survivalvox"
@@ -89,7 +89,7 @@
 					/obj/item/device/flashlight/glowstick = 1,
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 1)
 
-/obj/item/weapon/storage/box/engineer/
+/obj/item/weapon/storage/box/engineer
 	name = "engineer survival kit"
 	desc = "A box decorated in warning colors that contains a limited supply of survival tools. The panel and orange stripe indicate this one as the engineering variant."
 	icon_state = "survivaleng"
@@ -442,7 +442,7 @@
 	name = "checkers box"
 	desc = "This box holds a nifty portion of checkers. Foam-shaped on the inside so that only checkers may fit."
 	icon_state = "checkers"
-	storage_slots_w = 36
+	storage_slots_w = 12
 	storage_slots_h = 6
 	foldable = null
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/checker)

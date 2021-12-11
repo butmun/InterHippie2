@@ -20,8 +20,8 @@
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
 	open_sound = 'sound/effects/unzip.ogg'
-	storage_slots_w = 6
-	storage_slots_h = 12
+	storage_slots_w = 10
+	storage_slots_h = 6
 
 	use_dynamic_slowdown = 1
 
@@ -207,7 +207,7 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 
-	storage_slots_w = 12
+	storage_slots_w = 8
 	storage_slots_h = 6
 
 /obj/item/weapon/storage/backpack/satchel/grey
