@@ -50,15 +50,6 @@
 //SELECTION
 
 /obj/screen/new_player/selection/New(var/desired_loc)
-	color = null
-	return ..()
-
-/obj/screen/new_player/selection/MouseEntered(location,control,params) //Yellow color for the font
-	color = "#ffb200"
-	return ..()
-
-/obj/screen/new_player/selection/MouseExited(location,control,params)
-	color = null
 	return ..()
 
 /obj/screen/new_player/selection/join_game/New()

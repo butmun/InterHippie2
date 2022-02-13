@@ -31,6 +31,7 @@
 
 /obj/screen/inventory
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/list/object_overlays = list() // Required for inventory/screen overlays.
 
 /obj/screen/close
 	name = "close"

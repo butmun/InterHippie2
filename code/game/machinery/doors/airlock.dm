@@ -1140,7 +1140,7 @@ About the new airlock wires panel:
 			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 		else if(brace)
 			to_chat(user, "<span class='notice'>The airlock's brace holds it firmly in place.</span>")
-		else if(user.statcheck(user.stats[STAT_ST], 10, "Gah, I'm not strong enough to open the door. Maybe if I try again.", STAT_ST))//Gotta be strong to get that door open.
+		else if(user.statcheck(user.stats[STAT_ST], 7, "Gah, I'm not strong enough to open the door. Maybe if I try again.", STAT_ST))//Gotta be strong to get that door open.
 			if(density)
 				spawn(0)	open(1)
 			else

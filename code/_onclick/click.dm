@@ -520,7 +520,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		Move(get_step(src,direction))
 		scrambling = 0
 		dir = 2
-		src.visible_message("\red <b>[src]</b> crawls!")
+		src.visible_message(src, "<span class='danger'><b>[src]</b> crawls!</span>")
 		src.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 /atom/proc/middle_click_intent_check(var/mob/M)

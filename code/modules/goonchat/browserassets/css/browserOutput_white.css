@@ -10,13 +10,19 @@ html, body {
 	color: #000000;
 }
 body {
-	background: #fff;
-	font-family: Roboto Condensed, sans-serif;
-	font-size: 13px;
+	background-image: url("chatbg.png");
+	background-size: 100%;
+	background-attachment: fixed;
+	font-family: Bahnschrift, sans-serif;
+	font-size: 16px;
+	font-color: #cccce2;
 	line-height: 1.2;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	word-wrap: break-word;
+	scrollbar-face-color:#1A1A1A;
+	scrollbar-track-color:#171717;
+	scrollbar-highlight-color:#171717;
 }
 
 em {

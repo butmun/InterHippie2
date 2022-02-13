@@ -150,6 +150,7 @@
 			H.visible_message("<B>\The [src]</B> shivers slightly.")
 			H.custom_pain("This itch makes it really hard to concentrate.",1)
 
+/*
 /mob/living/carbon/human/proc/updatepale()
 	if(!pale)
 		stand_icon.Blend(rgb(300,300,300), ICON_MULTIPLY)
@@ -158,3 +159,4 @@
 	else
 		update_body()
 		pale = 0
+*/
