@@ -94,7 +94,7 @@ client
 	/* Establish a big-ass list of potential titles for the "episode". */
 	possible_titles += "THE [pick("DOWNFALL OF", "RISE OF", "TROUBLE WITH", "FINAL STAND OF", "DARK SIDE OF", "DESOLATION OF", "DESTRUCTION OF", "CRISIS OF")]\
 						[pick("SPACEMEN", "HUMANITY", "DIGNITY", "SANITY", "THE CHIMPANZEES", "THE VENDOMAT PRICES", "GIANT ARMORED", "THE GAS JANITOR",\
-						"THE SUPERMATTER CRYSTAL", "MEDICAL", "ENGINEERING", "SECURITY", "RESEARCH", "THE SERVICE DEPARTMENT", "COMMAND", "THE EXPLORERS", "THE PATHFINDER",\
+						"THE SUPERMATTER CRYSTAL", "MEDICAL", "ENGINEERING", "SECURITY", "RESEARCH", "THE SERVICE DEPARTMENT", "COMMAND",\
 						"[uppertext(GLOB.using_map.station_name)]")]"
 	possible_titles += "THE CREW GETS [pick("RACIST", "PICKLED", "AN INCURABLE DISEASE", "PIZZA", "A VALUABLE HISTORY LESSON", "A BREAK", "HIGH", "TO LIVE", "TO RELIVE THEIR CHILDHOOD", "EMBROILED IN CIVIL WAR", "A BAD HANGOVER", "SERIOUS ABOUT [pick("DRUG ABUSE", "CRIME", "PRODUCTIVITY", "ANCIENT AMERICAN CARTOONS", "SPACEBALL", "DECOMPRESSION PROCEDURES")]")]"
 	possible_titles += "THE CREW LEARNS ABOUT [pick("LOVE", "DRUGS", "THE DANGERS OF MONEY LAUNDERING", "XENIC SENSITIVITY", "INVESTMENT FRAUD", "KELOTANE ABUSE", "RADIATION PROTECTION", "SACRED GEOMETRY", "STRING THEORY", "ABSTRACT MATHEMATICS", "[pick("UNATHI", "SKRELLIAN", "DIONAN", "KHAARMANI", "VOX", "SERPENTID")] MATING RITUALS", "ANCIENT CHINESE MEDICINE")]"
@@ -103,7 +103,6 @@ client
 	possible_titles += "[pick("SPACE", "SEXY", "DRAGON", "WARLOCK", "LAUNDRY", "GUN", "ADVERTISING", "DOG", "CARBON MONOXIDE", "NINJA", "WIZARD", "SOCRATIC", "JUVENILE DELIQUENCY", "POLITICALLY MOTIVATED", "RADTACULAR SICKNASTY")] [pick("QUEST", "FORCE", "ADVENTURE")]"
 	possible_titles += "[pick("THE DAY [uppertext(GLOB.using_map.station_short)] STOOD STILL", "HUNT FOR THE GREEN WEENIE", "ALIEN VS VENDOMAT", "SPACE TRACK")]"
 	titles += "<center><h1>EPISODE [rand(1,1000)]<br>[pick(possible_titles)]<h1></h1></h1></center>"
-
 
 	for(var/mob/living/carbon/human/H in GLOB.living_mob_list_|GLOB.dead_mob_list_)
 		if(findtext(H.real_name,"(mannequin)"))
@@ -118,7 +117,6 @@ client
 		if(GetAssignment(H) != "Unassigned")
 			job = ", [uppertext(GetAssignment(H))]"
 		var/used_name = H.real_name
-
 		/*
 		var/datum/computer_file/crew_record/R = get_crewmember_record(H.real_name)
 		I don't think we need this anymore, but it could be cool later
@@ -127,7 +125,6 @@ client
 			if(rank.name_short)
 				used_name = "[rank.name_short] [used_name]"
 		*/
-
 		if(prob(90))
 			var/actor_name = H.species.get_random_name(H.gender)
 			if(!(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10)) //sometimes can't get actor of thos species
@@ -147,7 +144,6 @@ client
 
 	titles += cast
 
-
 	var/list/corpses = list()
 	var/list/monkies = list()
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list_)
@@ -163,6 +159,23 @@ client
 	if(corpses.len)
 		titles += "<center>BASED ON REAL EVENTS<br>In memory of [english_list(corpses)].</center>"
 
+	var/list/staff = list("PRODUCTION STAFF:")
+	var/list/staffjobs = list("Coffee Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
+	var/list/goodboys = list()
+	for(var/client/C)
+		if(!C.holder)
+			continue
+		if(C.holder.rights & (R_DEBUG|R_ADMIN))
+			var/datum/species/S = all_species[pick(all_species)]
+			var/g = prob(50) ? MALE : FEMALE
+			staff += "[uppertext(pick(staffjobs))] - [S.get_random_name(g)] a.k.a. '[C.key]'"
+		else if(C.holder.rights & R_MOD)
+			goodboys += "[C.key]"
+
+	titles += "<center>[jointext(staff,"<br>")]</center>"
+	if(goodboys.len)
+		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center><br>"
+
 	//Add round end stats to ticker
 	//These need to be in two vars because ???????????  But it doesn't print the two lines when it's in one var
 	var/end_round_stat1 =  "The floor was shit on [GLOB.shit_left] times.<br>\
@@ -175,20 +188,21 @@ client
 	titles += "<center>[end_round_stat1]</center>"
 	titles += "<center>[end_round_stat2]</center>"
 
-
-	var/disclaimer = "<br>Filmed by [GLOB.using_map.company_name].<br>All rights reserved.<br>\
-					 This motion picture is not to be seen by unauthorized personnel.\<br>"
+	var/disclaimer = "<br>Sponsored by the Postian Hierarchy.<br>All rights reserved.<br>\
+					 This motion picture is protected under the copyright laws of the Postian Hierarchy.<br>\
+					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
+					 "Lordania", "Kingston", "Cinu", "Yuklid V", "Lorriman", "Tersten", "Gaia")].<br>"
 	disclaimer += pick("Use for parody prohibited.",
 					   "All stunts were performed by underpaid interns. Do NOT try at home.",
-					   "[GLOB.using_map.company_name] does not endorse behaviour depicted. Attempt at your own risk.",
-					   "Any unauthorized exhibition, distribution, or copying of this film or any part thereof (including soundtrack)<br>\
-						may result in an ERT being called to storm your home and take it back by force.",
+					   "The Postian Hierarchy does not endorse behaviour depicted. Attempt at your own risk.",
+					   "Any unauthorized exhibition, distribution, or copying of this film or any part thereof<br>\
+						may result in the Inquisition being called to storm your home and take it back by force.",
 						"The story, all names, characters, and incidents portrayed in this production are fictitious. No identification with actual<br>\
 						persons (living or deceased), places, buildings, and products is intended or should be inferred.<br>\
 						This film is based on a true story and all individuals depicted are based on real people, despite what we just said.",
 						"No person or entity associated	with this film received payment or anything of value, or entered into any agreement, in connection<br>\
-						with the depiction of tobacco products, despite the copious amounts	of smoking depicted within.<br>\
-						(This disclaimer sponsored by Carcinoma - Carcinogens are our Business!(TM)).",
+						with the depiction of tobacco products, despite the copious amounts of smoking depicted within.<br>\
+						(This disclaimer sponsored by Internia Tobacco - We profit on your deaths! (TM)).",
 						"No animals were harmed in the making of this motion picture except for those listed previously as dead. Do not try this at home.")
 	titles += "<center>[disclaimer]</center>"
 

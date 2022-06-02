@@ -225,7 +225,7 @@
 
 	// Jukeboxes cheat massively and actually don't share id. This is only done because it's music rather than ambient noise.
 	// It also has the "ignore_vis" flag so it can be heard through walls and zlevels.
-	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.sound, volume = volume, range = 7, falloff = 3, prefer_mute = TRUE, ignore_vis = FALSE, streaming = TRUE)
+	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.sound, volume = volume, range = 7, falloff = 3, prefer_mute = TRUE, ignore_vis = TRUE, streaming = TRUE)
 	playing = 1
 	update_use_power(POWER_USE_ACTIVE)
 	update_icon()
