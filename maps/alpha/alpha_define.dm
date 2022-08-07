@@ -12,7 +12,7 @@
 	player_levels = list(1,2,3,5)
 	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"5"=90) //Percentage of chance to get on this or that Z level as you drift through space.
 
-	allowed_spawns = list("Arrivals Shuttle")
+	allowed_spawns = list("Cryogenic Storage")
 
 	station_name  = "Stellar Fortress Alpha"
 	station_short = "Alpha"

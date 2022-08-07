@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(ticker)
 	Master.SetRunLevel(RUNLEVEL_GAME)
 	create_characters() //Create player characters and transfer them
 	collect_minds()
-	matchmaker.do_family_matchmaking()  //Do this before equipping
+	//matchmaker.do_family_matchmaking()  //Do this before equipping
 	if (config.roundstart_events)
 		eof = pick_round_event()
 	equip_characters()

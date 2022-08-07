@@ -52,6 +52,7 @@ What is the naming convention for planes or layers?
 
 #define SPACE_PLANE               -99
 	#define SPACE_LAYER                  1
+
 #define SKYBOX_PLANE              -98
 	#define SKYBOX_LAYER                 1
 

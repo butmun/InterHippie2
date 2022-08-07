@@ -1,4 +1,5 @@
 #define num2screen(x) "[round(x)]:[round((x) * 32)%32]"
+
 /datum/storage_ui/default
 	var/list/is_seeing = new/list() //List of mobs which are currently seeing the contents of this item's storage
 	var/list/client_uis = new/list()
@@ -50,8 +51,8 @@
 	store_x = x
 	store_y = y
 
-/obj/screen/storage/gridbox/proc/place_image(var/d, var/c, var/px, var/py)
-	var/image/I = image('icons/mob/screen1_small.dmi', icon_state, dir = d, pixel_x = px, pixel_y = py)
+/obj/screen/storage/gridbox/proc/place_image(var/ic_state, var/d, var/c, var/px, var/py)
+	var/image/I = image('icons/mob/screen1_small.dmi', ic_state, dir = d, pixel_x = px, pixel_y = py)
 	I.color = c
 	return I
 
@@ -67,9 +68,9 @@
 			border_overlay.screen_loc = screen_loc
 
 			// Draw the red overlay box
-			var/c = "#FF0000"
+			var/c = "#B50003"
 			if(storage.can_be_inserted(I, usr, store_x, store_y, 1))
-				c = "#00FF00"
+				c = "#00B500"
 
 			// Corners
 			border_overlay.overlays += place_image("place_c", NORTH, c, 0                   , 0                   )

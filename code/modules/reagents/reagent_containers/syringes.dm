@@ -23,6 +23,7 @@
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
 	var/time = 30
+	var/inject_sound = 'sound/items/inject.ogg'
 
 /obj/item/weapon/reagent_containers/syringe/on_reagent_change()
 	update_icon()
@@ -243,6 +244,8 @@
 	else
 		to_chat(user, "<span class='notice'>You inject yourself with [trans] units of the solution. \The [src] now contains [src.reagents.total_volume] units.</span>")
 
+	playsound(inject_sound, 100)
+
 	if(reagents.total_volume <= 0 && mode == SYRINGE_INJECT)
 		mode = SYRINGE_DRAW
 		update_icon()
@@ -372,7 +375,7 @@
 /obj/item/weapon/reagent_containers/syringe/steroid
 	name = "Syringe (anabolic steroids)"
 	desc = "Contains drugs for muscle growth."
-	
+
 /obj/item/weapon/reagent_containers/syringe/steroid/New()
 	..()
 	reagents.add_reagent(/datum/reagent/adrenaline, 5)

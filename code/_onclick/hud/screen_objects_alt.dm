@@ -88,7 +88,6 @@
 	var/mob/living/carbon/C = usr
 	C.print_happiness(C)
 
-
 /obj/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"

@@ -1,62 +1,91 @@
+//Exists to handle a few global variables that change enough to justify this. Technically a parallax, but it exhibits a skybox effect.
 
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))
-#define RANDOM_RIGHT_ANGLE pick(90,180,270,0)
 
-//Exists to handle a few global variables that change enough to justify this. Technically a parallax, but it exhibits a skybox effect.
 SUBSYSTEM_DEF(skybox)
 	name = "Space skybox"
-	init_order = INIT_ORDER_SKYBOX
+	init_order = SS_INIT_SKYBOX
 	flags = SS_NO_FIRE
-	var/BGrot
-	var/BGcolor
-	var/BGpath = 'icons/turf/skybox.dmi' //Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
-	var/BGstate = "dyable"
+	var/background_color
+	var/skybox_icon = 'icons/turf/skybox.dmi' //Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
+	var/background_icon = "space"
 	var/use_stars = TRUE
+	var/use_overmap_details = TRUE
 	var/star_path = 'icons/turf/stars.dmi'
-	var/list/skyboxes = list() //Keep track of all existing skyboxes.
+	var/list/skybox_cache = list()
+	var/list/space_appearance_cache
 
-/datum/controller/subsystem/skybox/Initialize(timeofday)
-	..(timeofday)
-	BGcolor = RANDOM_RGB
-	BGrot = RANDOM_RIGHT_ANGLE
+/datum/controller/subsystem/skybox/PreInit()
+	build_space_appearances()
+
+/datum/controller/subsystem/skybox/proc/build_space_appearances()
+	space_appearance_cache = new(26)
+	for (var/i in 0 to 25)
+		var/mutable_appearance/dust = mutable_appearance('icons/turf/space_dust.dmi', "[i]")
+		dust.plane = DUST_PLANE
+		dust.alpha = 80
+		dust.blend_mode = BLEND_ADD
+
+		var/mutable_appearance/space = new /mutable_appearance(/turf/space)
+		space.icon_state = "white"
+		space.overlays += dust
+		space_appearance_cache[i + 1] = space.appearance
+
+/datum/controller/subsystem/skybox/Initialize(start_uptime)
+	background_color = RANDOM_RGB
 
 /datum/controller/subsystem/skybox/Recover()
-	BGrot = SSskybox.BGrot
-	BGcolor = SSskybox.BGcolor
-	skyboxes = SSskybox.skyboxes
+	background_color = SSskybox.background_color
+	skybox_cache = SSskybox.skybox_cache
 
-//Update skyboxes. Called by universes, for now. Won't be going back to their original appearance in such a case... So be aware of this.
-/datum/controller/subsystem/skybox/proc/reinstate_skyboxes(var/state, var/using_stars)
+/datum/controller/subsystem/skybox/proc/get_skybox(z)
+	if(!skybox_cache["[z]"])
+		skybox_cache["[z]"] = generate_skybox(z)
+	return skybox_cache["[z]"]
 
-	use_stars = using_stars
+/datum/controller/subsystem/skybox/proc/generate_skybox(z)
+	var/star_state = "star_[rand(1, 64)]"
+	var/image/res = image(skybox_icon)
 
-	if(state)
-		BGstate = state
+	var/image/base = overlay_image(skybox_icon, background_icon, background_color)
 
-	for(var/obj/skybox/P in skyboxes)
-		P.color = null //We don't want the skybox to be colored.
-		P.overlays.Cut(0)
+	if(use_stars)
+		var/mutable_appearance/space = new /mutable_appearance(/turf/space)
+		var/image/stars = overlay_image(skybox_icon, star_state, flags = RESET_COLOR)
+		space.overlays += stars
 
-		var/BG = image(BGpath, src, "background_[BGstate]")
-		if(BGstate == initial(BGstate)) //Ew.
-			new_color_and_rotation(1.1) //This only allows dyable states anyways. It won't look bad or anything.
-		P.overlays += BG
+	res.overlays += base
 
-		//Checking the subsystem deliberately, just to be safe. Allows the use of stars in universe
-		//states. You'll need to VV the subsystem for this to check custom files.
+	return res
 
-//new_color_and_rotation(bool, bool, string) Where the string is to be a color in hexadecimal form. Accepts input as color.
-/datum/controller/subsystem/skybox/proc/new_color_and_rotation(var/do_rotate, var/do_recolor, var/forced_color)
-	if(do_rotate)
-		BGrot = RANDOM_RIGHT_ANGLE
-	if(do_recolor)
-		BGcolor = RANDOM_RGB
-	if(forced_color)
-		BGcolor = forced_color
-	for(var/obj/skybox/P in skyboxes)
-		P.color = BGcolor
-		P.DoRotate()
+/datum/controller/subsystem/skybox/proc/rebuild_skyboxes(var/list/zlevels)
+	for(var/z in zlevels)
+		skybox_cache["[z]"] = generate_skybox(z)
 
+	for(var/client/C)
+		C.update_skybox(1)
 
-#undef RANDOM_RGB
-#undef RANDOM_RIGHT_ANGLE
+//Update skyboxes. Called by universes, for now.
+/datum/controller/subsystem/skybox/proc/change_skybox(new_state, new_color, new_use_stars, new_use_overmap_details)
+	var/need_rebuild = FALSE
+	if(new_state != background_icon)
+		background_icon = new_state
+		need_rebuild = TRUE
+
+	if(new_color != background_color)
+		background_color = new_color
+		need_rebuild = TRUE
+
+	if(new_use_stars != use_stars)
+		use_stars = new_use_stars
+		need_rebuild = TRUE
+
+	if(new_use_overmap_details != use_overmap_details)
+		use_overmap_details = new_use_overmap_details
+		need_rebuild = TRUE
+
+	if(need_rebuild)
+		skybox_cache.Cut()
+
+		for(var/client/C)
+			C.update_skybox(1)

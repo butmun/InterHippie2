@@ -15,6 +15,7 @@
 	possible_transfer_amounts = null
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	slot_flags = SLOT_BELT
+	var/inject_sound = 'sound/items/hypoinject.ogg'
 
 ///obj/item/weapon/reagent_containers/hypospray/New() //comment this to make hypos start off empty
 //	..()
@@ -56,6 +57,7 @@
 		admin_inject_log(user, M, src, contained, trans)
 		to_chat(user, "<span class='notice'>[trans] units injected. [reagents.total_volume] units remaining in \the [src].</span>")
 
+	playsound(M, inject_sound, 100)
 	return
 
 /obj/item/weapon/reagent_containers/hypospray/vial
@@ -154,6 +156,7 @@
 	name = "autoinjector (painkiller)"
 	icon_state = "purple"
 	starts_with = list(/datum/reagent/tramadol = 5)
+	inject_sound = 'sound/items/inject.ogg'
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/combatpain
 	name = "autoinjector (oxycodone)"

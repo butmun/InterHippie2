@@ -620,6 +620,7 @@ its easier to just keep the beam vertical.
 
 /obj/screen/text/atm
 
+/*
 /client/MouseEntered(atom/a, location, control, params)
 	if(mob && ishuman(mob) && mob.get_preference_value(/datum/client_preference/show_item_names) == GLOB.PREF_YES)
 		var/mob/living/carbon/human/H = mob
@@ -632,6 +633,7 @@ its easier to just keep the beam vertical.
 			</span></center>"
 		else
 			H.hovertext.maptext = ""  // ui is blank
+*/
 
 /atom/MouseMove(location, control, params)
 	..()

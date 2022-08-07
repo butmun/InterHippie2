@@ -430,12 +430,6 @@ client/verb/character_setup()
 	eye = mob
 	if(eye != last_eye)
 		eye = last_eye
-
-	// Recenter skybox
-	set_skybox_offsets(last_view_x_dim, last_view_y_dim)
-	if(mob)
-		mob.reload_fullscreen()
-
 /*
 /client/proc/toggle_fullscreen() //it's that fuckin easy.
 	set name = "Toggle Fullscreen"
