@@ -1,12 +1,5 @@
-#define OPENTURF_MAX_PLANE -70
-#define OPENTURF_MAX_DEPTH 10		// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
-#define SHADOWER_DARKENING_FACTOR 0.6	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
 
-/mob/proc/add_filter_effects()
-	for(var/i in 1 to OPENTURF_MAX_DEPTH)
-		var/obj/screen/plane_master/blurs/B = new
-		B.plane = OPENTURF_MAX_PLANE + i - 7
-		client.screen += B
+#define SHADOWER_DARKENING_FACTOR 0.6	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
 
 SUBSYSTEM_DEF(zcopy)
 	name = "Z-Copy"

@@ -264,3 +264,9 @@
 
 /mob/new_player/add_click_catcher()
 	return
+
+/mob/proc/add_filter_effects()
+	for(var/i in 1 to OPENTURF_MAX_DEPTH)
+		var/obj/screen/plane_master/blurs/B = new
+		B.plane = OPENTURF_MAX_PLANE + i - 7
+		client.screen += B

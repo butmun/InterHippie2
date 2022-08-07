@@ -48,6 +48,9 @@ What is the naming convention for planes or layers?
 	FLOAT_PLANE = -32767
 */
 
+#define OPENTURF_MAX_PLANE -70
+#define OPENTURF_MAX_DEPTH 10		// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
+
 #define CLICKCATCHER_PLANE -100
 
 #define SPACE_PLANE               -99
