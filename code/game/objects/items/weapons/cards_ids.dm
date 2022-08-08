@@ -59,7 +59,7 @@
 /obj/item/weapon/card/emag_broken
 	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
 	name = "broken cryptographic sequencer"
-	icon_state = "emag"
+	icon_state = "emag_broken"
 	item_state = "card-id"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ILLEGAL = 4)
 
@@ -71,21 +71,21 @@
 	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 5)
 	var/uses = 10
 
-var/const/NO_EMAG_ACT = -50
+var/global/const/NO_EMAG_ACT = -50
+
 /obj/item/weapon/card/emag/resolve_attackby(atom/A, mob/user)
 	var/used_uses = A.emag_act(uses, user, src)
 	if(used_uses == NO_EMAG_ACT)
 		return ..(A, user)
 
 	uses -= used_uses
+	playsound(src, 'sound/items/emage.ogg', 35, 0)
 	A.add_fingerprint(user)
 	if(used_uses)
 		log_and_message_admins("emagged \an [A].")
-		playsound(src, 'sound/items/emage.ogg', 35, 0)
 
 	if(uses<1)
 		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")
-		user.drop_item()
 		var/obj/item/weapon/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
 		qdel(src)

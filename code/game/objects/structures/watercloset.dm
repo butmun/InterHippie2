@@ -65,8 +65,6 @@
 		to_chat(user, "You carefully place \the [I] into the cistern.")
 		return
 
-
-
 /obj/structure/urinal
 	name = "urinal"
 	desc = "The HU-452, an experimental urinal."
@@ -314,8 +312,6 @@
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
-
-
 /obj/structure/sink
 	name = "sink"
 	icon = 'icons/obj/watercloset.dmi'
@@ -395,6 +391,7 @@
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent(/datum/reagent/water, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
+		playsound(src, 'sound/effects/Liquid_transfer_mono.wav', 80, 1)
 		return 1
 
 	else if (istype(O, /obj/item/weapon/melee/baton))

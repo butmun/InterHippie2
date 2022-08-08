@@ -23,12 +23,14 @@
 /obj/item/device/flashlight/update_icon()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
+		item_state = "[initial(icon_state)]-on"
 		if(flashlight_power)
 			set_light(l_range = brightness_on, l_power = flashlight_power)
 		else
 			set_light(brightness_on)
 	else
 		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(icon_state)]"
 		set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
@@ -42,7 +44,6 @@
 	update_icon()
 	user.update_action_buttons()
 	return 1
-
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)

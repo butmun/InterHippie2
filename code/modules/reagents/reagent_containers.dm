@@ -67,6 +67,7 @@
 
 	var/trans = target.reagents.trans_to_obj(src, target:amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+	playsound(src, 'sound/effects/Liquid_transfer_mono.wav', 80, 1)
 	return 1
 
 /obj/item/weapon/reagent_containers/proc/standard_splash_mob(var/mob/user, var/mob/target) // This goes into afterattack
@@ -102,6 +103,7 @@
 	user.visible_message("<span class='warning'>[user] has fed [target] \the [src]!</span>")
 
 /obj/item/weapon/reagent_containers/proc/feed_sound(var/mob/user)
+	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 	return
 
 /obj/item/weapon/reagent_containers/proc/standard_feed_mob(var/mob/user, var/mob/target) // This goes into attack
@@ -186,6 +188,7 @@
 
 	var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
 	to_chat(user, "<span class='notice'>You transfer [trans] unit\s of the solution to \the [target].</span>")
+	playsound(src, 'sound/effects/Liquid_transfer_mono.wav', 80, 1)
 	return 1
 
 /obj/item/weapon/reagent_containers/do_surgery(mob/living/carbon/M, mob/living/user)

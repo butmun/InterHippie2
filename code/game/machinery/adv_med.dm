@@ -185,7 +185,6 @@
 	density = 0
 	anchored = 1
 
-
 /obj/machinery/body_scanconsole/Initialize()
 	for(var/D in GLOB.cardinal)
 		src.connected = locate(/obj/machinery/bodyscanner, get_step(src, D))

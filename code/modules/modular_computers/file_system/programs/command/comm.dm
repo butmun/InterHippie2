@@ -3,6 +3,7 @@
 #define STATE_VIEWMESSAGE	3
 #define STATE_STATUSDISPLAY	4
 #define STATE_ALERT_LEVEL	5
+
 /datum/computer_file/program/comm
 	filename = "comm"
 	filedesc = "Command and Communications Program"
@@ -36,6 +37,7 @@
 	var/current_viewing_message_id = 0
 	var/current_viewing_message = null
 	var/new_sound = 'sound/machines/announce_alarm.ogg'
+	var/new_sound_red = 'sound/machines/announce_alarm_red.ogg'
 
 /datum/nano_module/program/comm/New()
 	..()
@@ -144,8 +146,14 @@
 					if(findtext(input, config.ic_filter_regex))
 						to_chat(usr, "<span class='warning'>You rethink your decision and decide that Tetracorp will fire you if you announce that.</span>")
 						return 1
-				crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm.ogg')
-				announcment_cooldown = 1
+				var/decl/security_level/default/code_green/code_green
+				var/decl/security_level/default/code_red/code_red
+				if(code_green)
+					crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm.ogg')
+					announcment_cooldown = 1
+				else if(code_red)
+					crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm_red.ogg')
+					announcment_cooldown = 1
 				spawn(600)//One minute cooldown
 					announcment_cooldown = 0
 		if("message")

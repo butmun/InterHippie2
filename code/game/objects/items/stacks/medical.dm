@@ -54,6 +54,7 @@
 		use(1)
 
 	M.updatehealth()
+
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "gauze length"
@@ -115,7 +116,8 @@
 				else
 					to_chat(user, "<span class='warning'>\The [src] is used up, but there are more wounds to treat on \the [affecting.name].</span>")
 			use(used)
-			H.update_bandaging(0)
+			H.update_bandaging()
+			H.update_bleeding()
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
@@ -203,7 +205,8 @@
 				else
 					to_chat(user, "<span class='warning'>\The [src] is used up, but there are more wounds to treat on \the [affecting.name].</span>")
 			use(used)
-			H.update_bandaging(0)
+			H.update_bandaging()
+			H.update_bleeding()
 
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"

@@ -155,12 +155,13 @@
 * The default security state and levels setup
 */
 /decl/security_state/default
-	all_security_levels = list(/decl/security_level/default/code_green, /decl/security_level/default/code_blue, /decl/security_level/default/code_red, /decl/security_level/default/code_delta)
+	all_security_levels = list(/decl/security_level/default/code_green, /decl/security_level/default/code_red, /decl/security_level/default/code_delta)
 
 /decl/security_level/default
 	icon = 'icons/misc/security_state.dmi'
 	var/up_description
 	var/down_description
+	var/code
 
 	var/static/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
 	var/static/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
@@ -182,7 +183,8 @@
 	post_status("alert")
 
 /decl/security_level/default/code_green
-	name = "code green"
+	name = "NORMAL OPERATION"
+	code = GREEN_CODE
 
 	light_range = 2
 	light_power = 1
@@ -193,8 +195,9 @@
 	overlay_alarm = "alarm_green"
 	overlay_status_display = "status_display_green"
 
-	down_description = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	down_description = "All threats to the station have passed, the station should resume it's standard working operation."
 
+/*
 /decl/security_level/default/code_blue
 	name = "code blue"
 
@@ -206,11 +209,13 @@
 	overlay_alarm = "alarm_blue"
 	overlay_status_display = "status_display_blue"
 
-	up_description = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	up_description = "The station has received reliable information about possible hostile activity on the station. A state of alarm"
 	down_description = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+*/
 
 /decl/security_level/default/code_red
-	name = "code red"
+	name = "CODE WENTO ALPHA FOXTROT"
+	code = RED_CODE
 
 	light_range = 4
 	light_power = 2
@@ -220,8 +225,7 @@
 	overlay_alarm = "alarm_red"
 	overlay_status_display = "status_display_red"
 
-	up_description = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	down_description = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	up_description = "There is an immediate serious threat to the station, be it biological, chemical, physical or else. Station crew is advised to make shelter."
 
 /decl/security_level/default/code_delta
 	name = "code delta"
