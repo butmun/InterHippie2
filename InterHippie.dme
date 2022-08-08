@@ -2713,6 +2713,8 @@
 #include "maps\_map_include.dm"
 #include "maps\alpha\alpha.dm"
 #include "maps\alpha\alpha_define.dm"
+#include "maps\arbanon\arbanon.dm"
+#include "maps\arbanon\arbanon_define.dm"
 #include "maps\away\away_sites.dm"
 #include "maps\away\bearcat\bearcat.dm"
 #include "maps\away\blueriver\blueriver.dm"
