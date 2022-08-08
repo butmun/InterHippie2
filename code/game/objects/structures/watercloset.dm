@@ -75,7 +75,7 @@
 
 /obj/machinery/shower
 	name = "shower"
-	desc = "The best in class HS-451 shower unit has three temperature settings, one more than the HS-450 which preceded it."
+	desc = "A standard shower on the type of stations you reside in."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower"
 	density = 0
@@ -103,9 +103,11 @@
 	mouse_opacity = 0
 
 /obj/machinery/shower/attack_hand(mob/M as mob)
+	var/showersound = "sound/machines/shower_mid[rand(1,3)].ogg"
 	on = !on
 	update_icon()
 	if(on)
+		playsound(src.loc, showersound, 80, 1)
 		if (M.loc == loc)
 			wash(M)
 			process_heat(M)
