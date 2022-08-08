@@ -232,3 +232,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return
 	playsound(T, "sparks", 50, 1)
 	anim(T,src,'icons/mob/mob.dmi',,"phaseout",,dir)
+
+/mob/living/proc/on_structure_offset(var/offset = 0)
+	if(offset)
+		var/check = pixel_z + offset
+		if(pixel_z != check)
+			animate(src, pixel_z = check, time = 2, easing = SINE_EASING)
+	else
+		var/obj/structure/S = (locate() in get_turf(src))
+		if(!S && pixel_z != pixel_z)
+			animate(src, pixel_z = pixel_z, time = 2, easing = SINE_EASING)

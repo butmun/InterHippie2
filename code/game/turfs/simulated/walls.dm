@@ -153,7 +153,7 @@
 	return
 
 /turf/simulated/wall/proc/update_damage()
-	var/cap = material.integrity
+	var/cap = 10000
 	if(reinf_material)
 		cap += reinf_material.integrity
 

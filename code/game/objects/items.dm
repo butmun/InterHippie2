@@ -290,6 +290,7 @@
 			if (prob(5))
 				qdel(src)
 
+/*
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
 	set category = "Object"
@@ -303,6 +304,7 @@
 	src.loc = null
 
 	src.loc = T
+*/
 
 /obj/item/examine(mob/user, var/distance = -1)
 	var/size

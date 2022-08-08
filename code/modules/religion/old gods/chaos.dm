@@ -1,11 +1,11 @@
-/datum/religion/xom
-	name = XOM // he travelled many places
+/datum/religion/hasard
+	name = HASARD // he travelled many places
 	holy_item = new /obj/item/weapon/bikehorn()
-	shrine = /obj/old_god_shrine/xom_shrine
+	shrine = /obj/old_god_shrine/hasard_shrine
 	whisper_lines = list("This is a game, just a game!", "TURN THE PC OFF, RIGHT NOW.", "HA-HA-HA-HA-HA!!!")
 	offering_items = list(/obj/item/stack/teeth, /obj/item/weapon/flame/candle/, /obj/item/clothing/head/jester)
 
-/datum/religion/xom/generate_random_phrase()
+/datum/religion/hasard/generate_random_phrase()
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], the God of Chaos! ")
 		phrase += pick("You bathe the world in happiness. ", "You always return. ", "Every jester is at your mercy. ")
 		phrase += pick("[name], bless us all. ", "[name], guide us all. ")
@@ -18,17 +18,17 @@
 						"EAST" = /obj/item/clothing/head/jester,
 						"WEST" = /obj/item/clothing/shoes/jester,
 						"SOUTH" = /obj/item/weapon/paper)
-	old_god = XOM
+	old_god = HASARD
 
 	spell_effect(var/mob/living/user, mob/living/carbon/C as mob, var/list/spell_components)
 		var/obj/item/weapon/paper/target1_paper = spell_components["SOUTH"]
 		var/mob/living/carbon/human/target = get_player_from_paper(target1_paper)
 		if(!target)
 			target = user
-			to_chat(user, "<span class='danger'>Without a target, Xom turns his mischief on you!</span>")
+			to_chat(user, "<span class='danger'>Without a target, Hasard turns his mischief on you!</span>")
 			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
 		if(prob(10))
-			to_chat(target, "<span class='danger'>Your eyes burn horrificly! XOM WHY!</span>")
+			to_chat(target, "<span class='danger'>Your eyes burn horrificly! HASARD WHY!</span>")
 			playsound('sound/effects/xom_laugh.ogg', 100, 0)
 			target.disabilities |= BLIND
 		if(prob(3))
@@ -38,7 +38,7 @@
 		if(prob(15))
 			to_chat(target, "<span class='info'>You feel like one of your stats were improved.</span>")
 			playsound(target.loc, 'sound/effects/singlebeat.ogg', 100, 0)
-			target.stats += 0.001
+			target.stats += 1
 		if(prob(1))
 			to_chat(target, "<span class='danger'>HOLY SHIT!</span>")
 			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
@@ -64,9 +64,9 @@
 				spell_components[O].light("Xom")
 		return
 
-/obj/old_god_shrine/xom_shrine
+/obj/old_god_shrine/hasard_shrine
 	name = "HILLARIOUS SHRINE"
-	shrine_religion = XOM
+	shrine_religion = HASARD
 	icon_state = "xom"
 
 /*

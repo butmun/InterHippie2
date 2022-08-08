@@ -33,8 +33,6 @@
 	if(input)
 		brand = input
 
-
-
 //The machine
 /obj/machinery/arbiter_computer
 	var/mob/living/suspect
@@ -49,7 +47,7 @@
 
 /obj/machinery/arbiter_computer/attack_hand(mob/user as mob)
 	..()
-	visible_message("<span class='notice'>The [src] beeps: \"Scan subject with arbiter scanner, and then use the scanner on this machine for results.\"</span>")
+	visible_message("<span class='notice'>The [src] beeps: \"Scan the subject with a scanner, and then use the scanner on this machine for results.\"</span>")
 
 
 /obj/machinery/arbiter_computer/emag_act(var/remaining_charges, var/mob/user)

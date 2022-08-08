@@ -146,12 +146,12 @@
 					if(findtext(input, config.ic_filter_regex))
 						to_chat(usr, "<span class='warning'>You rethink your decision and decide that Tetracorp will fire you if you announce that.</span>")
 						return 1
-				var/decl/security_level/default/code_green/code_green
-				var/decl/security_level/default/code_red/code_red
-				if(code_green)
+				var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
+				var/decl/security_level/default/df = security_state.current_security_level
+				if(df.code == GREEN_CODE)
 					crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm.ogg')
 					announcment_cooldown = 1
-				else if(code_red)
+				else if(df.code == RED_CODE)
 					crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm_red.ogg')
 					announcment_cooldown = 1
 				spawn(600)//One minute cooldown

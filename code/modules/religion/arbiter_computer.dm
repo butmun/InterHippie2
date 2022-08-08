@@ -1,6 +1,6 @@
 /obj/machinery/computer/arbiter_computer
 	var/mob/living/suspect = null
-	name = "Heretic scanner machine"
+	name = "IA Examination Object"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "arbiter_computer"
 	density = 1
@@ -36,16 +36,16 @@
 	if (msg == accepted_prayer && M.religion_is_legal())
 		if(istype(scan, /obj/item/weapon/card/id))  //We have an ID inside
 			if(check_access(scan))
-				if(scan.assignment == "Supreme Arbiter" || scan.assignment == "Arbiter")
-					visible_message("<span class='notice'>Welcome [scan.assignment].  Verina's blessing upon you.</span>")
+				if(scan.assignment == "Supervisor Agent" || scan.assignment == "IA Agent")
+					visible_message("<span class='notice'>Welcome [scan.assignment].  Glory to science, and a blessing upon you.</span>")
 					authenticated = 1
 				else
-					visible_message("<span class='notice'>This console is for Arbiters only.</span>")
+					visible_message("<span class='notice'>This console cannot be used by feeble men.</span>")
 		else
 			visible_message("<span class='notice'>Please insert an ID card first.</span>")
 			playsound(src, "sound/machines/buttonbeep.ogg", 25, 0, 1)
 	else
-		visible_message("<span class='notice'>Begone heretic!</span>")
+		visible_message("<span class='notice'>Begone, fool!</span>")
 	return
 
 /obj/machinery/computer/arbiter_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)

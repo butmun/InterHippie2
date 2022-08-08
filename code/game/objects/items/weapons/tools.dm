@@ -725,7 +725,7 @@
 	throw_range = 3
 	item_state = "crowbar"
 	block_chance = 20
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 140)
 	center_of_mass = "x=16;y=20"
@@ -786,9 +786,9 @@ Saws
 	//degradation = 1
 /*
  * Combitool
- */
+*/
 
-/*/obj/item/weapon/combitool
+/obj/item/weapon/combitool
 	name = "combi-tool"
 	desc = "It even has one of those nubbins for doing the thingy."
 	icon = 'icons/obj/items.dmi'
@@ -838,4 +838,4 @@ Saws
 	if(!resolved && tool && target)
 		tool.afterattack(target,user,1)
 	if(tool)
-		tool.loc = src*/
+		tool.loc = src

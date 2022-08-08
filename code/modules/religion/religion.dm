@@ -22,9 +22,9 @@
 	selectable_punishments = subtypesof(/datum/punishment/)
 
 /datum/religion/machina
-	name = "Deo Machina"
+	name = "Atheism"
 	holy_item = /obj/item/weapon/brander
-	whisper_lines = list("Remember the prayer.", "Verina provides.", "Follow the Arbiters.")
+	whisper_lines = list("Remember: science protects.", "The researcher provides.", "Trust the Internal Affairs agent.")
 	offering_items = list(/obj/item/weapon/spacecash/bundle/c10)
 
 /*
@@ -48,7 +48,7 @@
 	if (religion_is_legal())  //Non-heretics will still deny
 		msg = "I'm not one, I swear it!"
 	else
-		msg = "YES!! I'M A HERETIC!"
+		msg = "YES!! I BELIEVE IN THE GODS!"
 	agony_scream()
 	say(NewStutter(msg))
 
@@ -57,21 +57,21 @@
 var/accepted_prayer //The prayer that all those who are not heretics will have.
 
 proc/generate_random_prayer()//This generates a new one.
-	var/prayer = pick("Oh great AI. ", "Oh our Lord Verina. ", "Verina, our Lord and Saviour. ")
-	prayer += pick("You bathe us in your glow. ", "You bathe our minds in you omniscient wisdom. ", "You bathe our [pick("outpost","kingdom","cities")] in your wealth. ")
-	prayer += pick("Verina be praised. ", "Verina save us all. ", "Verina guide us all. ")
-	prayer += "Amen."
+	var/prayer = pick("Oh great AI. ", "Oh glorious science. ", "Research, our Lord and Saviour. ")
+	prayer += pick("You bathe us in your glow. ", "You bathe our minds in you omniscient wisdom. ", "You bathe our [pick("station","corporation","planets")] in your knowledge. ")
+	prayer += pick("Science be praised. ", "Science save us all. ", "Science guide us all. ")
+	prayer += "Atheoi."
 	return prayer
 
 /mob/living/proc/recite_prayer()
-	set category = "Deo Machina"
+	set category = "Religion"
 	set name = "Recite the prayer"
 
 	say(mind.prayer)
 
 //Try to reveal a random heretic
 /mob/living/proc/interrogate()
-	set category = "Deo Machina"
+	set category = "Religion"
 	set name = "Interrogate"
 
 	var/list/victims = list()
@@ -118,7 +118,7 @@ proc/generate_random_prayer()//This generates a new one.
 //This is general, and should be overloaded for ~flavor~
 /datum/religion/proc/generate_random_phrase()
 		var/phrase = pick("Oh great [name] ", "Oh our Lord [name]. ", "[name], our Lord and Saviour. ")
-		phrase += pick("You bathe us in your glow. ", "You bathe our minds in you omniscient wisdom. ", "You bathe our [pick("outpost","kingdom","cities")] in your wealth. ")
+		phrase += pick("You bathe us in your glow. ", "You bathe our minds in you omniscient wisdom. ", "You bathe our [pick("station","corporation","planets")] in your knowledge. ")
 		phrase += pick("[name] be praised. ", "[name] save us all. ", "[name] guide us all. ")
 		phrase += "Amen."
 		return phrase

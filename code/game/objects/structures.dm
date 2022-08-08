@@ -2,6 +2,7 @@
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEM_SIZE_NO_CONTAINER
 	pull_sound = "pull_wood"
+	layer = STRUCTURE_LAYER
 
 	var/breakable
 	var/parts
@@ -9,11 +10,28 @@
 	var/list/other_connections = list("0", "0", "0", "0")
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
+	var/mob_offset = 0 //used for on_structure_offset mob animation
 
 /obj/structure/Destroy()
+	reset_mobs_offset()
 	if(parts)
 		new parts(loc)
 	. = ..()
+
+/obj/structure/Crossed(mob/living/M)
+	if(istype(M))
+		M.on_structure_offset(mob_offset)
+	..()
+
+/obj/structure/Uncrossed(mob/living/M)
+	if(istype(M))
+		M.on_structure_offset(0)
+	..()
+
+/obj/structure/proc/reset_mobs_offset()
+	var/mob/living/M = (locate() in get_turf(src))
+	if(M)
+		M.on_structure_offset(0)
 
 /obj/structure/attack_hand(mob/user)
 	..()
@@ -37,6 +55,7 @@
 			return
 		if(2.0)
 			if(prob(50))
+				reset_mobs_offset()
 				qdel(src)
 				return
 		if(3.0)
