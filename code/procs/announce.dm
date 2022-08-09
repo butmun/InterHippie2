@@ -54,32 +54,33 @@
 		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)
 
 datum/announcement/proc/FormMessage(message as text, message_title as text)
-	. = "<h2 class='alert' font size=4, font-family: Germanica>[message_title]</h2></font>"
-	. += "<br><span class='alert'>[message]</span>"
+	. = "<br><div class='announcementbox'><h3 class='announcementalert', font size=5, font-family: Germanica>[message_title]</h3></font>"
+	. += "<br><span class='boldannounce'>[message]</span>"
+	. += "<br>"
 	if (announcer)
-		. += "<br><span class='alert'> -[rhtml_encode(announcer)]</span>"
+		. += "<br><span class='info'> -[rhtml_encode(announcer)]</span></div>"
 
 datum/announcement/minor/FormMessage(message as text, message_title as text)
 	. = "<b>[message]</b>"
 
 datum/announcement/priority/FormMessage(message as text, message_title as text)
-	. = "<h1 class='alert'>[message_title]</h1>"
-	. += "<br><span class='alert'>[message]</span>"
-	if(announcer)
-		. += "<br><span class='alert'> -[rhtml_encode(announcer)]</span>"
+	. = "<div class='announcementbox'><h3 class='announcementalert', font size=5, font-family: Germanica>[message_title]</h3></font>"
+	. += "<br><span class='boldannounce'>[message]</span>"
 	. += "<br>"
+	if (announcer)
+		. += "<br><span class='info'> -[rhtml_encode(announcer)]</span></div>"
 
 datum/announcement/priority/command/FormMessage(message as text, message_title as text)
-	. = "<h1 class='alert'>[command_name()] Update</h1>"
+	. = "<div class='announcementbox'><h1 class='alert'>[command_name()] Update</h1>"
 	if (message_title)
 		. += "<br><h2 class='alert'>[message_title]</h2>"
 
-	. += "<br><span class='alert'>[message]</span><br>"
+	. += "<br><span class='alert'>[message]</span><br></div>"
 	. += "<br>"
 
 datum/announcement/priority/security/FormMessage(message as text, message_title as text)
-	. = "<font size=4 color='red'>[message_title]</font>"
-	. += "<br><font color='red'>[message]</font>"
+	. = "<div class='announcementbox'><h2 class='alert' font size=5, font-family: Germanica>[message_title]</h2></font>"
+	. += "<br><span class='alert'>[message]</span></div>"
 
 datum/announcement/proc/NewsCast(message as text, message_title as text)
 	if(!newscast)

@@ -19,9 +19,9 @@ SUBSYSTEM_DEF(skybox)
 	build_space_appearances()
 
 /datum/controller/subsystem/skybox/proc/build_space_appearances()
-	space_appearance_cache = new(26)
-	for (var/i in 0 to 25)
-		var/mutable_appearance/dust = mutable_appearance('icons/turf/space_dust.dmi', "[i]")
+	space_appearance_cache = new(65)
+	for (var/i in 0 to 64)
+		var/mutable_appearance/dust = mutable_appearance('icons/turf/stars.dmi', "star_[i]")
 		dust.plane = DUST_PLANE
 		dust.alpha = 80
 		dust.blend_mode = BLEND_ADD

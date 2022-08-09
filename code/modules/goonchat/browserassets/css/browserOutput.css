@@ -14,7 +14,7 @@ body {
 	background-size: 100%;
 	background-attachment: fixed;
 	font-family: Bahnschrift, sans-serif;
-	font-size: 16px;
+	font-size: 19px;
 	font-color: #cccce2;
 	line-height: 1.2;
 	overflow-x: hidden;
@@ -83,7 +83,7 @@ a.popt {text-decoration: none;}
 #loading i {display: block; padding-bottom: 3px;}
 
 #messages {
-	font-size: 13px;
+	font-size: 16px;
 	padding: 3px;
 	margin: 0;
 	word-wrap: break-word;
@@ -317,6 +317,7 @@ em						{font-style: normal;	font-weight: bold;}
 .name					{font-weight: bold;}
 .alert					{color: #d82020; text-shadow: 0 0 4px #d82020}
 h1.alert, h2.alert		{color: #a4bad6; text-shadow: 0 0 8px #a4bad6}
+h3.announcementalert		{color: #078c00; text-shadow: 0 0 8px #078c00}
 
 .emote					{font-style: italic;}
 
@@ -372,7 +373,7 @@ h1.alert, h2.alert		{color: #a4bad6; text-shadow: 0 0 8px #a4bad6}
 
 .firstdiv {
     padding: 10px;
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
     *zoom: 1;
     *display: inline;
@@ -411,5 +412,14 @@ h1.alert, h2.alert		{color: #a4bad6; text-shadow: 0 0 8px #a4bad6}
 	background: rgba(40, 40, 40, 0.3);
 	margin: 2px 8px;
 	padding: 8px 12px;
+	vertical-align: middle;
 	max-width: 550px;
+}
+
+.announcementbox {
+    border: 1px groove #5C41C6;
+	background: rgba(40, 40, 40, 0.3);
+	margin: 2px 8px;
+	padding: 8px 12px;
+	max-width: 750px;
 }

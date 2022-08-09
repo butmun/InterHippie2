@@ -213,9 +213,7 @@
 			dat += "<B>[display_name]:</B> [R.volume] unit\s"
 
 		if (items_counts.len==0 && reagents.reagent_list.len==0)
-			dat += "<B>The microwave is empty</B>"
-		else
-			dat += "<b>Ingredients:</b><br>[dat]"
+			dat += "<B>The microwave is empty.</B>"
 		dat += "<HR><BR><A href='?src=\ref[src];action=cook'>Turn on!<BR><A href='?src=\ref[src];action=dispose'>Eject ingredients!"
 
 	show_browser(user, "<HEAD><TITLE>Microwave Controls</TITLE></HEAD><TT>[jointext(dat,"<br>")]</TT>", "window=microwave")
